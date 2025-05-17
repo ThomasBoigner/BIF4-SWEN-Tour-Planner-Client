@@ -6,18 +6,16 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideHttpClient(
-      withFetch()
-    ),
-    importProvidersFrom(
-      LoggerModule.forRoot({
-        serverLoggingUrl: '/api/logs',
-        level: NgxLoggerLevel.TRACE,
-        serverLogLevel: NgxLoggerLevel.ERROR,
-      }),
-    ),
-  ],
+    providers: [
+        provideZoneChangeDetection({ eventCoalescing: true }),
+        provideRouter(routes),
+        provideHttpClient(withFetch()),
+        importProvidersFrom(
+            LoggerModule.forRoot({
+                serverLoggingUrl: '/api/logs',
+                level: NgxLoggerLevel.TRACE,
+                serverLogLevel: NgxLoggerLevel.ERROR,
+            }),
+        ),
+    ],
 };

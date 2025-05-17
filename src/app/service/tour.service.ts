@@ -6,17 +6,17 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class TourService {
-  private readonly toursUrl: string;
+    private readonly toursUrl: string;
 
-  constructor(
-    private http: HttpClient,
-    private logger: NGXLogger,
-  ) {
-    this.toursUrl = 'http://localhost:8080/tour';
-  }
+    constructor(
+        private http: HttpClient,
+        private logger: NGXLogger,
+    ) {
+        this.toursUrl = 'http://localhost:8080/api/tour';
+    }
 
-  public getTours(): Observable<Tour[]> {
-    this.logger.debug(`Trying to get all tours from endpoint ${this.toursUrl}`);
-    return this.http.get<Tour[]>(this.toursUrl);
-  }
+    public getTours(): Observable<Tour[]> {
+        this.logger.debug(`Trying to get all tours from endpoint ${this.toursUrl}`);
+        return this.http.get<Tour[]>(this.toursUrl);
+    }
 }

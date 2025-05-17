@@ -1,0 +1,40 @@
+<div class="container">
+    <section id="sidebar">
+        <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo" />
+        <div class="buttons-container">
+            <button type="button">
+                <img ngSrc="app/assets/svg/plus.svg" alt="plus" width="32" height="32" priority />
+                <h6>Create tour</h6>
+            </button>
+            <button type="button">
+                <img ngSrc="app/assets/svg/import.svg" alt="import" width="24" height="32" />
+                <h6>Import tour</h6>
+            </button>
+        </div>
+        <div class="search-input">
+            <img ngSrc="app/assets/svg/search.svg" alt="search" width="32" height="32" />
+            <input id="search" type="text" placeholder="Search for tour" />
+        </div>
+        <div class="tour-list">
+            @for (tour of tours; track tour.id) {
+                <div class="tour-list-item">
+                    <h4>Test Tour 1</h4>
+                    <p>Time: 2h</p>
+                    <p>Distance: 20km</p>
+                    <div>
+                        <a>Details</a>
+                        <img
+                            ngSrc="app/assets/svg/arrow-right.svg"
+                            alt="arrow-right"
+                            width="24"
+                            height="24"
+                        />
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+    <section id="map">
+        <img ngSrc="app/assets/png/map.png" alt="map" width="699" height="555" priority />
+    </section>
+</div>
