@@ -1,1 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --primary: rgb(26, 255, 18);
+    --secondary: rgb(18, 255, 173);
+    --accent: rgb(224, 255, 18);
+    --brand-gradient: linear-gradient(90deg, rgb(26, 255, 18), rgb(18, 255, 173));
+    --error: rgb(255, 21, 18);
+    --white: rgb(255, 255, 255);
+    --black: rgb(26, 31, 26);
+    --black85: rgb(58, 63, 58);
+    --black75: rgb(80, 84, 80);
+    --black50: rgb(135, 137, 135);
+    --black35: rgb(168, 170, 168);
+    --black25: rgb(190, 191, 190);
+    --black10: rgb(224, 224, 224);
+    --black5: rgb(223, 224, 223);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+body {
+    background-color: var(--white);
+}
+
+/* Typography */
+html {
+    font-size: 21px;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.219rem;
+    font-weight: 400;
+    color: var(--black85);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+    font-size: 3.81rem;
+    line-height: 5.186rem;
+    font-weight: 700;
+    letter-spacing: -4px;
+}
+
+h2 {
+    font-size: 3.048rem;
+    line-height: 4.152rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 2.429rem;
+    line-height: 3.31rem;
+    font-weight: 400;
+    letter-spacing: -2px;
+}
+
+h4 {
+    font-size: 1.952rem;
+    line-height: 2.657rem;
+    font-weight: 700;
+}
+
+h5 {
+    font-size: 1.238rem;
+    line-height: 1.686rem;
+    font-weight: 700;
+}
+
+h6 {
+    font-size: 1rem;
+    line-height: 1.362rem;
+    font-weight: 700;
+}
+
+label,
+p.label {
+    font-size: 0.762rem;
+    line-height: 0.929rem;
+}
+
+label.bold {
+    font-weight: 700;
+}
