@@ -11,7 +11,7 @@ section#sidebar {
 
 section#sidebar > img,
 div.buttons-container,
-section#sidebar > div.input {
+section#sidebar > div.search-input {
     margin-bottom: 32px;
 }
 
@@ -65,4 +65,46 @@ div.search-input input:focus {
 
 /* Tour list */
 div.tour-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+div.tour-list-item {
+    padding: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--black25);
+}
+
+div.tour-list-item h4,
+div.tour-list-item p:nth-child(3) {
+    margin-bottom: 8px;
+}
+
+div.tour-list-item p:nth-child(2) {
+    margin-bottom: 4px;
+}
+
+div.tour-list-item div.details-link {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+div.tour-list-item div.details-link a {
+    color: var(--secondary);
+}
+
+/* map image */
+section#map {
+    position: fixed;
+    left: 512px;
+    width: 100%;
+    height: 100vh;
+}
+
+section#map img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
 }

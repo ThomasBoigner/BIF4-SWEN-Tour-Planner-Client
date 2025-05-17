@@ -18,10 +18,10 @@
         <div class="tour-list">
             @for (tour of tours; track tour.id) {
                 <div class="tour-list-item">
-                    <h4>Test Tour 1</h4>
-                    <p>Time: 2h</p>
-                    <p>Distance: 20km</p>
-                    <div>
+                    <h4>{{ tour.name }}</h4>
+                    <p>Time: {{ tour.estimatedTime / 60 }}h</p>
+                    <p>Distance: {{ tour.distance }}km</p>
+                    <div class="details-link">
                         <a>Details</a>
                         <img
                             ngSrc="app/assets/svg/arrow-right.svg"
@@ -35,6 +35,6 @@
         </div>
     </section>
     <section id="map">
-        <img ngSrc="app/assets/png/map.png" alt="map" width="699" height="555" priority />
+        <img ngSrc="app/assets/png/map.png" alt="map" width="1288" height="1110" priority />
     </section>
 </div>
