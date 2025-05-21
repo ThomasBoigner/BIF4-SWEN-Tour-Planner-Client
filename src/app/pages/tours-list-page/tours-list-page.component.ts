@@ -14,6 +14,6 @@ export class ToursListPageComponent {
     tours$: Observable<Tour[]>;
 
     constructor(private tourService: TourService) {
-        this.tours$ = this.tourService.getTours()
+        this.tours$ = this.tourService.getTours();
     }
 }

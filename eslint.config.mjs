@@ -4,7 +4,7 @@ import prettierConfig from 'eslint-config-prettier';
 import { globalIgnores } from 'eslint/config';
 
 export default tseslint.config(
-    globalIgnores(['dist/**/*', 'eslint.config.mjs']),
+    globalIgnores(['dist/**/*', 'eslint.config.mjs', '.angular']),
     eslint.configs.recommended,
     tseslint.configs.strictTypeChecked,
     tseslint.configs.stylisticTypeChecked,

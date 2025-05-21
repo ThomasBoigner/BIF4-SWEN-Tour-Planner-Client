@@ -73,7 +73,6 @@ describe('TourService', () => {
         // When
         const response = tourService.getTours();
 
-
         // Then
         response.subscribe((tours) => {
             expect(tours).toEqual(expectedTours);
@@ -98,7 +97,7 @@ describe('TourService', () => {
             .pipe(
                 catchError((error: HttpErrorResponse) => {
                     expect(error.status).toEqual(0);
-                    expect(error.ok).toBeFalsy()
+                    expect(error.ok).toBeFalsy();
                     return of(error);
                 }),
             )
@@ -110,24 +109,28 @@ describe('TourService', () => {
         req.error(new ProgressEvent('Network Error'));
     });
 
-    it('#getTours should return an error when the server send an error', async () => {
+    it('#getTours should return an error when the server send an error', () => {
         // Given
         const tourService = TestBed.inject(TourService);
 
         // When
-        const response = tourService.getTours()
+        const response = tourService.getTours();
 
         // Then
-        response.pipe(catchError((error: HttpErrorResponse) => {
-            expect(error.status).toEqual(500);
-            expect(error.statusText).toEqual('Internal Server Error');
-            expect(error.ok).toBeFalsy()
-            return of(error)
-        })).subscribe()
+        response
+            .pipe(
+                catchError((error: HttpErrorResponse) => {
+                    expect(error.status).toEqual(500);
+                    expect(error.statusText).toEqual('Internal Server Error');
+                    expect(error.ok).toBeFalsy();
+                    return of(error);
+                }),
+            )
+            .subscribe();
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
             url: 'http://localhost:8080/api/tour',
         });
-        req.flush(null, {status: 500, statusText: 'Internal Server Error'});
+        req.flush(null, { status: 500, statusText: 'Internal Server Error' });
     });
 });
