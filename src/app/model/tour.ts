@@ -4,6 +4,7 @@ import { Address } from './address';
 export interface Tour {
     id: string;
     name: string;
+    description: string;
     from: Address;
     to: Address;
     transportType: TransportType;
