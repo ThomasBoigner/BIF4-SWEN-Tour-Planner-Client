@@ -1,10 +1,10 @@
 import { Tour } from '../model/tour';
 import { TestBed } from '@angular/core/testing';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpErrorResponse, provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TourService } from './tour.service';
 import { LoggerTestingModule } from 'ngx-logger/testing';
-import { firstValueFrom } from 'rxjs';
+import { catchError, of } from 'rxjs';
 
 describe('TourService', () => {
     beforeEach(() => {
@@ -18,7 +18,7 @@ describe('TourService', () => {
         TestBed.inject(HttpTestingController).verify();
     });
 
-    it('#getTours should return an array of tours', async () => {
+    it('#getTours should return an array of tours from the server', () => {
         // Given
         const tourService = TestBed.inject(TourService);
         const expectedTours: Tour[] = [
@@ -71,14 +71,63 @@ describe('TourService', () => {
         ];
 
         // When
-        const toursPromise = firstValueFrom(tourService.getTours())
+        const response = tourService.getTours();
+
+
+        // Then
+        response.subscribe((tours) => {
+            expect(tours).toEqual(expectedTours);
+        });
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
             url: 'http://localhost:8080/api/tour',
         });
         req.flush(expectedTours);
+        expect(req.request.responseType).toEqual('json');
+    });
+
+    it('#getTours should return an error when the request failed', () => {
+        // Given
+        const tourService = TestBed.inject(TourService);
+
+        // When
+        const response = tourService.getTours();
 
         // Then
-        expect(await toursPromise).toEqual(expectedTours);
+        response
+            .pipe(
+                catchError((error: HttpErrorResponse) => {
+                    expect(error.status).toEqual(0);
+                    expect(error.ok).toBeFalsy()
+                    return of(error);
+                }),
+            )
+            .subscribe();
+        const req = TestBed.inject(HttpTestingController).expectOne({
+            method: 'GET',
+            url: 'http://localhost:8080/api/tour',
+        });
+        req.error(new ProgressEvent('Network Error'));
+    });
+
+    it('#getTours should return an error when the server send an error', async () => {
+        // Given
+        const tourService = TestBed.inject(TourService);
+
+        // When
+        const response = tourService.getTours()
+
+        // Then
+        response.pipe(catchError((error: HttpErrorResponse) => {
+            expect(error.status).toEqual(500);
+            expect(error.statusText).toEqual('Internal Server Error');
+            expect(error.ok).toBeFalsy()
+            return of(error)
+        })).subscribe()
+        const req = TestBed.inject(HttpTestingController).expectOne({
+            method: 'GET',
+            url: 'http://localhost:8080/api/tour',
+        });
+        req.flush(null, {status: 500, statusText: 'Internal Server Error'});
     });
 });
