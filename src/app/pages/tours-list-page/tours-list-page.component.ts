@@ -1,24 +1,19 @@
 import { Component } from '@angular/core';
 import { Tour } from '../../model/tour';
 import { TourService } from '../../service/tour.service';
-import { NgOptimizedImage } from '@angular/common';
+import { AsyncPipe, NgOptimizedImage } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'tours-list-page',
     templateUrl: './tours-list-page.component.html',
     styleUrls: ['./tours-list-page.component.css'],
-    imports: [NgOptimizedImage],
+    imports: [NgOptimizedImage, AsyncPipe],
 })
 export class ToursListPageComponent {
-    tours?: Tour[];
+    tours$: Observable<Tour[]>;
 
-    constructor(private tourService: TourService) {}
-
-    ngOnInit() {
-        this.tourService.getTours().subscribe((tours) => {
-            this.tours = tours;
-        });
+    constructor(private tourService: TourService) {
+        this.tours$ = this.tourService.getTours()
     }
-
-    protected readonly length = length;
 }

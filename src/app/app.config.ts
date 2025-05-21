@@ -12,9 +12,8 @@ export const appConfig: ApplicationConfig = {
         provideHttpClient(withFetch()),
         importProvidersFrom(
             LoggerModule.forRoot({
-                serverLoggingUrl: '/api/logs',
                 level: NgxLoggerLevel.TRACE,
-                serverLogLevel: NgxLoggerLevel.ERROR,
+                serverLogLevel: NgxLoggerLevel.TRACE,
             }),
         ),
     ],
