@@ -29,6 +29,9 @@ div.buttons-container button {
     padding: 16px 24px;
     border-radius: 8px;
     border: none;
+}
+
+div.buttons-container button h6 {
     color: var(--white);
 }
 

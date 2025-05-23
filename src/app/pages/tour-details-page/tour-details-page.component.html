@@ -1,0 +1,94 @@
+<div class="container">
+    <section id="sidebar">
+        <div class="tour-information">
+            <div class="header">
+                <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo" />
+                <h1>Test Tour 1</h1>
+                <h5>This tour is awesome</h5>
+            </div>
+            <div class="from-container">
+                <h6>From:</h6>
+                <p>Radetzkystraße 2-6</p>
+                <p>2232 Deutsch-Wagram, Austria</p>
+            </div>
+            <div class="to-container">
+                <h6>to:</h6>
+                <p>Radetzkystraße 2-6</p>
+                <p>2232 Deutsch-Wagram, Austria</p>
+            </div>
+            <div class="tour-distance-container">
+                <h6>Tour distance</h6>
+                <p>20km</p>
+            </div>
+            <div class="time-container">
+                <h6>Estimated time</h6>
+                <p>2 hours</p>
+            </div>
+            <div class="transport-type-container">
+                <h6>Transport type</h6>
+                <p>Bike</p>
+            </div>
+        </div>
+        <div class="buttons-container">
+            <button type="button">
+                <img ngSrc="app/assets/svg/plus.svg" alt="plus" width="32" height="32" />
+                <h6>Create tour</h6>
+            </button>
+            <button type="button">
+                <img ngSrc="app/assets/svg/update.svg" alt="update" width="41" height="32" />
+                <h6>Update tour</h6>
+            </button>
+            <button type="button">
+                <img ngSrc="app/assets/svg/export.svg" alt="export" width="24" height="32" />
+                <h6>Export tour</h6>
+            </button>
+            <button type="button">
+                <img ngSrc="app/assets/svg/report.svg" alt="report" width="24" height="32" />
+                <h6>Export tour-report</h6>
+            </button>
+            <button type="button">
+                <img ngSrc="app/assets/svg/report.svg" alt="report" width="24" height="32" />
+                <h6>Export summarize-report</h6>
+            </button>
+            <button type="button">
+                <img ngSrc="app/assets/svg/delete.svg" alt="delete" width="28" height="32" />
+                <h6>Delete tour</h6>
+            </button>
+        </div>
+    </section>
+    <section id="tour-logs">
+        <div class="search-input">
+            <img ngSrc="app/assets/svg/search.svg" alt="search" width="32" height="32" />
+            <input id="search" type="text" placeholder="Search for tour" />
+        </div>
+        <div class="tour-log-list">
+            <div class="tour-log-list-item">
+                <p>Started at: 16.05.2025 12:52</p>
+                <p>Finished at: 16.05.2025 13:43</p>
+                <p>Duration: 0:51</p>
+                <p>Comment: Great view from the mountain top</p>
+                <p>Distance 15km</p>
+                <p>Difficulty: 3</p>
+                <p>Rating: 4</p>
+                <div class="update-link">
+                    <a>Update tour log</a>
+                    <img
+                        ngSrc="app/assets/svg/arrow-right.svg"
+                        alt="arrow-right"
+                        width="24"
+                        height="24"
+                    />
+                </div>
+                <div class="delete-link">
+                    <a>Delete tour log</a>
+                    <img
+                        ngSrc="app/assets/svg/delete.svg"
+                        alt="delete"
+                        width="28"
+                        height="32"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

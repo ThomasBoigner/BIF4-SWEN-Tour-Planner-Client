@@ -19,4 +19,9 @@ export class TourService {
         this.logger.debug(`Trying to get all tours from endpoint ${this.toursUrl}`);
         return this.http.get<Tour[]>(this.toursUrl);
     }
+
+    public getTour(id: string): Observable<Tour> {
+        this.logger.debug(`Trying to get tour with id ${id} from endpoint ${this.toursUrl}`);
+        return this.http.get<Tour>(`${this.toursUrl}/${id}`);
+    }
 }
