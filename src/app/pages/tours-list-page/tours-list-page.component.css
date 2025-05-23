@@ -9,7 +9,7 @@ section#sidebar {
     padding: 32px 48px;
 }
 
-section#sidebar > img,
+section#sidebar > a > img,
 div.buttons-container,
 section#sidebar > div.search-input {
     margin-bottom: 32px;
@@ -29,6 +29,9 @@ div.buttons-container button {
     padding: 16px 24px;
     border-radius: 8px;
     border: none;
+}
+
+div.buttons-container button h6 {
     color: var(--white);
 }
 
@@ -68,6 +71,10 @@ div.tour-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+div.tour-list > p {
+    text-align: center;
 }
 
 div.tour-list-item {
