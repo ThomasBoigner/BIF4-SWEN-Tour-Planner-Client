@@ -5,17 +5,31 @@ import { Tour } from '../../model/tour';
 import { of } from 'rxjs';
 
 describe('ToursListPageComponent', () => {
+    let tourService: jasmine.SpyObj<TourService>;
+
     beforeEach(() => {
         const spy = jasmine.createSpyObj<TourService>('TourService', ['getTours']);
         TestBed.configureTestingModule({
             imports: [ToursListPageComponent],
             providers: [{ provide: TourService, useValue: spy }],
         });
+        tourService = TestBed.inject(TourService) as jasmine.SpyObj<TourService>;
+    });
+
+    it('Message should be displayed if there are no tours', () => {
+        // When
+        const fixture: ComponentFixture<ToursListPageComponent> =
+            TestBed.createComponent(ToursListPageComponent);
+        fixture.detectChanges();
+
+        // Then
+        const nativeElement = fixture.nativeElement as HTMLElement;
+        expect(fixture.componentInstance).toBeDefined();
+        expect(nativeElement.textContent).toContain('No tours available');
     });
 
     it('All Tours should be displayed', () => {
         // Given
-
         const tour1: Tour = {
             id: 'e4f61472-1ead-4b0a-a895-c7ae75139fc2',
             name: 'Tour 1',
@@ -63,22 +77,17 @@ describe('ToursListPageComponent', () => {
             imageUrl: 'img',
         };
 
-        const tourService: jasmine.SpyObj<TourService> = TestBed.inject(
-            TourService,
-        ) as jasmine.SpyObj<TourService>;
         tourService.getTours.and.returnValue(of([tour1, tour2]));
 
+        // When
         const fixture: ComponentFixture<ToursListPageComponent> =
             TestBed.createComponent(ToursListPageComponent);
 
-        const component: ToursListPageComponent = fixture.componentInstance;
-
-        // When
-        fixture.autoDetectChanges();
+        fixture.detectChanges();
 
         // Then
         const nativeElement = fixture.nativeElement as HTMLElement;
-        expect(component).toBeDefined();
+        expect(fixture.componentInstance).toBeDefined();
         expect(nativeElement.textContent).toContain(tour1.name);
         expect(nativeElement.textContent).toContain(tour1.estimatedTime / 60);
         expect(nativeElement.textContent).toContain(tour1.distance);

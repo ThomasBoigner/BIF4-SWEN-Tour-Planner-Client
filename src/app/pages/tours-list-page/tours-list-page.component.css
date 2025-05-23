@@ -70,6 +70,10 @@ div.tour-list {
     gap: 16px;
 }
 
+div.tour-list>p {
+    text-align: center;
+}
+
 div.tour-list-item {
     padding: 32px;
     border-radius: 8px;
