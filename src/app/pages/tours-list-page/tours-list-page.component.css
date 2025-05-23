@@ -9,7 +9,7 @@ section#sidebar {
     padding: 32px 48px;
 }
 
-section#sidebar > img,
+section#sidebar > a > img,
 div.buttons-container,
 section#sidebar > div.search-input {
     margin-bottom: 32px;
@@ -73,7 +73,7 @@ div.tour-list {
     gap: 16px;
 }
 
-div.tour-list>p {
+div.tour-list > p {
     text-align: center;
 }
 

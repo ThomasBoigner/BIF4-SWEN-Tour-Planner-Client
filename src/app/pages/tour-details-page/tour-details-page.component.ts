@@ -3,13 +3,13 @@ import { TourService } from '../../service/tour.service';
 import { Observable } from 'rxjs';
 import { Tour } from '../../model/tour';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'tour-details-page',
     templateUrl: './tour-details-page.component.html',
     styleUrls: ['./tour-details-page.component.css'],
-    imports: [NgOptimizedImage, AsyncPipe],
+    imports: [NgOptimizedImage, RouterLink, AsyncPipe],
 })
 export class TourDetailsPageComponent {
     tour$: Observable<Tour>;

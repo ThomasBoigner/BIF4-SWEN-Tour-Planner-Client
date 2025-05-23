@@ -3,6 +3,8 @@ import { ToursListPageComponent } from './tours-list-page.component';
 import { TourService } from '../../service/tour.service';
 import { Tour } from '../../model/tour';
 import { of } from 'rxjs';
+import { provideRouter } from '@angular/router';
+import { routes } from '../../app.routes';
 
 describe('ToursListPageComponent', () => {
     let tourService: jasmine.SpyObj<TourService>;
@@ -11,7 +13,7 @@ describe('ToursListPageComponent', () => {
         const spy = jasmine.createSpyObj<TourService>('TourService', ['getTours']);
         TestBed.configureTestingModule({
             imports: [ToursListPageComponent],
-            providers: [{ provide: TourService, useValue: spy }],
+            providers: [{ provide: TourService, useValue: spy }, provideRouter(routes)],
         });
         tourService = TestBed.inject(TourService) as jasmine.SpyObj<TourService>;
     });

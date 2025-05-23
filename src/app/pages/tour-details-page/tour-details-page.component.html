@@ -1,34 +1,38 @@
 <div class="container">
     <section id="sidebar">
-        <div class="tour-information">
-            <div class="header">
-                <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo" />
-                <h1>Test Tour 1</h1>
-                <h5>This tour is awesome</h5>
+        @if (tour$ | async; as tour) {
+            <div class="tour-information">
+                <div class="header">
+                    <a routerLink=""
+                        ><img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo"
+                    /></a>
+                    <h1>{{ tour.name }}</h1>
+                    <h5>{{ tour.description }}</h5>
+                </div>
+                <div class="from-container">
+                    <h6>From:</h6>
+                    <p>{{ tour.from.streetName }} {{ tour.from.streetNumber }}</p>
+                    <p>{{ tour.from.zipCode }} {{ tour.from.city }}, {{ tour.from.country }}</p>
+                </div>
+                <div class="to-container">
+                    <h6>to:</h6>
+                    <p>{{ tour.to.streetName }} {{ tour.to.streetNumber }}</p>
+                    <p>{{ tour.to.zipCode }} {{ tour.to.city }}, {{ tour.to.country }}</p>
+                </div>
+                <div class="tour-distance-container">
+                    <h6>Tour distance</h6>
+                    <p>{{ tour.distance }}km</p>
+                </div>
+                <div class="time-container">
+                    <h6>Estimated time</h6>
+                    <p>{{ tour.estimatedTime / 60 }} hours</p>
+                </div>
+                <div class="transport-type-container">
+                    <h6>Transport type</h6>
+                    <p>{{ tour.transportType }}</p>
+                </div>
             </div>
-            <div class="from-container">
-                <h6>From:</h6>
-                <p>Radetzkystraße 2-6</p>
-                <p>2232 Deutsch-Wagram, Austria</p>
-            </div>
-            <div class="to-container">
-                <h6>to:</h6>
-                <p>Radetzkystraße 2-6</p>
-                <p>2232 Deutsch-Wagram, Austria</p>
-            </div>
-            <div class="tour-distance-container">
-                <h6>Tour distance</h6>
-                <p>20km</p>
-            </div>
-            <div class="time-container">
-                <h6>Estimated time</h6>
-                <p>2 hours</p>
-            </div>
-            <div class="transport-type-container">
-                <h6>Transport type</h6>
-                <p>Bike</p>
-            </div>
-        </div>
+        }
         <div class="buttons-container">
             <button type="button">
                 <img ngSrc="app/assets/svg/plus.svg" alt="plus" width="32" height="32" />
@@ -81,12 +85,7 @@
                 </div>
                 <div class="delete-link">
                     <a>Delete tour log</a>
-                    <img
-                        ngSrc="app/assets/svg/delete.svg"
-                        alt="delete"
-                        width="28"
-                        height="32"
-                    />
+                    <img ngSrc="app/assets/svg/delete.svg" alt="delete" width="28" height="32" />
                 </div>
             </div>
         </div>

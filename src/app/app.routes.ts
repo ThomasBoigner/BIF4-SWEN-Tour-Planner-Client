@@ -12,5 +12,5 @@ export const routes: Routes = [
         path: 'tour/:id',
         title: 'Tours details page',
         component: TourDetailsPageComponent,
-    }
+    },
 ];
