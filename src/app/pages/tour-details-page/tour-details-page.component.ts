@@ -3,7 +3,7 @@ import { TourService } from '../../service/tour.service';
 import { Observable } from 'rxjs';
 import { Tour } from '../../model/tour';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'tour-details-page',
@@ -13,12 +13,18 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 })
 export class TourDetailsPageComponent {
     tour$: Observable<Tour>;
+    tourId: string;
 
     constructor(
         private tourService: TourService,
         private route: ActivatedRoute,
+        private router: Router,
     ) {
-        const id = this.route.snapshot.paramMap.get('id');
-        this.tour$ = this.tourService.getTour(id ?? '');
+        this.tourId = this.route.snapshot.paramMap.get('id') ?? '';
+        this.tour$ = this.tourService.getTour(this.tourId);
+    }
+
+    deleteTour() {
+        this.tourService.deleteTour(this.tourId).subscribe(() => void this.router.navigate(['/']));
     }
 }

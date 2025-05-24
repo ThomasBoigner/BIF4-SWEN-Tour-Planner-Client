@@ -24,4 +24,9 @@ export class TourService {
         this.logger.debug(`Trying to get tour with id ${id} from endpoint ${this.toursUrl}`);
         return this.http.get<Tour>(`${this.toursUrl}/${id}`);
     }
+
+    public deleteTour(id: string) {
+        this.logger.debug(`Trying to delete tour with id ${id} from endpoint ${this.toursUrl}`);
+        return this.http.delete(`${this.toursUrl}/${id}`);
+    }
 }

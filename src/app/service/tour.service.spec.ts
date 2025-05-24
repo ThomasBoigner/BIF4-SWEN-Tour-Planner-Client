@@ -236,4 +236,70 @@ describe('TourService', () => {
 
         req.flush(null, { status: 500, statusText: 'Internal Server Error' });
     });
+
+    it('#deleteTour delete a tour on the server', () => {
+        // Given
+        const tourService = TestBed.inject(TourService);
+
+        // When
+        tourService.deleteTour('e4f61472-1ead-4b0a-a895-c7ae75139fc2').subscribe();
+
+        // Then
+        const req = TestBed.inject(HttpTestingController).expectOne({
+            method: 'DELETE',
+            url: 'http://localhost:8080/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+        });
+
+        req.flush(null, { status: 200, statusText: 'ok' });
+    });
+
+    it('#deleteTour should return an error when the request failed', () => {
+        // Given
+        const tourService = TestBed.inject(TourService);
+
+        // When
+        tourService
+            .deleteTour('e4f61472-1ead-4b0a-a895-c7ae75139fc2')
+            .pipe(
+                catchError((error: HttpErrorResponse) => {
+                    expect(error.status).toEqual(0);
+                    expect(error.ok).toBeFalsy();
+                    return of(error);
+                }),
+            )
+            .subscribe();
+
+        // Then
+        const req = TestBed.inject(HttpTestingController).expectOne({
+            method: 'DELETE',
+            url: 'http://localhost:8080/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+        });
+
+        req.error(new ProgressEvent('Network Error'));
+    });
+
+    it('#deleteTour should return an error when the server send an error', () => {
+        // Given
+        const tourService = TestBed.inject(TourService);
+
+        // When
+        tourService
+            .deleteTour('e4f61472-1ead-4b0a-a895-c7ae75139fc2')
+            .pipe(
+                catchError((error: HttpErrorResponse) => {
+                    expect(error.status).toEqual(500);
+                    expect(error.ok).toBeFalsy();
+                    return of(error);
+                }),
+            )
+            .subscribe();
+
+        // Then
+        const req = TestBed.inject(HttpTestingController).expectOne({
+            method: 'DELETE',
+            url: 'http://localhost:8080/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+        });
+
+        req.flush(null, { status: 500, statusText: 'Internal Server Error' });
+    });
 });
