@@ -34,27 +34,27 @@
             </div>
         }
         <div class="buttons-container">
-            <button type="button">
+            <button class="primary" type="button">
                 <img ngSrc="app/assets/svg/plus.svg" alt="plus" width="32" height="32" />
-                <h6>Create tour</h6>
+                <h6>Add log</h6>
             </button>
-            <button type="button">
+            <button class="primary" type="button">
                 <img ngSrc="app/assets/svg/update.svg" alt="update" width="41" height="32" />
                 <h6>Update tour</h6>
             </button>
-            <button type="button">
+            <button class="secondary" type="button">
                 <img ngSrc="app/assets/svg/export.svg" alt="export" width="24" height="32" />
                 <h6>Export tour</h6>
             </button>
-            <button type="button">
+            <button class="secondary" type="button">
                 <img ngSrc="app/assets/svg/report.svg" alt="report" width="24" height="32" />
                 <h6>Export tour-report</h6>
             </button>
-            <button type="button">
+            <button class="secondary" type="button">
                 <img ngSrc="app/assets/svg/report.svg" alt="report" width="24" height="32" />
                 <h6>Export summarize-report</h6>
             </button>
-            <button type="button">
+            <button class="error" type="button">
                 <img ngSrc="app/assets/svg/delete.svg" alt="delete" width="28" height="32" />
                 <h6>Delete tour</h6>
             </button>
@@ -63,7 +63,7 @@
     <section id="tour-logs">
         <div class="search-input">
             <img ngSrc="app/assets/svg/search.svg" alt="search" width="32" height="32" />
-            <input id="search" type="text" placeholder="Search for tour" />
+            <input id="search" type="text" placeholder="Search for tour log" />
         </div>
         <div class="tour-log-list">
             <div class="tour-log-list-item">
@@ -75,17 +75,56 @@
                 <p>Difficulty: 3</p>
                 <p>Rating: 4</p>
                 <div class="update-link">
-                    <a>Update tour log</a>
-                    <img
-                        ngSrc="app/assets/svg/arrow-right.svg"
-                        alt="arrow-right"
-                        width="24"
-                        height="24"
-                    />
+                    <a
+                        >Update tour log
+                        <img
+                            ngSrc="app/assets/svg/arrow-right.svg"
+                            alt="arrow-right"
+                            width="24"
+                            height="24"
+                    /></a>
                 </div>
                 <div class="delete-link">
-                    <a>Delete tour log</a>
-                    <img ngSrc="app/assets/svg/delete.svg" alt="delete" width="28" height="32" />
+                    <a
+                        >Delete tour log
+                        <img
+                            ngSrc="app/assets/svg/delete-red.svg"
+                            alt="delete"
+                            width="28"
+                            height="32"
+                        />
+                    </a>
+                </div>
+            </div>
+            <div class="tour-log-list-item">
+                <p>Started at: 16.05.2025 12:52</p>
+                <p>Finished at: 16.05.2025 13:43</p>
+                <p>Duration: 0:51</p>
+                <p>Comment: Great view from the mountain top</p>
+                <p>Distance 15km</p>
+                <p>Difficulty: 3</p>
+                <p>Rating: 4</p>
+                <div class="update-link">
+                    <a
+                        >Update tour log
+                        <img
+                            ngSrc="app/assets/svg/arrow-right.svg"
+                            alt="arrow-right"
+                            width="24"
+                            height="24"
+                        />
+                    </a>
+                </div>
+                <div class="delete-link">
+                    <a
+                        >Delete tour log
+                        <img
+                            ngSrc="app/assets/svg/delete-red.svg"
+                            alt="delete"
+                            width="28"
+                            height="32"
+                        />
+                    </a>
                 </div>
             </div>
         </div>
