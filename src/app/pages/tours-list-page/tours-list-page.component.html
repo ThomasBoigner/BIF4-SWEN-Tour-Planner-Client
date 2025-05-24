@@ -25,13 +25,15 @@
                         <p>Time: {{ tour.estimatedTime / 60 }}h</p>
                         <p>Distance: {{ tour.distance }}km</p>
                         <div class="details-link">
-                            <a routerLink="tour/{{ tour.id }}">Details</a>
-                            <img
-                                ngSrc="app/assets/svg/arrow-right.svg"
-                                alt="arrow-right"
-                                width="24"
-                                height="24"
-                            />
+                            <a routerLink="tour/{{ tour.id }}"
+                                >Details
+                                <img
+                                    ngSrc="app/assets/svg/arrow-right.svg"
+                                    alt="arrow-right"
+                                    width="24"
+                                    height="24"
+                                />
+                            </a>
                         </div>
                     </div>
                 }

@@ -9,7 +9,11 @@ section#sidebar {
     padding: 32px 48px;
 }
 
-section#sidebar > a > img,
+section#sidebar > a {
+    display: inline-block;
+}
+
+section#sidebar > a,
 div.buttons-container,
 section#sidebar > div.search-input {
     margin-bottom: 32px;
@@ -92,13 +96,10 @@ div.tour-list-item p:nth-child(2) {
     margin-bottom: 4px;
 }
 
-div.tour-list-item div.details-link {
-    display: flex;
+div.tour-list-item div.details-link a {
+    display: inline-flex;
     gap: 8px;
     align-items: center;
-}
-
-div.tour-list-item div.details-link a {
     color: var(--secondary);
 }
 
