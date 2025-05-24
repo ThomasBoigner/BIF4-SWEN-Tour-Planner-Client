@@ -10,7 +10,7 @@ export const routes: Routes = [
     },
     {
         path: 'tour/:id',
-        title: 'Tours details page',
+        title: 'Tour details page',
         component: TourDetailsPageComponent,
     },
 ];

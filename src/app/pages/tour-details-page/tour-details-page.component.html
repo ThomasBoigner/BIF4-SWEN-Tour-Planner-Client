@@ -3,7 +3,7 @@
         @if (tour$ | async; as tour) {
             <div class="tour-information">
                 <div class="header">
-                    <a routerLink=""
+                    <a routerLink="/"
                         ><img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo"
                     /></a>
                     <h1>{{ tour.name }}</h1>
@@ -54,7 +54,7 @@
                 <img ngSrc="app/assets/svg/report.svg" alt="report" width="24" height="32" />
                 <h6>Export summarize-report</h6>
             </button>
-            <button class="error" type="button">
+            <button class="error" type="button" (click)="deleteTour()">
                 <img ngSrc="app/assets/svg/delete.svg" alt="delete" width="28" height="32" />
                 <h6>Delete tour</h6>
             </button>
