@@ -6,11 +6,11 @@
         <h1>Plan a new Tour!</h1>
     </section>
     <section id="create-tour-form">
+        <div class="error-label">
+            <label class="bold">Error</label>
+            <p>Error Message</p>
+        </div>
         <form>
-            <div class="error-label">
-                <label class="bold">Error</label>
-                <p>Error Message</p>
-            </div>
             <div class="name-description-input">
                 <div class="input">
                     <img ngSrc="app/assets/svg/map.svg" alt="map" width="32" height="32" />
@@ -20,13 +20,121 @@
                     </div>
                 </div>
                 <div class="input">
-                    <img ngSrc="app/assets/svg/pencil.svg" alt="map" width="32" height="32" />
+                    <img ngSrc="app/assets/svg/pencil.svg" alt="pencil" width="32" height="32" />
                     <div class="label-input">
                         <label for="description" class="bold">Description</label>
                         <input id="description" type="text" />
                     </div>
                 </div>
             </div>
+            <div class="address-input">
+                <p>From:</p>
+                <div class="street-name-street-number-input">
+                    <div class="input">
+                        <img
+                            ngSrc="app/assets/svg/street.svg"
+                            alt="street"
+                            width="41"
+                            height="32"
+                        />
+                        <div class="label-input">
+                            <label for="from-street-name" class="bold">Street name</label>
+                            <input id="from-street-name" type="text" />
+                        </div>
+                    </div>
+                    <div class="small-input">
+                        <label for="from-street-number" class="bold">Street number</label>
+                        <input id="from-street-number" type="text" />
+                    </div>
+                </div>
+                <div class="city-zip-code-input">
+                    <div class="input">
+                        <img
+                            ngSrc="app/assets/svg/houses.svg"
+                            alt="houses"
+                            width="36"
+                            height="32"
+                        />
+                        <div class="label-input">
+                            <label for="from-city" class="bold">City</label>
+                            <input id="from-city" type="text" />
+                        </div>
+                    </div>
+                    <div class="small-input">
+                        <label for="from-zip-code" class="bold">Zip code</label>
+                        <input id="from-zip-code" type="text" />
+                    </div>
+                </div>
+                <div class="input">
+                    <img ngSrc="app/assets/svg/flag.svg" alt="flag" width="28" height="32" />
+                    <div class="label-input">
+                        <label for="from-country" class="bold">Country</label>
+                        <input id="from-country" type="text" />
+                    </div>
+                </div>
+            </div>
+            <div class="address-input">
+                <p>To:</p>
+                <div class="street-name-street-number-input">
+                    <div class="input">
+                        <img
+                            ngSrc="app/assets/svg/street.svg"
+                            alt="street"
+                            width="41"
+                            height="32"
+                        />
+                        <div class="label-input">
+                            <label for="to-street-name" class="bold">Street name</label>
+                            <input id="to-street-name" type="text" />
+                        </div>
+                    </div>
+                    <div class="small-input">
+                        <label for="to-street-number" class="bold">Street number</label>
+                        <input id="to-street-number" type="text" />
+                    </div>
+                </div>
+                <div class="city-zip-code-input">
+                    <div class="input">
+                        <img
+                            ngSrc="app/assets/svg/houses.svg"
+                            alt="houses"
+                            width="36"
+                            height="32"
+                        />
+                        <div class="label-input">
+                            <label for="to-city" class="bold">City</label>
+                            <input id="to-city" type="text" />
+                        </div>
+                    </div>
+                    <div class="small-input">
+                        <label for="to-zip-code" class="bold">Zip code</label>
+                        <input id="to-zip-code" type="text" />
+                    </div>
+                </div>
+                <div class="input">
+                    <img ngSrc="app/assets/svg/flag.svg" alt="flag" width="28" height="32" />
+                    <div class="label-input">
+                        <label for="to-country" class="bold">Country</label>
+                        <input id="to-country" type="text" />
+                    </div>
+                </div>
+            </div>
+            <div class="input">
+                <img ngSrc="app/assets/svg/car.svg" alt="car" width="43" height="32" />
+                <div class="label-input">
+                    <label for="transport-type" class="bold">Transport type</label>
+                    <select>
+                        <option>Bike</option>
+                        <option>Hike</option>
+                        <option>Running</option>
+                        <option>Vacation</option>
+                    </select>
+                </div>
+            </div>
         </form>
+        <button type="button">
+            <img ngSrc="app/assets/svg/plus.svg" alt="plus" width="32" height="32" />
+            <h6>Create</h6>
+        </button>
     </section>
 </div>
