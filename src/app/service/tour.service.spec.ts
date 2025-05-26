@@ -265,23 +265,23 @@ describe('TourService', () => {
             imageUrl: 'img',
         };
         const createTourCommand: CreateTourCommand = {
-            name: '',
-            description: '',
+            name: 'Tour 1',
+            description: 'This tour is awesome',
             from: {
-                country: '',
-                city: '',
-                streetName: '',
-                zipCode: 0,
-                streetNumber: '',
+                country: 'Austria',
+                city: 'Deutsch Wagram',
+                zipCode: 2232,
+                streetName: 'Radetzkystraße',
+                streetNumber: '2-6',
             },
             to: {
-                country: '',
-                city: '',
-                streetName: '',
-                zipCode: 0,
-                streetNumber: '',
+                country: 'Austria',
+                city: 'Strasshof an der Nordbahn',
+                zipCode: 2231,
+                streetName: 'Billroth-Gasse',
+                streetNumber: '5',
             },
-            transportType: 'HIKE',
+            transportType: 'BIKE',
         };
 
         // When
@@ -305,30 +305,31 @@ describe('TourService', () => {
         // Given
         const tourService = TestBed.inject(TourService);
         const createTourCommand: CreateTourCommand = {
-            name: '',
-            description: '',
+            name: 'Tour 1',
+            description: 'This tour is awesome',
             from: {
-                country: '',
-                city: '',
-                streetName: '',
-                zipCode: 0,
-                streetNumber: '',
+                country: 'Austria',
+                city: 'Deutsch Wagram',
+                zipCode: 2232,
+                streetName: 'Radetzkystraße',
+                streetNumber: '2-6',
             },
             to: {
-                country: '',
-                city: '',
-                streetName: '',
-                zipCode: 0,
-                streetNumber: '',
+                country: 'Austria',
+                city: 'Strasshof an der Nordbahn',
+                zipCode: 2231,
+                streetName: 'Billroth-Gasse',
+                streetNumber: '5',
             },
-            transportType: 'HIKE',
+            transportType: 'BIKE',
         };
 
         // When
         const response = tourService.createTour(createTourCommand);
 
         // Then
-        response.pipe(
+        response
+            .pipe(
                 catchError((error: HttpErrorResponse) => {
                     expect(error.status).toEqual(0);
                     expect(error.ok).toBeFalsy();
@@ -349,36 +350,37 @@ describe('TourService', () => {
         // Given
         const tourService = TestBed.inject(TourService);
         const createTourCommand: CreateTourCommand = {
-            name: '',
-            description: '',
+            name: 'Tour 1',
+            description: 'This tour is awesome',
             from: {
-                country: '',
-                city: '',
-                streetName: '',
-                zipCode: 0,
-                streetNumber: '',
+                country: 'Austria',
+                city: 'Deutsch Wagram',
+                zipCode: 2232,
+                streetName: 'Radetzkystraße',
+                streetNumber: '2-6',
             },
             to: {
-                country: '',
-                city: '',
-                streetName: '',
-                zipCode: 0,
-                streetNumber: '',
+                country: 'Austria',
+                city: 'Strasshof an der Nordbahn',
+                zipCode: 2231,
+                streetName: 'Billroth-Gasse',
+                streetNumber: '5',
             },
-            transportType: 'HIKE',
+            transportType: 'BIKE',
         };
 
         // When
         const response = tourService.createTour(createTourCommand);
 
         // Then
-        response.pipe(
-            catchError((error: HttpErrorResponse) => {
-                expect(error.status).toEqual(500);
-                expect(error.ok).toBeFalsy();
-                return of(error);
-            }),
-        )
+        response
+            .pipe(
+                catchError((error: HttpErrorResponse) => {
+                    expect(error.status).toEqual(500);
+                    expect(error.ok).toBeFalsy();
+                    return of(error);
+                }),
+            )
             .subscribe();
 
         const req = TestBed.inject(HttpTestingController).expectOne({
