@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 import { Tour } from '../model/tour';
 import { Observable } from 'rxjs';
+import { CreateTourCommand } from '../model/commands/createTourCommand';
 
 @Injectable({ providedIn: 'root' })
 export class TourService {
@@ -23,6 +24,13 @@ export class TourService {
     public getTour(id: string): Observable<Tour> {
         this.logger.debug(`Trying to get tour with id ${id} from endpoint ${this.toursUrl}`);
         return this.http.get<Tour>(`${this.toursUrl}/${id}`);
+    }
+
+    public createTour(createTourCommand: CreateTourCommand): Observable<Tour> {
+        this.logger.debug(
+            `Trying to create new tour with command ${JSON.stringify(createTourCommand)} with endpoint ${this.toursUrl}`,
+        );
+        return this.http.post<Tour>(this.toursUrl, createTourCommand);
     }
 
     public deleteTour(id: string) {
