@@ -70,6 +70,6 @@ describe('TourDetailsPageComponent', () => {
         expect(nativeElement.textContent).toContain(tour.to.country);
         expect(nativeElement.textContent).toContain(tour.distance);
         expect(nativeElement.textContent).toContain(tour.estimatedTime / 60);
-        expect(nativeElement.textContent).toContain(tour.transportType);
+        expect(nativeElement.textContent).toContain('Bike');
     });
 });
