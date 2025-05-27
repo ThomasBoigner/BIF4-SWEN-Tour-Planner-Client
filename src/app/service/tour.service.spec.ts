@@ -5,7 +5,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { TourService } from './tour.service';
 import { LoggerTestingModule } from 'ngx-logger/testing';
 import { catchError, of } from 'rxjs';
-import { CreateTourCommand } from '../model/commands/createTourCommand';
+import { CreateTourCommand } from '../model/commands/create-tour-command';
 
 describe('TourService', () => {
     beforeEach(() => {

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 import { Tour } from '../model/tour';
 import { Observable } from 'rxjs';
-import { CreateTourCommand } from '../model/commands/createTourCommand';
+import { CreateTourCommand } from '../model/commands/create-tour-command';
 
 @Injectable({ providedIn: 'root' })
 export class TourService {

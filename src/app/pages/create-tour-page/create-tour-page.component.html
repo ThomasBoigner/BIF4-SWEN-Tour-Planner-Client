@@ -6,10 +6,12 @@
         <h1>Plan a new Tour!</h1>
     </section>
     <section id="create-tour-form">
-        <div class="error-label">
-            <label class="bold">Error</label>
-            <p>Error Message</p>
-        </div>
+        @if (errorMessage) {
+            <div class="error-label">
+                <label class="bold">Error</label>
+                <p>{{ errorMessage }}</p>
+            </div>
+        }
         <form [formGroup]="tourForm">
             <div class="name-description-input">
                 <div class="input">

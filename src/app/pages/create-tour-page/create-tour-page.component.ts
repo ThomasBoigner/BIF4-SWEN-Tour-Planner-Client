@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { TourService } from '../../service/tour.service';
-import { CreateTourCommand } from '../../model/commands/createTourCommand';
+import { CreateTourCommand } from '../../model/commands/create-tour-command';
 import { NgOptimizedImage } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { TransportType } from '../../model/transportType';
+import { TransportType } from '../../model/transport-type';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorResponse } from '../../model/exception/error-response';
 
 @Component({
     selector: 'create-tour-page',
@@ -13,6 +15,8 @@ import { TransportType } from '../../model/transportType';
     imports: [NgOptimizedImage, RouterLink, ReactiveFormsModule],
 })
 export class CreateTourPageComponent {
+    errorMessage = '';
+
     tourForm = new FormGroup({
         name: new FormControl<string>('', { nonNullable: true }),
         description: new FormControl<string>('', { nonNullable: true }),
@@ -29,7 +33,10 @@ export class CreateTourPageComponent {
         transportType: new FormControl<TransportType>('BIKE', { nonNullable: true }),
     });
 
-    constructor(private tourService: TourService) {}
+    constructor(
+        private tourService: TourService,
+        private router: Router,
+    ) {}
 
     handleSubmit() {
         const command: CreateTourCommand = {
@@ -51,6 +58,11 @@ export class CreateTourPageComponent {
             },
             transportType: 'BIKE',
         };
-        this.tourService.createTour(command);
+        this.tourService.createTour(command).subscribe({
+            complete: () => void this.router.navigate(['/']),
+            error: (error: HttpErrorResponse) => {
+                this.errorMessage = (error.error as ErrorResponse).message;
+            },
+        });
     }
 }
