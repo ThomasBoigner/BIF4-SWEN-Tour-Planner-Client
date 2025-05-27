@@ -1,4 +1,4 @@
-import { TransportType } from './transportType';
+import { TransportType } from './transport-type';
 import { Address } from './address';
 
 export interface Tour {

@@ -1,5 +1,5 @@
-import { TransportType } from '../transportType';
-import { CreateAddressCommand } from './createAddressCommand';
+import { TransportType } from '../transport-type';
+import { CreateAddressCommand } from './create-address-command';
 
 export interface CreateTourCommand {
     name: string;
