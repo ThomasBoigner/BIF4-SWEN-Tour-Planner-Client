@@ -1,0 +1,70 @@
+<div class="container">
+    <section id="create-tour-log-hero">
+        <a routerLink="/">
+            <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo" />
+        </a>
+        <h1>Log a new Tour!</h1>
+    </section>
+
+    <section id="create-tour-log-form">
+        <div *ngIf="errorMessage" class="error-label">
+            <label class="bold">Error</label>
+            <p>{{ errorMessage }}</p>
+        </div>
+
+        <form [formGroup]="tourLogForm">
+            <div class="input">
+                <div class="label-input">
+                    <label for="tourId" class="bold">Tour ID</label>
+                    <input id="tourId" type="text" formControlName="tourId" />
+                </div>
+            </div>
+
+            <div class="input">
+                <div class="label-input">
+                    <label for="startTime" class="bold">Start Time</label>
+                    <input id="startTime" type="datetime-local" formControlName="startTime" />
+                </div>
+            </div>
+
+            <div class="input">
+                <div class="label-input">
+                    <label for="endTime" class="bold">End Time</label>
+                    <input id="endTime" type="datetime-local" formControlName="endTime" />
+                </div>
+            </div>
+
+            <div class="input">
+                <div class="label-input">
+                    <label for="comment" class="bold">Comment</label>
+                    <textarea id="comment" formControlName="comment" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="input">
+                <div class="label-input">
+                    <label for="difficulty" class="bold">Difficulty (1-5)</label>
+                    <input id="difficulty" type="number" min="1" max="5" formControlName="difficulty" />
+                </div>
+            </div>
+
+            <div class="input">
+                <div class="label-input">
+                    <label for="distance" class="bold">Distance (km)</label>
+                    <input id="distance" type="number" min="0" step="0.1" formControlName="distance" />
+                </div>
+            </div>
+
+            <div class="input">
+                <div class="label-input">
+                    <label for="rating" class="bold">Rating (1-5)</label>
+                    <input id="rating" type="number" min="1" max="5" formControlName="rating" />
+                </div>
+            </div>
+        </form>
+
+        <button type="button" (click)="handleSubmit()">
+            <h6>Create</h6>
+        </button>
+    </section>
+</div>
