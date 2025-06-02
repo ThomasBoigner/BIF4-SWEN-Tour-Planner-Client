@@ -34,7 +34,7 @@
             </div>
         }
         <div class="buttons-container">
-            <button class="primary" type="button">
+            <button class="primary" type="button" [routerLink]="['/tour-log/new', tourId]">
                 <img ngSrc="app/assets/svg/plus.svg" alt="plus" width="32" height="32" />
                 <h6>Add log</h6>
             </button>
@@ -65,48 +65,19 @@
             <img ngSrc="app/assets/svg/search.svg" alt="search" width="32" height="32" />
             <input id="search" type="text" placeholder="Search for tour log" />
         </div>
-        <div class="tour-log-list">
-            <div class="tour-log-list-item">
-                <p>Started at: 16.05.2025 12:52</p>
-                <p>Finished at: 16.05.2025 13:43</p>
-                <p>Duration: 0:51</p>
-                <p>Comment: Great view from the mountain top</p>
-                <p>Distance 15km</p>
-                <p>Difficulty: 3</p>
-                <p>Rating: 4</p>
+        <div class="tour-log-list" *ngIf="tourLog$ | async as logs">
+            <div class="tour-log-list-item" *ngFor="let log of logs">
+                <p>Started at: {{ log.duration.startTime | date: 'dd.MM.yyyy HH:mm' }}</p>
+                <p>Finished at: {{ log.duration.endTime | date: 'dd.MM.yyyy HH:mm' }}</p>
+                <p>Duration: {{ log.duration.duration }} minutes</p>
+                <p>Comment: {{ log.comment }}</p>
+                <p>Distance: {{ log.distance }} km</p>
+                <p>Difficulty: {{ log.difficulty }}</p>
+                <p>Rating: {{ log.rating }}</p>
+
                 <div class="update-link">
-                    <a
-                        >Update tour log
-                        <img
-                            ngSrc="app/assets/svg/arrow-right.svg"
-                            alt="arrow-right"
-                            width="24"
-                            height="24"
-                    /></a>
-                </div>
-                <div class="delete-link">
-                    <a
-                        >Delete tour log
-                        <img
-                            ngSrc="app/assets/svg/delete-red.svg"
-                            alt="delete"
-                            width="28"
-                            height="32"
-                        />
-                    </a>
-                </div>
-            </div>
-            <div class="tour-log-list-item">
-                <p>Started at: 16.05.2025 12:52</p>
-                <p>Finished at: 16.05.2025 13:43</p>
-                <p>Duration: 0:51</p>
-                <p>Comment: Great view from the mountain top</p>
-                <p>Distance 15km</p>
-                <p>Difficulty: 3</p>
-                <p>Rating: 4</p>
-                <div class="update-link">
-                    <a
-                        >Update tour log
+                    <a>
+                        Update tour log
                         <img
                             ngSrc="app/assets/svg/arrow-right.svg"
                             alt="arrow-right"
@@ -115,9 +86,10 @@
                         />
                     </a>
                 </div>
+
                 <div class="delete-link">
-                    <a
-                        >Delete tour log
+                    <a href="#" (click)="deleteTourLog(log.id); $event.preventDefault()">
+                        Delete tour log
                         <img
                             ngSrc="app/assets/svg/delete-red.svg"
                             alt="delete"
