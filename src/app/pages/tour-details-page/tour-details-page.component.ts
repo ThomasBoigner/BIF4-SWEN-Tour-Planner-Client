@@ -2,7 +2,14 @@ import { Component } from '@angular/core';
 import { TourService } from '../../service/tour.service';
 import { Observable } from 'rxjs';
 import { Tour } from '../../model/tour';
-import { AsyncPipe, DatePipe, NgForOf, NgIf, NgOptimizedImage, TitleCasePipe } from '@angular/common';
+import {
+    AsyncPipe,
+    DatePipe,
+    NgForOf,
+    NgIf,
+    NgOptimizedImage,
+    TitleCasePipe,
+} from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TourLogService } from '../../service/tour-log.service';
 import { TourLog } from '../../model/tour-log';
@@ -34,9 +41,9 @@ export class TourDetailsPageComponent {
     }
 
     deleteTourLog(id: string) {
-        this.tourLogService
-            .deleteTourLog(id)
-            .subscribe(() =>  {this.loadTourLogs()});
+        this.tourLogService.deleteTourLog(id).subscribe(() => {
+            this.loadTourLogs();
+        });
     }
 
     deleteTour() {

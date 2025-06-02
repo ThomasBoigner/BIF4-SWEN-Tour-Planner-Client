@@ -17,7 +17,7 @@ export class CreateTourLogPageComponent {
 
     tourLogForm = new FormGroup({
         tourId: new FormControl<string>('', { nonNullable: true }),
-        startTime: new FormControl<string>('', { nonNullable: true }),  // ISO string or datetime-local input
+        startTime: new FormControl<string>('', { nonNullable: true }), // ISO string or datetime-local input
         endTime: new FormControl<string>('', { nonNullable: true }),
         comment: new FormControl<string>('', { nonNullable: true }),
         difficulty: new FormControl<number>(1, { nonNullable: true }),

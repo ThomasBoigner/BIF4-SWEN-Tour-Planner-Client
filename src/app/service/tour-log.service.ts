@@ -7,7 +7,6 @@ import { TourLog } from '../model/tour-log';
 
 @Injectable({ providedIn: 'root' })
 export class TourLogService {
-
     private readonly toursLogUrl: string;
 
     constructor(
@@ -31,8 +30,9 @@ export class TourLogService {
     }
 
     public deleteTourLog(id: string) {
-        this.logger.debug(`Trying to delete tour Log with id ${id} from endpoint ${this.toursLogUrl}`);
+        this.logger.debug(
+            `Trying to delete tour Log with id ${id} from endpoint ${this.toursLogUrl}`,
+        );
         return this.http.delete(`${this.toursLogUrl}/${id}`);
     }
-
 }
