@@ -3,18 +3,32 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { routes } from '../../app.routes';
 import { Tour } from '../../model/tour';
+import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { TourDetailsPageComponent } from './tour-details-page.component';
+import { NGXLogger } from 'ngx-logger';
 
 describe('TourDetailsPageComponent', () => {
     let tourService: jasmine.SpyObj<TourService>;
 
     beforeEach(() => {
         const spy = jasmine.createSpyObj<TourService>('TourService', ['getTour']);
+        const httpClientSpy = jasmine.createSpyObj<HttpClient>('HttpClient', ['get', 'post', 'put', 'delete']);
+
+        const loggerSpy = jasmine.createSpyObj<NGXLogger>('NGXLogger', [
+            'debug', 'info', 'warn', 'error', 'fatal', 'trace', 'log', 'updateConfig',
+        ]);
+
         TestBed.configureTestingModule({
             imports: [TourDetailsPageComponent],
-            providers: [{ provide: TourService, useValue: spy }, provideRouter(routes)],
+            providers: [
+                { provide: TourService, useValue: spy },
+                { provide: HttpClient, useValue: httpClientSpy },
+                { provide: NGXLogger, useValue: loggerSpy }, // <-- Mock logger here
+                provideRouter(routes),
+            ],
         });
+
         tourService = TestBed.inject(TourService) as jasmine.SpyObj<TourService>;
     });
 
