@@ -50,7 +50,15 @@ Open your browser at:
 
     Use the sidebar to navigate tours
 
+![UX Wireframe](images-readme/ToursListPage.png)
+
+    Click "Create" to land on the Create Tour Page
+
+![UX Wireframe](images-readme/CreateTourPage.png)
+
     Click “Add log” to create a new tour log
+
+![UX Wireframe](images-readme/ToursDetailsPage.png)
 
     Update or delete tours and logs using the provided buttons
 
