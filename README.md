@@ -15,7 +15,7 @@ The Frontend is an Angular application that communicates with the backend API to
     Responsive design and intuitive navigation
 
     Client-side validation and error handling
-	
+
 ## Prerequisites
 
     Node.js 19+
@@ -24,13 +24,9 @@ The Frontend is an Angular application that communicates with the backend API to
 
 ## Setup and Running
 
-     git clone https://github.com/ThomasBoigner/BIF4-SWEN-Tour-Planner-Client.git
-   
-     cd tour-planner/backend
-
 Install dependencies:
 
-    npm install
+npm install
 
 Start the Angular development server:
 
