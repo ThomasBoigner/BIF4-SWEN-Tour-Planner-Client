@@ -1,0 +1,21 @@
+div.tour-list-item {
+    padding: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--black25);
+}
+
+h4,
+p:nth-child(3) {
+    margin-bottom: 8px;
+}
+
+p:nth-child(2) {
+    margin-bottom: 4px;
+}
+
+div.details-link a {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    color: var(--secondary);
+}
