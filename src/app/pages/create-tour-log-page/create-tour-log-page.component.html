@@ -7,10 +7,12 @@
     </section>
 
     <section id="create-tour-log-form">
-        <div *ngIf="errorMessage" class="error-label">
-            <label class="bold">Error</label>
-            <p>{{ errorMessage }}</p>
-        </div>
+        @if (errorMessage) {
+            <div class="error-label">
+                <label class="bold">Error</label>
+                <p>{{ errorMessage }}</p>
+            </div>
+        }
 
         <form [formGroup]="tourLogForm">
             <div class="input">
