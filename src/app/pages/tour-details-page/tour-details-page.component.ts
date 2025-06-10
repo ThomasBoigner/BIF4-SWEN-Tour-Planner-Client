@@ -2,23 +2,24 @@ import { Component } from '@angular/core';
 import { TourService } from '../../service/tour.service';
 import { Observable } from 'rxjs';
 import { Tour } from '../../model/tour';
-import {
-    AsyncPipe,
-    DatePipe,
-    NgForOf,
-    NgIf,
-    NgOptimizedImage,
-    TitleCasePipe,
-} from '@angular/common';
+import { AsyncPipe, NgIf, NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TourLogService } from '../../service/tour-log.service';
 import { TourLog } from '../../model/tour-log';
+import { TourLogListItemComponent } from '../../components/tour-log-list-item/tour-log-list-item.component';
 
 @Component({
     selector: 'tour-details-page',
     templateUrl: './tour-details-page.component.html',
     styleUrls: ['./tour-details-page.component.css'],
-    imports: [NgOptimizedImage, RouterLink, AsyncPipe, TitleCasePipe, DatePipe, NgIf, NgForOf],
+    imports: [
+        NgOptimizedImage,
+        RouterLink,
+        AsyncPipe,
+        TitleCasePipe,
+        NgIf,
+        TourLogListItemComponent,
+    ],
 })
 export class TourDetailsPageComponent {
     tour$: Observable<Tour>;
@@ -36,13 +37,9 @@ export class TourDetailsPageComponent {
         this.tourLog$ = this.tourLogService.getTourLogsForTour(this.tourId);
     }
 
-    loadTourLogs() {
-        this.tourLog$ = this.tourLogService.getTourLogsForTour(this.tourId);
-    }
-
     deleteTourLog(id: string) {
         this.tourLogService.deleteTourLog(id).subscribe(() => {
-            this.loadTourLogs();
+            this.tourLog$ = this.tourLogService.getTourLogsForTour(this.tourId);
         });
     }
 

@@ -66,39 +66,14 @@
             <input id="search" type="text" placeholder="Search for tour log" />
         </div>
         <div class="tour-log-list" *ngIf="tourLog$ | async as logs">
-            <div class="tour-log-list-item" *ngFor="let log of logs">
-                <p>Started at: {{ log.duration.startTime | date: 'dd.MM.yyyy HH:mm' }}</p>
-                <p>Finished at: {{ log.duration.endTime | date: 'dd.MM.yyyy HH:mm' }}</p>
-                <p>Duration: {{ log.duration.duration }} minutes</p>
-                <p>Comment: {{ log.comment }}</p>
-                <p>Distance: {{ log.distance }} km</p>
-                <p>Difficulty: {{ log.difficulty }}</p>
-                <p>Rating: {{ log.rating }}</p>
-
-                <div class="update-link">
-                    <a>
-                        Update tour log
-                        <img
-                            ngSrc="app/assets/svg/arrow-right.svg"
-                            alt="arrow-right"
-                            width="24"
-                            height="24"
-                        />
-                    </a>
-                </div>
-
-                <div class="delete-link">
-                    <a href="#" (click)="deleteTourLog(log.id); $event.preventDefault()">
-                        Delete tour log
-                        <img
-                            ngSrc="app/assets/svg/delete-red.svg"
-                            alt="delete"
-                            width="28"
-                            height="32"
-                        />
-                    </a>
-                </div>
-            </div>
+            @if (tourLog$ | async; as tourLogs) {
+                @for (tourLog of tourLogs; track tourLog.id) {
+                    <tour-log-list-item
+                        [tourLog]="tourLog"
+                        (deleteTourLog)="deleteTourLog(tourLog.id)"
+                    ></tour-log-list-item>
+                }
+            }
         </div>
     </section>
 </div>

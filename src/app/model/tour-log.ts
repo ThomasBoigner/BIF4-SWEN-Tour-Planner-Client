@@ -1,14 +1,11 @@
-import { Tour } from './tour';
 import { Duration } from './duration';
-import { Difficulty } from './difficulty';
-import { Rating } from './rating';
 
 export interface TourLog {
     id: string;
-    tour: Tour;
+    tourId: string;
     duration: Duration;
     comment: string;
-    difficulty: Difficulty;
+    difficulty: number;
     distance: number;
-    rating: Rating;
+    rating: number;
 }
