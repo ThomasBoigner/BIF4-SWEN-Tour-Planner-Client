@@ -56,55 +56,10 @@ div.buttons-container {
     gap: 32px;
 }
 
-div.buttons-container button {
-    width: 100%;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 24px;
-    border-radius: 8px;
-    border: none;
-}
-
-div.buttons-container button h6 {
-    color: var(--white);
-}
-
-div.buttons-container button.primary {
-    background-color: var(--primary);
-}
-
-div.buttons-container button.secondary {
-    background-color: var(--secondary);
-}
-
-div.buttons-container button.error {
-    background-color: var(--error);
-}
-
 /* Search bar */
-div.search-input {
-    width: 100%;
-    border: 4px solid var(--black25);
-    border-radius: 8px;
-    display: flex;
-    gap: 24px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-    padding: 16px 24px;
+search-bar {
+    display: block;
     margin-bottom: 32px;
-}
-
-div.search-input input {
-    width: 100%;
-    color: var(--black85);
-    border: none;
-}
-
-div.search-input input:focus {
-    outline: none;
 }
 
 /* Tour log list */

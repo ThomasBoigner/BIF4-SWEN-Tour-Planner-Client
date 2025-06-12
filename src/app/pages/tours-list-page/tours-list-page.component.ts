@@ -5,12 +5,21 @@ import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { TourListItemComponent } from '../../components/tour-list-item/tour-list-item.component';
+import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
+import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
 
 @Component({
     selector: 'tours-list-page',
     templateUrl: './tours-list-page.component.html',
     styleUrls: ['./tours-list-page.component.css'],
-    imports: [NgOptimizedImage, AsyncPipe, RouterLink, TourListItemComponent],
+    imports: [
+        NgOptimizedImage,
+        AsyncPipe,
+        RouterLink,
+        TourListItemComponent,
+        TourButtonComponent,
+        SearchBarComponent,
+    ],
 })
 export class ToursListPageComponent {
     tours$: Observable<Tour[]>;

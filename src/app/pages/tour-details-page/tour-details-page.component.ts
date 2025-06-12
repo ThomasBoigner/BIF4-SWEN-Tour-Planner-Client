@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { TourService } from '../../service/tour.service';
 import { Observable } from 'rxjs';
 import { Tour } from '../../model/tour';
-import { AsyncPipe, NgIf, NgOptimizedImage, TitleCasePipe } from '@angular/common';
+import { AsyncPipe, NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TourLogService } from '../../service/tour-log.service';
 import { TourLog } from '../../model/tour-log';
 import { TourLogListItemComponent } from '../../components/tour-log-list-item/tour-log-list-item.component';
+import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
+import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
 
 @Component({
     selector: 'tour-details-page',
@@ -17,8 +19,9 @@ import { TourLogListItemComponent } from '../../components/tour-log-list-item/to
         RouterLink,
         AsyncPipe,
         TitleCasePipe,
-        NgIf,
         TourLogListItemComponent,
+        TourButtonComponent,
+        SearchBarComponent,
     ],
 })
 export class TourDetailsPageComponent {
