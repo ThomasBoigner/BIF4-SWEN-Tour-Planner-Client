@@ -4,7 +4,7 @@
             <div class="tour-information">
                 <div class="header">
                     <a routerLink="/"
-                        ><img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo"
+                    ><img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo"
                     /></a>
                     <h1>{{ tour.name }}</h1>
                     <h5>{{ tour.description }}</h5>
@@ -34,43 +34,45 @@
             </div>
         }
         <div class="buttons-container">
-            <button class="primary" type="button" [routerLink]="['/tour-log/new', tourId]">
-                <img ngSrc="app/assets/svg/plus.svg" alt="plus" width="32" height="32" />
-                <h6>Add log</h6>
-            </button>
-            <button class="primary" type="button">
-                <img ngSrc="app/assets/svg/update.svg" alt="update" width="41" height="32" />
-                <h6>Update tour</h6>
-            </button>
-            <button class="secondary" type="button">
-                <img ngSrc="app/assets/svg/export.svg" alt="export" width="24" height="32" />
-                <h6>Export tour</h6>
-            </button>
-            <button class="secondary" type="button">
-                <img ngSrc="app/assets/svg/report.svg" alt="report" width="24" height="32" />
-                <h6>Export tour-report</h6>
-            </button>
-            <button class="secondary" type="button">
-                <img ngSrc="app/assets/svg/report.svg" alt="report" width="24" height="32" />
-                <h6>Export summarize-report</h6>
-            </button>
-            <button class="error" type="button" (click)="deleteTour()">
-                <img ngSrc="app/assets/svg/delete.svg" alt="delete" width="28" height="32" />
-                <h6>Delete tour</h6>
-            </button>
+            <tour-button text="Add log" color="primary"
+                         [primaryImage]="{src: 'app/assets/svg/plus.svg', alt: 'plus', height: 32, width: 32}"
+                         [secondaryImage]="{src: 'app/assets/svg/plus-primary.svg', alt: 'plus', height: 32, width: 32}"
+                         [routerLink]="['/tour-log/new', tourId]"
+            ></tour-button>
+            <tour-button text="Update tour" color="primary"
+                         [primaryImage]="{src: 'app/assets/svg/update.svg', alt: 'update', width: 41, height: 32}"
+                         [secondaryImage]="{src: 'app/assets/svg/update-primary.svg', alt: 'update', width: 41, height: 32}"
+            ></tour-button>
+            <tour-button text="Export tour" color="secondary"
+                         [primaryImage]="{src: 'app/assets/svg/export.svg', alt: 'export', width: 24, height: 32}"
+                         [secondaryImage]="{src: 'app/assets/svg/export-secondary.svg', alt: 'export', width: 24, height: 32}"
+            ></tour-button>
+            <tour-button text="Export tour-report" color="secondary"
+                         [primaryImage]="{src: 'app/assets/svg/report.svg', alt: 'report', width: 24, height: 32}"
+                         [secondaryImage]="{src: 'app/assets/svg/report-secondary.svg', alt: 'report', width: 24, height: 32}"
+            ></tour-button>
+            <tour-button text="Export summarize-report" color="secondary"
+                         [primaryImage]="{src: 'app/assets/svg/report.svg', alt: 'report', width: 24, height: 32}"
+                         [secondaryImage]="{src: 'app/assets/svg/report-secondary.svg', alt: 'report', width: 24, height: 32}"
+            ></tour-button>
+            <tour-button text="Delete tour" color="error"
+                         [primaryImage]="{src: 'app/assets/svg/delete.svg', alt: 'delete', width: 28, height: 32}"
+                         [secondaryImage]="{src: 'app/assets/svg/delete-error.svg', alt: 'delete', width: 28, height: 32}"
+                         (click)="deleteTour()"
+            ></tour-button>
         </div>
     </section>
     <section id="tour-logs">
         <div class="search-input">
-            <img ngSrc="app/assets/svg/search.svg" alt="search" width="32" height="32" />
-            <input id="search" type="text" placeholder="Search for tour log" />
+            <img ngSrc="app/assets/svg/search.svg" alt="search" width="32" height="32"/>
+            <input id="search" type="text" placeholder="Search for tour log"/>
         </div>
         <div class="tour-log-list" *ngIf="tourLog$ | async as logs">
             @if (tourLog$ | async; as tourLogs) {
                 @for (tourLog of tourLogs; track tourLog.id) {
                     <tour-log-list-item
-                        [tourLog]="tourLog"
-                        (deleteTourLog)="deleteTourLog(tourLog.id)"
+                            [tourLog]="tourLog"
+                            (deleteTourLog)="deleteTourLog(tourLog.id)"
                     ></tour-log-list-item>
                 }
             }

@@ -1,4 +1,4 @@
-<button type="button" [class]="color()" [routerLink]="link()">
+<button type="button" [class]="color()">
     @if (primaryImage(); as primaryImageData ) {
         @if (primaryImageData) {
             <img class="primary" [ngSrc]="primaryImageData.src" [alt]="primaryImageData.alt" [width]="primaryImageData.width" [height]="primaryImageData.height"/>

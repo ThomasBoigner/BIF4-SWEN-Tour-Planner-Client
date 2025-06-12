@@ -7,6 +7,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TourLogService } from '../../service/tour-log.service';
 import { TourLog } from '../../model/tour-log';
 import { TourLogListItemComponent } from '../../components/tour-log-list-item/tour-log-list-item.component';
+import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
 
 @Component({
     selector: 'tour-details-page',
@@ -19,6 +20,7 @@ import { TourLogListItemComponent } from '../../components/tour-log-list-item/to
         TitleCasePipe,
         NgIf,
         TourLogListItemComponent,
+        TourButtonComponent,
     ],
 })
 export class TourDetailsPageComponent {

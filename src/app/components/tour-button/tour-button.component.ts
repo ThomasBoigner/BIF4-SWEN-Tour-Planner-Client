@@ -1,18 +1,16 @@
 import { Component, input } from '@angular/core';
-import { NgOptimizedImage, NgStyle } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 import { ImageData } from '../image-data';
 
 @Component({
     selector: 'tour-button',
     templateUrl: './tour-button.component.html',
-    imports: [NgOptimizedImage, RouterLink],
+    imports: [NgOptimizedImage],
     styleUrls: ['./tour-button.component.css'],
 })
 export class TourButtonComponent {
     text = input.required<string>();
     color = input.required<'primary' | 'secondary' | 'error'>();
-    link = input<string>();
     primaryImage = input<ImageData>();
     secondaryImage = input<ImageData>();
 }

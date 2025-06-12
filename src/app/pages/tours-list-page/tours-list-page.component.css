@@ -26,29 +26,6 @@ div.buttons-container {
     flex-direction: column;
 }
 
-div.buttons-container button {
-    width: 100%;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 24px;
-    border-radius: 8px;
-    border: none;
-}
-
-div.buttons-container button h6 {
-    color: var(--white);
-}
-
-div.buttons-container button:nth-child(1) {
-    background-color: var(--primary);
-}
-
-div.buttons-container button:nth-child(2) {
-    background-color: var(--secondary);
-}
-
 /* Search bar */
 div.search-input {
     width: 100%;

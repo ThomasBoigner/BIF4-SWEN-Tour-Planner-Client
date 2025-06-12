@@ -7,9 +7,12 @@
             <tour-button text="Create tour" color="primary"
                          [primaryImage]="{src: 'app/assets/svg/plus.svg', alt: 'plus', height: 32, width: 32}"
                          [secondaryImage]="{src: 'app/assets/svg/plus-primary.svg', alt: 'plus', height: 32, width: 32}"
-                         link="/tour/new"></tour-button>
+                         routerLink="/tour/new"
+                         ></tour-button>
             <tour-button text="Import tour" color="secondary"
-                         [primaryImage]="{src: 'app/assets/svg/import.svg', alt: 'import', width: 24, height: 32}"></tour-button>
+                         [primaryImage]="{src: 'app/assets/svg/import.svg', alt: 'import', width: 24, height: 32}"
+                         [secondaryImage]="{src: 'app/assets/svg/import-secondary.svg', alt: 'import', width: 24, height: 32}"
+            ></tour-button>
         </div>
         <div class="search-input">
             <img ngSrc="app/assets/svg/search.svg" alt="search" width="32" height="32"/>
