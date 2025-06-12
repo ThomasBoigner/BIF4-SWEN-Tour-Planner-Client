@@ -24,6 +24,6 @@ describe('SearchBarComponent', () => {
 
         // Then
         expect(fixture.componentInstance).toBeDefined();
-        expect(fixture.componentInstance.text()).toEqual(text);
+        expect(fixture.componentInstance.value()).toEqual(text);
     });
 });

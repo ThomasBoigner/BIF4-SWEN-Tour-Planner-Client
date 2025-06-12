@@ -3,11 +3,11 @@ import { NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'search-bar',
+    selector: 'text-input',
+    templateUrl: './text-input.component.html',
     imports: [NgOptimizedImage, FormsModule],
-    templateUrl: './search-bar.component.html',
-    styleUrls: ['./search-bar.component.css'],
+    styleUrls: ['./text-input.component.css'],
 })
-export class SearchBarComponent {
+export class TextInputComponent {
     value = model('');
 }
