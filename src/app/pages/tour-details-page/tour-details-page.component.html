@@ -63,11 +63,8 @@
         </div>
     </section>
     <section id="tour-logs">
-        <div class="search-input">
-            <img ngSrc="app/assets/svg/search.svg" alt="search" width="32" height="32"/>
-            <input id="search" type="text" placeholder="Search for tour log"/>
-        </div>
-        <div class="tour-log-list" *ngIf="tourLog$ | async as logs">
+        <search-bar></search-bar>
+        <div class="tour-log-list">
             @if (tourLog$ | async; as tourLogs) {
                 @for (tourLog of tourLogs; track tourLog.id) {
                     <tour-log-list-item

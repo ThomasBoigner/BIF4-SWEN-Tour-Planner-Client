@@ -14,10 +14,7 @@
                          [secondaryImage]="{src: 'app/assets/svg/import-secondary.svg', alt: 'import', width: 24, height: 32}"
             ></tour-button>
         </div>
-        <div class="search-input">
-            <img ngSrc="app/assets/svg/search.svg" alt="search" width="32" height="32"/>
-            <input id="search" type="text" placeholder="Search for tour"/>
-        </div>
+        <search-bar></search-bar>
         <div class="tour-list">
             @if (tours$ | async; as tours) {
                 @for (tour of tours; track tour.id) {
