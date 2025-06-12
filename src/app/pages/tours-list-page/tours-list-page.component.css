@@ -20,8 +20,10 @@ section#sidebar > div.search-input {
 }
 
 /* buttons */
-div.buttons-container > button:nth-child(1) {
-    margin-bottom: 16px;
+div.buttons-container {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
 }
 
 div.buttons-container button {
