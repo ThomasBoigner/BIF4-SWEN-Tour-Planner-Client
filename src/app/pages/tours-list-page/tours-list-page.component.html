@@ -1,17 +1,41 @@
 <div class="container">
     <section id="sidebar">
         <a routerLink="/">
-            <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo"/>
+            <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo" />
         </a>
         <div class="buttons-container">
-            <tour-button text="Create tour" color="primary"
-                         [primaryImage]="{src: 'app/assets/svg/plus.svg', alt: 'plus', height: 32, width: 32}"
-                         [secondaryImage]="{src: 'app/assets/svg/plus-primary.svg', alt: 'plus', height: 32, width: 32}"
-                         routerLink="/tour/new"
-                         ></tour-button>
-            <tour-button text="Import tour" color="secondary"
-                         [primaryImage]="{src: 'app/assets/svg/import.svg', alt: 'import', width: 24, height: 32}"
-                         [secondaryImage]="{src: 'app/assets/svg/import-secondary.svg', alt: 'import', width: 24, height: 32}"
+            <tour-button
+                text="Create tour"
+                color="primary"
+                [primaryImage]="{
+                    src: 'app/assets/svg/plus.svg',
+                    alt: 'plus',
+                    height: 32,
+                    width: 32,
+                }"
+                [secondaryImage]="{
+                    src: 'app/assets/svg/plus-primary.svg',
+                    alt: 'plus',
+                    height: 32,
+                    width: 32,
+                }"
+                routerLink="/tour/new"
+            ></tour-button>
+            <tour-button
+                text="Import tour"
+                color="secondary"
+                [primaryImage]="{
+                    src: 'app/assets/svg/import.svg',
+                    alt: 'import',
+                    width: 24,
+                    height: 32,
+                }"
+                [secondaryImage]="{
+                    src: 'app/assets/svg/import-secondary.svg',
+                    alt: 'import',
+                    width: 24,
+                    height: 32,
+                }"
             ></tour-button>
         </div>
         <search-bar></search-bar>
@@ -26,6 +50,6 @@
         </div>
     </section>
     <section id="map">
-        <img ngSrc="app/assets/png/map.png" alt="map" width="1288" height="1110" priority/>
+        <img ngSrc="app/assets/png/map.png" alt="map" width="1288" height="1110" priority />
     </section>
 </div>
