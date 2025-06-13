@@ -64,57 +64,6 @@ text-input.small {
     width: 192px;
 }
 
-div.input label,
-div.small-input label {
-    color: var(--black25);
-}
-
-div.input {
-    width: 100%;
-    border: 1px solid var(--black25);
-    border-radius: 8px;
-    display: flex;
-    gap: 24px;
-    padding: 16px 24px;
-    align-items: center;
-}
-
-div.label-input {
-    display: flex;
-    flex-direction: column;
-    text-align: start;
-    gap: 4px;
-    flex: 1;
-}
-
-div.small-input {
-    width: 192px;
-    border: 1px solid var(--black25);
-    border-radius: 8px;
-    padding: 16px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-div.small-input input,
-div.input input {
-    color: var(--black85);
-    border: none;
-}
-
-div.small-input input:focus,
-div.input input:focus {
-    outline: none;
-}
-
-/* Select input */
-select {
-    border: none;
-    background-color: transparent;
-    appearance: none;
-}
-
 /* Submit button */
 tour-button {
     width: 640px;

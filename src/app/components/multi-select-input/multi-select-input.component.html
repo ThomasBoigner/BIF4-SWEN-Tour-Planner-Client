@@ -1,0 +1,15 @@
+<div class="input" [formGroup]="formGroup()">
+    @if (image(); as imageData) {
+        @if (imageData) {
+            <img [ngSrc]="imageData.src" [alt]="imageData.alt" [width]="imageData.width" [height]="imageData.height">
+        }
+    }
+    <div class="label-input">
+        <label class="bold">{{ label() }}</label>
+        <select [formControlName]="controlName()">
+            @for (option of options(); track option.id) {
+                <option [value]="option.value">{{ option.label }}</option>
+            }
+        </select>
+    </div>
+</div>

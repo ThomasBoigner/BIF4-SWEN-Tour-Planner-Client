@@ -10,6 +10,7 @@ import { ErrorResponse } from '../../model/exception/error-response';
 import { TextInputComponent } from '../../components/text-input/text-input.component';
 import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
 import { ErrorMessageComponent } from '../../components/error-message/error-message.component';
+import { MultiSelectInput } from '../../components/multi-select-input/multi-select-input.component';
 
 @Component({
     selector: 'create-tour-page',
@@ -22,6 +23,7 @@ import { ErrorMessageComponent } from '../../components/error-message/error-mess
         TextInputComponent,
         TourButtonComponent,
         ErrorMessageComponent,
+        MultiSelectInput,
     ],
 })
 export class CreateTourPageComponent {
@@ -66,7 +68,7 @@ export class CreateTourPageComponent {
                 zipCode: this.tourForm.controls.toZipCode.value,
                 country: this.tourForm.controls.toCountry.value,
             },
-            transportType: 'BIKE',
+            transportType: this.tourForm.controls.transportType.value,
         };
         this.tourService.createTour(command).subscribe({
             complete: () => void this.router.navigate(['/']),
