@@ -7,10 +7,7 @@
     </section>
     <section id="create-tour-form">
         @if (errorMessage) {
-            <div class="error-label">
-                <label class="bold">Error</label>
-                <p>{{ errorMessage }}</p>
-            </div>
+            <error-message [text]="errorMessage"></error-message>
         }
         <form [formGroup]="tourForm">
             <div class="name-description-input">

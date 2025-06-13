@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorResponse } from '../../model/exception/error-response';
 import { TextInputComponent } from '../../components/text-input/text-input.component';
 import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
+import { ErrorMessageComponent } from '../../components/error-message/error-message.component';
 
 @Component({
     selector: 'create-tour-page',
@@ -20,6 +21,7 @@ import { TourButtonComponent } from '../../components/tour-button/tour-button.co
         ReactiveFormsModule,
         TextInputComponent,
         TourButtonComponent,
+        ErrorMessageComponent,
     ],
 })
 export class CreateTourPageComponent {

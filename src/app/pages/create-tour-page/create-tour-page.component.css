@@ -51,18 +51,8 @@ div.city-zip-code-input {
 }
 
 /* Error Message */
-div.error-label {
+error-message {
     width: 640px;
-    text-align: start;
-    border: 1px solid var(--error);
-    border-radius: 8px;
-    color: var(--error);
-    padding: 16px 24px;
-}
-
-div.error-label label {
-    display: block;
-    margin-bottom: 4px;
 }
 
 /* Input */
