@@ -7,12 +7,20 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TransportType } from '../../model/transport-type';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorResponse } from '../../model/exception/error-response';
+import { TextInputComponent } from '../../components/text-input/text-input.component';
+import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
 
 @Component({
     selector: 'create-tour-page',
     templateUrl: './create-tour-page.component.html',
     styleUrls: ['./create-tour-page.component.css'],
-    imports: [NgOptimizedImage, RouterLink, ReactiveFormsModule],
+    imports: [
+        NgOptimizedImage,
+        RouterLink,
+        ReactiveFormsModule,
+        TextInputComponent,
+        TourButtonComponent,
+    ],
 })
 export class CreateTourPageComponent {
     errorMessage = '';

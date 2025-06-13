@@ -60,12 +60,20 @@ div.error-label {
     padding: 16px 24px;
 }
 
-label {
+div.error-label label {
     display: block;
     margin-bottom: 4px;
 }
 
 /* Input */
+text-input {
+    width: 100%;
+}
+
+text-input.small {
+    width: 192px;
+}
+
 div.input label,
 div.small-input label {
     color: var(--black25);
@@ -118,18 +126,6 @@ select {
 }
 
 /* Submit button */
-button {
+tour-button {
     width: 640px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 24px;
-    border-radius: 8px;
-    border: none;
-    background-image: var(--brand-gradient);
-}
-
-button h6 {
-    color: var(--white);
 }
