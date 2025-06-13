@@ -56,7 +56,8 @@ error-message {
 }
 
 /* Input */
-text-input {
+text-input,
+multi-select-input {
     width: 100%;
 }
 

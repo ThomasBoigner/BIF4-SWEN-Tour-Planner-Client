@@ -21,7 +21,7 @@ export const routes: Routes = [
         component: CreateTourPageComponent,
     },
     {
-        path: 'tour-log/new/:tourId',
+        path: 'tour-log/new/:id',
         title: 'Create a new Tour Log',
         component: CreateTourLogPageComponent,
     },
