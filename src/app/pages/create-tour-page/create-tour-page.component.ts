@@ -7,12 +7,24 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TransportType } from '../../model/transport-type';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorResponse } from '../../model/exception/error-response';
+import { TextInputComponent } from '../../components/text-input/text-input.component';
+import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
+import { ErrorMessageComponent } from '../../components/error-message/error-message.component';
+import { MultiSelectInput } from '../../components/multi-select-input/multi-select-input.component';
 
 @Component({
     selector: 'create-tour-page',
     templateUrl: './create-tour-page.component.html',
     styleUrls: ['./create-tour-page.component.css'],
-    imports: [NgOptimizedImage, RouterLink, ReactiveFormsModule],
+    imports: [
+        NgOptimizedImage,
+        RouterLink,
+        ReactiveFormsModule,
+        TextInputComponent,
+        TourButtonComponent,
+        ErrorMessageComponent,
+        MultiSelectInput,
+    ],
 })
 export class CreateTourPageComponent {
     errorMessage = '';
@@ -56,7 +68,7 @@ export class CreateTourPageComponent {
                 zipCode: this.tourForm.controls.toZipCode.value,
                 country: this.tourForm.controls.toCountry.value,
             },
-            transportType: 'BIKE',
+            transportType: this.tourForm.controls.transportType.value,
         };
         this.tourService.createTour(command).subscribe({
             complete: () => void this.router.navigate(['/']),

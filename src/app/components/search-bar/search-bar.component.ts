@@ -1,4 +1,4 @@
-import { Component, model } from '@angular/core';
+import { Component, input, model } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -10,4 +10,5 @@ import { FormsModule } from '@angular/forms';
 })
 export class SearchBarComponent {
     value = model('');
+    placeholder = input.required<string>();
 }

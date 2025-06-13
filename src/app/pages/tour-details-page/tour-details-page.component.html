@@ -135,7 +135,7 @@
         </div>
     </section>
     <section id="tour-logs">
-        <search-bar></search-bar>
+        <search-bar placeholder="Search for tour log"></search-bar>
         <div class="tour-log-list">
             @if (tourLog$ | async; as tourLogs) {
                 @for (tourLog of tourLogs; track tourLog.id) {

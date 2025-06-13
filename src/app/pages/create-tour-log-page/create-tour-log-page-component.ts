@@ -1,22 +1,35 @@
 import { Component } from '@angular/core';
 import { TourLogService } from '../../service/tour-log.service';
 import { CreateTourLogCommand } from '../../model/commands/create-tour-log-command';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorResponse } from '../../model/exception/error-response';
+import { NgOptimizedImage } from '@angular/common';
+import { ErrorMessageComponent } from '../../components/error-message/error-message.component';
+import { TextInputComponent } from '../../components/text-input/text-input.component';
+import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
+import { DateInputComponent } from '../../components/date-input/date-input.component';
 
 @Component({
     selector: 'create-tour-log-page',
     templateUrl: './create-tour-log-page.component.html',
     styleUrls: ['./create-tour-log-page.component.css'],
-    imports: [RouterLink, ReactiveFormsModule],
+    imports: [
+        RouterLink,
+        ReactiveFormsModule,
+        NgOptimizedImage,
+        ErrorMessageComponent,
+        TextInputComponent,
+        TourButtonComponent,
+        DateInputComponent,
+    ],
 })
 export class CreateTourLogPageComponent {
     errorMessage = '';
+    tourId: string;
 
     tourLogForm = new FormGroup({
-        tourId: new FormControl<string>('', { nonNullable: true }),
         startTime: new FormControl<string>('', { nonNullable: true }), // ISO string or datetime-local input
         endTime: new FormControl<string>('', { nonNullable: true }),
         comment: new FormControl<string>('', { nonNullable: true }),
@@ -27,12 +40,15 @@ export class CreateTourLogPageComponent {
 
     constructor(
         private tourLogService: TourLogService,
+        private route: ActivatedRoute,
         private router: Router,
-    ) {}
+    ) {
+        this.tourId = this.route.snapshot.paramMap.get('id') ?? '';
+    }
 
     handleSubmit() {
         const command: CreateTourLogCommand = {
-            tourId: this.tourLogForm.controls.tourId.value,
+            tourId: this.tourId,
             startTime: new Date(this.tourLogForm.controls.startTime.value),
             endTime: new Date(this.tourLogForm.controls.endTime.value),
             comment: this.tourLogForm.controls.comment.value,
@@ -42,7 +58,7 @@ export class CreateTourLogPageComponent {
         };
 
         this.tourLogService.createTourLog(command).subscribe({
-            complete: () => void this.router.navigate(['/']),
+            complete: () => void this.router.navigate([`tour/detail/${this.tourId}`]),
             error: (error: HttpErrorResponse) => {
                 this.errorMessage = (error.error as ErrorResponse).message;
             },

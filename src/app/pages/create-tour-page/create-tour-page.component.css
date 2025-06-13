@@ -51,85 +51,21 @@ div.city-zip-code-input {
 }
 
 /* Error Message */
-div.error-label {
+error-message {
     width: 640px;
-    text-align: start;
-    border: 1px solid var(--error);
-    border-radius: 8px;
-    color: var(--error);
-    padding: 16px 24px;
-}
-
-label {
-    display: block;
-    margin-bottom: 4px;
 }
 
 /* Input */
-div.input label,
-div.small-input label {
-    color: var(--black25);
-}
-
-div.input {
+text-input,
+multi-select-input {
     width: 100%;
-    border: 1px solid var(--black25);
-    border-radius: 8px;
-    display: flex;
-    gap: 24px;
-    padding: 16px 24px;
-    align-items: center;
 }
 
-div.label-input {
-    display: flex;
-    flex-direction: column;
-    text-align: start;
-    gap: 4px;
-    flex: 1;
-}
-
-div.small-input {
+text-input.small {
     width: 192px;
-    border: 1px solid var(--black25);
-    border-radius: 8px;
-    padding: 16px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-div.small-input input,
-div.input input {
-    color: var(--black85);
-    border: none;
-}
-
-div.small-input input:focus,
-div.input input:focus {
-    outline: none;
-}
-
-/* Select input */
-select {
-    border: none;
-    background-color: transparent;
-    appearance: none;
 }
 
 /* Submit button */
-button {
+tour-button {
     width: 640px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 24px;
-    border-radius: 8px;
-    border: none;
-    background-image: var(--brand-gradient);
-}
-
-button h6 {
-    color: var(--white);
 }

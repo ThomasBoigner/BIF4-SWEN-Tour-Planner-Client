@@ -10,7 +10,11 @@
         }
     }
     <div class="label-input">
-        <label [for]="controlName()" class="bold">{{ label() }}</label>
-        <input [id]="controlName()" type="text" [formControlName]="controlName()" />
+        <label class="bold">{{ label() }}</label>
+        <select [formControlName]="controlName()">
+            @for (option of options(); track option.id) {
+                <option [value]="option.value">{{ option.label }}</option>
+            }
+        </select>
     </div>
 </div>

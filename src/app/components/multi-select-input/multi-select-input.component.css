@@ -21,11 +21,8 @@ div.label-input {
     flex: 1;
 }
 
-input {
-    color: var(--black85);
+select {
     border: none;
-}
-
-input:focus {
-    outline: none;
+    background-color: transparent;
+    appearance: none;
 }
