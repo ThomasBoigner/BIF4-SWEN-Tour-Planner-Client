@@ -15,7 +15,8 @@ describe('SearchBarComponent', () => {
         const fixture: ComponentFixture<SearchBarComponent> =
             TestBed.createComponent(SearchBarComponent);
 
-        const input = fixture.debugElement.query(By.css('input')).nativeElement as HTMLInputElement;
+        const nativeElement = fixture.nativeElement as HTMLElement;
+        const input = nativeElement.querySelector('input') ?? new HTMLInputElement();
 
         fixture.detectChanges();
         input.value = text;
