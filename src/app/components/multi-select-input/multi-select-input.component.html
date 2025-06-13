@@ -1,7 +1,12 @@
 <div class="input" [formGroup]="formGroup()">
     @if (image(); as imageData) {
         @if (imageData) {
-            <img [ngSrc]="imageData.src" [alt]="imageData.alt" [width]="imageData.width" [height]="imageData.height">
+            <img
+                [ngSrc]="imageData.src"
+                [alt]="imageData.alt"
+                [width]="imageData.width"
+                [height]="imageData.height"
+            />
         }
     }
     <div class="label-input">

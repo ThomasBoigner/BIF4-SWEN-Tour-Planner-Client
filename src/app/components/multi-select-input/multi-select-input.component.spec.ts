@@ -29,13 +29,13 @@ describe('MultiSelectInputComponent', () => {
         const select = nativeElement.querySelector('select') ?? new HTMLSelectElement();
 
         select.value = select.options[0].value;
-        select.dispatchEvent(new Event('change'))
+        select.dispatchEvent(new Event('change'));
         fixture.detectChanges();
 
         // Then
         expect(fixture.componentInstance).toBeDefined();
-        expect(nativeElement.textContent).toContain(label)
-        const formObject = fixture.componentInstance.formGroup().value as {value: string};
+        expect(nativeElement.textContent).toContain(label);
+        const formObject = fixture.componentInstance.formGroup().value as { value: string };
         expect(formObject.value).toEqual('TEST');
     });
 });

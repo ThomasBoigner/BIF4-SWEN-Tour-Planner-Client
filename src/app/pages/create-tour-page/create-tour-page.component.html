@@ -1,7 +1,7 @@
 <div class="container">
     <section id="create-tour-hero">
         <a routerLink="/">
-            <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo"/>
+            <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo" />
         </a>
         <h1>Plan a new Tour!</h1>
     </section>
@@ -11,52 +11,142 @@
         }
         <form [formGroup]="tourForm">
             <div class="name-description-input">
-                <text-input label="Name" [formGroup]="tourForm" controlName="name"
-                            [image]="{src: 'app/assets/svg/map.svg', alt: 'map', width: 32, height: 32}"></text-input>
-                <text-input label="Description" [formGroup]="tourForm" controlName="description"
-                            [image]="{src: 'app/assets/svg/pencil.svg', alt: 'pencil', width: 32, height: 32}"></text-input>
+                <text-input
+                    label="Name"
+                    [formGroup]="tourForm"
+                    controlName="name"
+                    [image]="{ src: 'app/assets/svg/map.svg', alt: 'map', width: 32, height: 32 }"
+                ></text-input>
+                <text-input
+                    label="Description"
+                    [formGroup]="tourForm"
+                    controlName="description"
+                    [image]="{
+                        src: 'app/assets/svg/pencil.svg',
+                        alt: 'pencil',
+                        width: 32,
+                        height: 32,
+                    }"
+                ></text-input>
             </div>
             <div class="address-input">
                 <p>From:</p>
                 <div class="street-name-street-number-input">
-                    <text-input label="Street name" [formGroup]="tourForm" controlName="fromStreetName"
-                                [image]="{src: 'app/assets/svg/street.svg', alt: 'street', width: 41, height: 32}"></text-input>
-                    <text-input class="small" label="Street number" [formGroup]="tourForm"
-                                controlName="fromStreetNumber"></text-input>
+                    <text-input
+                        label="Street name"
+                        [formGroup]="tourForm"
+                        controlName="fromStreetName"
+                        [image]="{
+                            src: 'app/assets/svg/street.svg',
+                            alt: 'street',
+                            width: 41,
+                            height: 32,
+                        }"
+                    ></text-input>
+                    <text-input
+                        class="small"
+                        label="Street number"
+                        [formGroup]="tourForm"
+                        controlName="fromStreetNumber"
+                    ></text-input>
                 </div>
                 <div class="city-zip-code-input">
-                    <text-input label="City" [formGroup]="tourForm" controlName="fromCity"
-                                [image]="{src: 'app/assets/svg/houses.svg', alt: 'houses', width: 36, height: 32}"></text-input>
-                    <text-input class="small" label="Zip code" [formGroup]="tourForm"
-                                controlName="fromZipCode"></text-input>
+                    <text-input
+                        label="City"
+                        [formGroup]="tourForm"
+                        controlName="fromCity"
+                        [image]="{
+                            src: 'app/assets/svg/houses.svg',
+                            alt: 'houses',
+                            width: 36,
+                            height: 32,
+                        }"
+                    ></text-input>
+                    <text-input
+                        class="small"
+                        label="Zip code"
+                        [formGroup]="tourForm"
+                        controlName="fromZipCode"
+                    ></text-input>
                 </div>
-                <text-input label="Country" [formGroup]="tourForm" controlName="fromCountry"
-                            [image]="{src: 'app/assets/svg/flag.svg', alt: 'flag', width: 28, height: 32}"></text-input>
+                <text-input
+                    label="Country"
+                    [formGroup]="tourForm"
+                    controlName="fromCountry"
+                    [image]="{ src: 'app/assets/svg/flag.svg', alt: 'flag', width: 28, height: 32 }"
+                ></text-input>
             </div>
             <div class="address-input">
                 <p>To:</p>
                 <div class="street-name-street-number-input">
-                    <text-input label="Street name" [formGroup]="tourForm" controlName="toStreetName"
-                                [image]="{src: 'app/assets/svg/street.svg', alt: 'street', width: 41, height: 32}"></text-input>
-                    <text-input class="small" label="Street number" [formGroup]="tourForm"
-                                controlName="toStreetNumber"></text-input>
+                    <text-input
+                        label="Street name"
+                        [formGroup]="tourForm"
+                        controlName="toStreetName"
+                        [image]="{
+                            src: 'app/assets/svg/street.svg',
+                            alt: 'street',
+                            width: 41,
+                            height: 32,
+                        }"
+                    ></text-input>
+                    <text-input
+                        class="small"
+                        label="Street number"
+                        [formGroup]="tourForm"
+                        controlName="toStreetNumber"
+                    ></text-input>
                 </div>
                 <div class="city-zip-code-input">
-                    <text-input label="City" [formGroup]="tourForm" controlName="toCity"
-                                [image]="{src: 'app/assets/svg/houses.svg', alt: 'houses', width: 36, height: 32}"></text-input>
-                    <text-input class="small" label="Zip code" [formGroup]="tourForm"
-                                controlName="toZipCode"></text-input>
+                    <text-input
+                        label="City"
+                        [formGroup]="tourForm"
+                        controlName="toCity"
+                        [image]="{
+                            src: 'app/assets/svg/houses.svg',
+                            alt: 'houses',
+                            width: 36,
+                            height: 32,
+                        }"
+                    ></text-input>
+                    <text-input
+                        class="small"
+                        label="Zip code"
+                        [formGroup]="tourForm"
+                        controlName="toZipCode"
+                    ></text-input>
                 </div>
-                <text-input label="Country" [formGroup]="tourForm" controlName="toCountry"
-                            [image]="{src: 'app/assets/svg/flag.svg', alt: 'flag', width: 28, height: 32}"></text-input>
+                <text-input
+                    label="Country"
+                    [formGroup]="tourForm"
+                    controlName="toCountry"
+                    [image]="{ src: 'app/assets/svg/flag.svg', alt: 'flag', width: 28, height: 32 }"
+                ></text-input>
             </div>
-            <multi-select-input label="Transport type" [formGroup]="tourForm" controlName="transportType"
-                                [options]="[{id: 0, label: 'Bike', value: 'BIKE'}, {id: 1, label: 'Hike', value: 'HIKE'}, {id: 2, label: 'Running', value: 'RUNNING'}, {id: 3, label: 'Vacation', value: 'VACATION'}]"
-                                [image]="{src: 'app/assets/svg/car.svg', alt: 'car', width: 43, height: 32}"></multi-select-input>
+            <multi-select-input
+                label="Transport type"
+                [formGroup]="tourForm"
+                controlName="transportType"
+                [options]="[
+                    { id: 0, label: 'Bike', value: 'BIKE' },
+                    { id: 1, label: 'Hike', value: 'HIKE' },
+                    { id: 2, label: 'Running', value: 'RUNNING' },
+                    { id: 3, label: 'Vacation', value: 'VACATION' },
+                ]"
+                [image]="{ src: 'app/assets/svg/car.svg', alt: 'car', width: 43, height: 32 }"
+            ></multi-select-input>
         </form>
-        <tour-button text="Create" color="primary" (click)="handleSubmit()"
-                     [primaryImage]="{ src: 'app/assets/svg/plus.svg', alt: 'plus', height: 32, width: 32, }"
-                     [secondaryImage]="{ src: 'app/assets/svg/plus-primary.svg', alt: 'plus', height: 32, width: 32, }"
+        <tour-button
+            text="Create"
+            color="primary"
+            (click)="handleSubmit()"
+            [primaryImage]="{ src: 'app/assets/svg/plus.svg', alt: 'plus', height: 32, width: 32 }"
+            [secondaryImage]="{
+                src: 'app/assets/svg/plus-primary.svg',
+                alt: 'plus',
+                height: 32,
+                width: 32,
+            }"
         ></tour-button>
     </section>
 </div>

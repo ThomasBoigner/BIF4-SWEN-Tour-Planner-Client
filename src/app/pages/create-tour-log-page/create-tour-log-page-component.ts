@@ -9,6 +9,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { ErrorMessageComponent } from '../../components/error-message/error-message.component';
 import { TextInputComponent } from '../../components/text-input/text-input.component';
 import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
+import { DateInputComponent } from '../../components/date-input/date-input.component';
 
 @Component({
     selector: 'create-tour-log-page',
@@ -21,6 +22,7 @@ import { TourButtonComponent } from '../../components/tour-button/tour-button.co
         ErrorMessageComponent,
         TextInputComponent,
         TourButtonComponent,
+        DateInputComponent,
     ],
 })
 export class CreateTourLogPageComponent {

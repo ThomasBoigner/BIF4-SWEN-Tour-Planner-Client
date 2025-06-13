@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SearchBarComponent } from './search-bar.component';
-import { By } from '@angular/platform-browser';
 
 describe('SearchBarComponent', () => {
     beforeEach(() => {
@@ -10,10 +9,13 @@ describe('SearchBarComponent', () => {
     it('Text value should be two way bindable', () => {
         // Given
         const text = 'Hello world';
+        const placeholder = 'placeholder';
 
         // When
         const fixture: ComponentFixture<SearchBarComponent> =
             TestBed.createComponent(SearchBarComponent);
+
+        fixture.componentRef.setInput('placeholder', placeholder);
 
         const nativeElement = fixture.nativeElement as HTMLElement;
         const input = nativeElement.querySelector('input') ?? new HTMLInputElement();

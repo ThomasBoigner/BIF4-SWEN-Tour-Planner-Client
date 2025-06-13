@@ -3,8 +3,8 @@ import { ErrorMessageComponent } from './error-message.component';
 
 describe('ErrorMessageComponent', () => {
     beforeEach(() => {
-        TestBed.configureTestingModule({})
-    })
+        TestBed.configureTestingModule({});
+    });
 
     it('Error message should display text', () => {
         // Given
@@ -21,4 +21,4 @@ describe('ErrorMessageComponent', () => {
         expect(fixture.componentInstance).toBeDefined();
         expect(nativeElement.textContent).toContain(text);
     });
-})
+});
