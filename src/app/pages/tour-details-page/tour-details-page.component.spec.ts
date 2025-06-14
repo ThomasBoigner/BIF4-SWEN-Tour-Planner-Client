@@ -36,7 +36,7 @@ describe('TourDetailsPageComponent', () => {
             providers: [
                 { provide: TourService, useValue: spy },
                 { provide: HttpClient, useValue: httpClientSpy },
-                { provide: NGXLogger, useValue: loggerSpy }, // <-- Mock logger here
+                { provide: NGXLogger, useValue: loggerSpy },
                 provideRouter(routes),
             ],
         });
