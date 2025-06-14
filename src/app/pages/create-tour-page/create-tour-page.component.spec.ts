@@ -69,15 +69,15 @@ describe('CreateTourPageComponent', () => {
             nativeElement.querySelector<HTMLInputElement>('input#toStreetNumber') ??
             new HTMLInputElement();
         const toCityInput =
-            nativeElement.querySelector<HTMLInputElement>('input#toCity') ??
-            new HTMLInputElement();
+            nativeElement.querySelector<HTMLInputElement>('input#toCity') ?? new HTMLInputElement();
         const toZipCodeInput =
             nativeElement.querySelector<HTMLInputElement>('input#toZipCode') ??
             new HTMLInputElement();
         const toCountryInput =
             nativeElement.querySelector<HTMLInputElement>('input#toCountry') ??
             new HTMLInputElement();
-        const transportTypeInput = nativeElement.querySelector<HTMLSelectElement>('select') ?? new HTMLSelectElement();
+        const transportTypeInput =
+            nativeElement.querySelector<HTMLSelectElement>('select') ?? new HTMLSelectElement();
 
         nameInput.value = createTourCommand.name;
         descriptionInput.value = createTourCommand.description;
@@ -92,7 +92,6 @@ describe('CreateTourPageComponent', () => {
         toZipCodeInput.value = String(createTourCommand.to.zipCode);
         toCountryInput.value = createTourCommand.to.country;
         transportTypeInput.value = transportTypeInput.options[1].value;
-
 
         nameInput.dispatchEvent(new Event('input'));
         descriptionInput.dispatchEvent(new Event('input'));
@@ -135,15 +134,15 @@ describe('CreateTourPageComponent', () => {
         expect(fixture.componentInstance.tourForm.value.toStreetNumber).toEqual(
             createTourCommand.to.streetNumber,
         );
-        expect(fixture.componentInstance.tourForm.value.toCity).toEqual(
-            createTourCommand.to.city,
-        );
+        expect(fixture.componentInstance.tourForm.value.toCity).toEqual(createTourCommand.to.city);
         expect(String(fixture.componentInstance.tourForm.value.toZipCode)).toEqual(
             String(createTourCommand.to.zipCode),
         );
         expect(fixture.componentInstance.tourForm.value.toCountry).toEqual(
             createTourCommand.to.country,
         );
-        expect(fixture.componentInstance.tourForm.value.transportType).toEqual(createTourCommand.transportType);
+        expect(fixture.componentInstance.tourForm.value.transportType).toEqual(
+            createTourCommand.transportType,
+        );
     });
 });

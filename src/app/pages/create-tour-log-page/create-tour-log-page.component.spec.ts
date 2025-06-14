@@ -33,7 +33,8 @@ describe('CreateTourLogPageComponent', () => {
                 { provide: TourService, useValue: spy },
                 { provide: HttpClient, useValue: httpClientSpy },
                 { provide: NGXLogger, useValue: loggerSpy },
-                provideRouter(routes)],
+                provideRouter(routes),
+            ],
         });
     });
 
@@ -47,17 +48,30 @@ describe('CreateTourLogPageComponent', () => {
         const rating = 2;
 
         // When
-        const fixture: ComponentFixture<CreateTourLogPageComponent> = TestBed.createComponent(CreateTourLogPageComponent);
+        const fixture: ComponentFixture<CreateTourLogPageComponent> = TestBed.createComponent(
+            CreateTourLogPageComponent,
+        );
 
         fixture.detectChanges();
 
         const nativeElement = fixture.nativeElement as HTMLElement;
-        const startTimeInput = nativeElement.querySelector<HTMLInputElement>('input#startTime') ?? new HTMLInputElement();
-        const endTimeInput = nativeElement.querySelector<HTMLInputElement>('input#endTime') ?? new HTMLInputElement();
-        const commentInput = nativeElement.querySelector<HTMLInputElement>('input#comment') ?? new HTMLInputElement();
-        const distanceInput = nativeElement.querySelector<HTMLInputElement>('input#distance') ?? new HTMLInputElement();
-        const difficultyInput = nativeElement.querySelector<HTMLInputElement>('input#difficulty') ?? new HTMLInputElement();
-        const ratingInput = nativeElement.querySelector<HTMLInputElement>('input#rating') ?? new HTMLInputElement();
+        const startTimeInput =
+            nativeElement.querySelector<HTMLInputElement>('input#startTime') ??
+            new HTMLInputElement();
+        const endTimeInput =
+            nativeElement.querySelector<HTMLInputElement>('input#endTime') ??
+            new HTMLInputElement();
+        const commentInput =
+            nativeElement.querySelector<HTMLInputElement>('input#comment') ??
+            new HTMLInputElement();
+        const distanceInput =
+            nativeElement.querySelector<HTMLInputElement>('input#distance') ??
+            new HTMLInputElement();
+        const difficultyInput =
+            nativeElement.querySelector<HTMLInputElement>('input#difficulty') ??
+            new HTMLInputElement();
+        const ratingInput =
+            nativeElement.querySelector<HTMLInputElement>('input#rating') ?? new HTMLInputElement();
 
         startTimeInput.value = startTime;
         endTimeInput.value = endTime;
@@ -79,8 +93,12 @@ describe('CreateTourLogPageComponent', () => {
         expect(fixture.componentInstance.tourLogForm.value.startTime).toEqual(startTime);
         expect(fixture.componentInstance.tourLogForm.value.endTime).toEqual(endTime);
         expect(fixture.componentInstance.tourLogForm.value.comment).toEqual(comment);
-        expect(String(fixture.componentInstance.tourLogForm.value.distance)).toEqual(String(distance));
-        expect(String(fixture.componentInstance.tourLogForm.value.difficulty)).toEqual(String(difficulty));
+        expect(String(fixture.componentInstance.tourLogForm.value.distance)).toEqual(
+            String(distance),
+        );
+        expect(String(fixture.componentInstance.tourLogForm.value.difficulty)).toEqual(
+            String(difficulty),
+        );
         expect(String(fixture.componentInstance.tourLogForm.value.rating)).toEqual(String(rating));
     });
 });
