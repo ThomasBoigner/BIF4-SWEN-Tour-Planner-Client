@@ -7,8 +7,10 @@ import { RouterLink } from '@angular/router';
 import { TourListItemComponent } from '../../components/tour-list-item/tour-list-item.component';
 import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
-import { LeafletDirective } from '@bluehalo/ngx-leaflet';
-import { latLng, tileLayer } from 'leaflet';
+import { LeafletDirective, LeafletLayersDirective } from '@bluehalo/ngx-leaflet';
+import * as L from 'leaflet';
+import { latLng, marker, tileLayer, Map, icon, Icon } from 'leaflet';
+import 'leaflet-routing-machine';
 
 @Component({
     selector: 'tours-list-page',
@@ -22,6 +24,7 @@ import { latLng, tileLayer } from 'leaflet';
         TourButtonComponent,
         SearchBarComponent,
         LeafletDirective,
+        LeafletLayersDirective,
     ],
 })
 export class ToursListPageComponent {
@@ -36,6 +39,37 @@ export class ToursListPageComponent {
         zoom: 3,
         center: latLng(0, 0),
     };
+
+    leafletLayers = [
+        marker([48.29903, 16.564899], {
+            icon: icon({
+                ...Icon.Default.prototype.options,
+                iconUrl: 'assets/marker-icon.png',
+                iconRetinaUrl: 'assets/marker-icon-2x.png',
+                shadowUrl: 'assets/marker-shadow.png',
+            }),
+        }),
+        marker([48.317181, 16.64259], {
+            icon: icon({
+                ...Icon.Default.prototype.options,
+                iconUrl: 'assets/marker-icon.png',
+                iconRetinaUrl: 'assets/marker-icon-2x.png',
+                shadowUrl: 'assets/marker-shadow.png',
+            }),
+        }),
+    ];
+
+    onMapReady(map: Map) {
+        console.log(L);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-explicit-any
+        (L as any).routing.control({
+            waypoints: [
+                L.latLng(48.29903, 16.564899),
+                L.latLng(48.317181, 16.64259)
+            ]
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        }).addTo(map);
+    }
 
     constructor(private tourService: TourService) {
         this.tours$ = this.tourService.getTours();

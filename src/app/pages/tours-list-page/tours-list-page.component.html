@@ -50,6 +50,6 @@
         </div>
     </section>
     <section id="map">
-        <div id="map" leaflet [leafletOptions]="leafletOptions"></div>
+        <div id="map" leaflet [leafletOptions]="leafletOptions" [leafletLayers]="leafletLayers" (leafletMapReady)="onMapReady($event)"></div>
     </section>
 </div>

@@ -23,9 +23,18 @@
                                 "glob": "**/*",
                                 "input": "public"
                             },
-                            "src/app/assets"
+                            "src/app/assets",
+                            {
+                                "glob": "**/*",
+                                "input": "public"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "./node_modules/leaflet/dist/images",
+                                "output": "assets/"
+                            }
                         ],
-                        "styles": ["src/styles.css", "./node_modules/leaflet/dist/leaflet.css"],
+                        "styles": ["src/styles.css", "./node_modules/leaflet/dist/leaflet.css", "./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"],
                         "scripts": []
                     },
                     "configurations": {
@@ -88,7 +97,7 @@
                                 "output": "assets/"
                             }
                         ],
-                        "styles": ["src/styles.css"],
+                        "styles": ["src/styles.css", "./node_modules/leaflet/dist/leaflet.css", "./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"],
                         "scripts": []
                     }
                 }
