@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
 import { TourListItemComponent } from '../../components/tour-list-item/tour-list-item.component';
 import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
-import { LeafletDirective, LeafletLayersDirective } from '@bluehalo/ngx-leaflet';
+import { LeafletDirective } from '@bluehalo/ngx-leaflet';
 import * as L from 'leaflet';
 import { latLng, marker, tileLayer, Map, icon, Icon } from 'leaflet';
 import 'leaflet-routing-machine';
@@ -24,11 +24,11 @@ import 'leaflet-routing-machine';
         TourButtonComponent,
         SearchBarComponent,
         LeafletDirective,
-        LeafletLayersDirective,
     ],
 })
 export class ToursListPageComponent {
     tours$: Observable<Tour[]>;
+
     leafletOptions = {
         layers: [
             tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -40,35 +40,22 @@ export class ToursListPageComponent {
         center: latLng(0, 0),
     };
 
-    leafletLayers = [
-        marker([48.29903, 16.564899], {
-            icon: icon({
-                ...Icon.Default.prototype.options,
-                iconUrl: 'assets/marker-icon.png',
-                iconRetinaUrl: 'assets/marker-icon-2x.png',
-                shadowUrl: 'assets/marker-shadow.png',
-            }),
-        }),
-        marker([48.317181, 16.64259], {
-            icon: icon({
-                ...Icon.Default.prototype.options,
-                iconUrl: 'assets/marker-icon.png',
-                iconRetinaUrl: 'assets/marker-icon-2x.png',
-                shadowUrl: 'assets/marker-shadow.png',
-            }),
-        }),
-    ];
-
     onMapReady(map: Map) {
-        console.log(L);
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-explicit-any
-        (L as any).routing.control({
-            waypoints: [
-                L.latLng(48.29903, 16.564899),
-                L.latLng(48.317181, 16.64259)
-            ]
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        }).addTo(map);
+        const plan = L.routing.plan([latLng([48.29903, 16.564899]), latLng([48.317181, 16.64259])], {
+            draggableWaypoints: false
+        })
+
+        L.routing
+            .control({
+                plan: plan,
+                lineOptions: {
+                    styles: [{color: 'black', opacity: 0.15, weight: 9}, {color: 'white', opacity: 0.8, weight: 6}, {color: 'blue', opacity: 1, weight: 2}],
+                    addWaypoints: false,
+                    missingRouteTolerance: 1000,
+                    extendToWaypoints: true,
+                }
+            })
+            .addTo(map);
     }
 
     constructor(private tourService: TourService) {
