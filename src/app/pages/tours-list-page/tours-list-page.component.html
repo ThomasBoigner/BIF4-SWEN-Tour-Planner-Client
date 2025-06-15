@@ -42,7 +42,7 @@
         <div class="tour-list">
             @if (tours$ | async; as tours) {
                 @for (tour of tours; track tour.id) {
-                    <tour-list-item [tour]="tour"></tour-list-item>
+                    <tour-list-item [tour]="tour" (click)="selectTour(tour)"></tour-list-item>
                 }
             } @else {
                 <p>No tours available</p>
@@ -50,6 +50,11 @@
         </div>
     </section>
     <section id="map">
-        <div id="map" leaflet [leafletOptions]="leafletOptions" (leafletMapReady)="onMapReady($event)"></div>
+        <div
+            id="map"
+            leaflet
+            [leafletOptions]="leafletOptions"
+            (leafletMapReady)="onMapReady($event)"
+        ></div>
     </section>
 </div>

@@ -8,8 +8,7 @@ import { TourListItemComponent } from '../../components/tour-list-item/tour-list
 import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
 import { LeafletDirective } from '@bluehalo/ngx-leaflet';
-import * as L from 'leaflet';
-import { latLng, marker, tileLayer, Map, icon, Icon } from 'leaflet';
+import L, { latLng, tileLayer, Map, Control } from 'leaflet';
 import 'leaflet-routing-machine';
 
 @Component({
@@ -28,6 +27,8 @@ import 'leaflet-routing-machine';
 })
 export class ToursListPageComponent {
     tours$: Observable<Tour[]>;
+    map: Map | undefined;
+    control: Control | undefined;
 
     leafletOptions = {
         layers: [
@@ -40,25 +41,48 @@ export class ToursListPageComponent {
         center: latLng(0, 0),
     };
 
-    onMapReady(map: Map) {
-        const plan = L.routing.plan([latLng([48.29903, 16.564899]), latLng([48.317181, 16.64259])], {
-            draggableWaypoints: false
-        })
+    constructor(private tourService: TourService) {
+        this.tours$ = this.tourService.getTours();
+    }
 
-        L.routing
+    onMapReady(map: Map) {
+        this.map = map;
+    }
+
+    selectTour(tour: Tour) {
+        if (!this.map) {
+            return;
+        }
+
+        if (this.control) {
+            this.control.remove();
+        }
+
+        const plan = L.routing.plan(
+            [
+                latLng([tour.from.latitude, tour.from.longitude]),
+                latLng([tour.to.latitude, tour.to.longitude]),
+            ],
+            {
+                draggableWaypoints: false,
+                addWaypoints: false,
+            },
+        );
+
+        this.control = L.routing
             .control({
                 plan: plan,
                 lineOptions: {
-                    styles: [{color: 'black', opacity: 0.15, weight: 9}, {color: 'white', opacity: 0.8, weight: 6}, {color: 'blue', opacity: 1, weight: 2}],
+                    styles: [
+                        { color: 'black', opacity: 0.15, weight: 9 },
+                        { color: 'white', opacity: 0.8, weight: 6 },
+                        { color: 'blue', opacity: 1, weight: 2 },
+                    ],
                     addWaypoints: false,
                     missingRouteTolerance: 1000,
                     extendToWaypoints: true,
-                }
+                },
             })
-            .addTo(map);
-    }
-
-    constructor(private tourService: TourService) {
-        this.tours$ = this.tourService.getTours();
+            .addTo(this.map);
     }
 }

@@ -34,7 +34,11 @@
                                 "output": "media/"
                             }
                         ],
-                        "styles": ["src/styles.css", "./node_modules/leaflet/dist/leaflet.css", "./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"],
+                        "styles": [
+                            "src/styles.css",
+                            "./node_modules/leaflet/dist/leaflet.css",
+                            "./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
+                        ],
                         "scripts": []
                     },
                     "configurations": {
@@ -97,7 +101,11 @@
                                 "output": "media/"
                             }
                         ],
-                        "styles": ["src/styles.css", "./node_modules/leaflet/dist/leaflet.css", "./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"],
+                        "styles": [
+                            "src/styles.css",
+                            "./node_modules/leaflet/dist/leaflet.css",
+                            "./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
+                        ],
                         "scripts": []
                     }
                 }

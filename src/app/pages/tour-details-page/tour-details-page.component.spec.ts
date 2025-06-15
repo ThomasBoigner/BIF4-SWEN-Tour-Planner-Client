@@ -56,6 +56,8 @@ describe('TourDetailsPageComponent', () => {
                 zipCode: 2232,
                 streetName: 'Radetzkystraße',
                 streetNumber: '2-6',
+                latitude: 10,
+                longitude: 20,
             },
             to: {
                 country: 'Austria',
@@ -63,6 +65,8 @@ describe('TourDetailsPageComponent', () => {
                 zipCode: 2231,
                 streetName: 'Billroth-Gasse',
                 streetNumber: '5',
+                latitude: 10,
+                longitude: 20,
             },
             transportType: 'BIKE',
             distance: 20.0,
