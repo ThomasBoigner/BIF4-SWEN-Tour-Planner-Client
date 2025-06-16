@@ -40,9 +40,7 @@
                             "./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
                         ],
                         "scripts": [],
-                        "allowedCommonJsDependencies": [
-                            "leaflet", "leaflet-routing-machine"
-                        ]
+                        "allowedCommonJsDependencies": ["leaflet", "leaflet-routing-machine"]
                     },
                     "configurations": {
                         "production": {
