@@ -49,8 +49,6 @@ section#map {
     height: 100vh;
 }
 
-section#map img {
-    width: 100%;
+div#map {
     height: 100vh;
-    object-fit: cover;
 }
