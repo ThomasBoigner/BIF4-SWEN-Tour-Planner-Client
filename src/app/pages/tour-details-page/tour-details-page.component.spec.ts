@@ -71,7 +71,6 @@ describe('TourDetailsPageComponent', () => {
             transportType: 'BIKE',
             distance: 20.0,
             estimatedTime: 120.0,
-            imageUrl: 'img',
         };
 
         tourService.getTour.and.returnValue(of(tour));

@@ -10,5 +10,4 @@ export interface Tour {
     transportType: TransportType;
     distance: number;
     estimatedTime: number;
-    imageUrl: string;
 }
