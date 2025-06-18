@@ -1,6 +1,6 @@
 <div class="tour-list-item">
     <h4>{{ tour().name }}</h4>
-    <p>Time: {{ tour().estimatedTime / 60 }}h</p>
+    <p>Time: {{ tour().estimatedTime }}h</p>
     <p>Distance: {{ tour().distance }}km</p>
     <div class="details-link">
         <a routerLink="tour/detail/{{ tour().id }}"

@@ -57,7 +57,6 @@ describe('ToursListPageComponent', () => {
             transportType: 'BIKE',
             distance: 20.0,
             estimatedTime: 120.0,
-            imageUrl: 'img',
         };
         const tour2: Tour = {
             id: '05de8280-f825-471c-bd42-6aa6944183c0',
@@ -84,7 +83,6 @@ describe('ToursListPageComponent', () => {
             transportType: 'RUNNING',
             distance: 40.0,
             estimatedTime: 240.0,
-            imageUrl: 'img',
         };
 
         tourService.getTours.and.returnValue(of([tour1, tour2]));

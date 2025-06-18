@@ -48,7 +48,6 @@ describe('TourService', () => {
                 transportType: 'BIKE',
                 distance: 20.0,
                 estimatedTime: 120.0,
-                imageUrl: 'img',
             },
             {
                 id: '05de8280-f825-471c-bd42-6aa6944183c0',
@@ -75,7 +74,6 @@ describe('TourService', () => {
                 transportType: 'RUNNING',
                 distance: 40.0,
                 estimatedTime: 240.0,
-                imageUrl: 'img',
             },
         ];
 
@@ -177,7 +175,6 @@ describe('TourService', () => {
             transportType: 'BIKE',
             distance: 20.0,
             estimatedTime: 120.0,
-            imageUrl: 'img',
         };
 
         // When
@@ -278,7 +275,6 @@ describe('TourService', () => {
             transportType: 'BIKE',
             distance: 20.0,
             estimatedTime: 120.0,
-            imageUrl: 'img',
         };
         const createTourCommand: CreateTourCommand = {
             name: 'Tour 1',

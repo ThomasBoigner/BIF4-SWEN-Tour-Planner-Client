@@ -27,6 +27,7 @@ import 'leaflet-routing-machine';
 })
 export class ToursListPageComponent {
     tours$: Observable<Tour[]>;
+    selectedTour: string | undefined;
     map: Map | undefined;
     control: Control | undefined;
 
@@ -58,6 +59,11 @@ export class ToursListPageComponent {
             this.control.remove();
         }
 
+        if (this.selectedTour == tour.id) {
+            this.selectedTour = undefined;
+            return;
+        }
+
         const plan = L.routing.plan(
             [
                 latLng([tour.from.latitude, tour.from.longitude]),
@@ -84,5 +90,7 @@ export class ToursListPageComponent {
                 },
             })
             .addTo(this.map);
+
+        this.selectedTour = tour.id;
     }
 }

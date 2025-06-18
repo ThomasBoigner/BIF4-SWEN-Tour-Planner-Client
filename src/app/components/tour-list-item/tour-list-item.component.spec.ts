@@ -38,7 +38,6 @@ describe('TourListItemComponent', () => {
             transportType: 'BIKE',
             distance: 20.0,
             estimatedTime: 120.0,
-            imageUrl: 'img',
         };
 
         // When
