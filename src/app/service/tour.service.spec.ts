@@ -20,7 +20,7 @@ describe('TourService', () => {
         TestBed.inject(HttpTestingController).verify();
     });
 
-    it('#getTours should return an array of tours from the server', () => {
+    it('#getTours should return a page with tours from the server', () => {
         // Given
         const tourService = TestBed.inject(TourService);
         const expectedTours: Tour[] = [
@@ -100,7 +100,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour?name=&page=0&size=20',
+            url: 'http://localhost:8080/api/tour?name=&page=0&size=5',
         });
 
         req.flush(expectedPage);
@@ -127,7 +127,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour?name=&page=0&size=20',
+            url: 'http://localhost:8080/api/tour?name=&page=0&size=5',
         });
 
         req.error(new ProgressEvent('Network Error'));
@@ -154,7 +154,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour?name=&page=0&size=20',
+            url: 'http://localhost:8080/api/tour?name=&page=0&size=5',
         });
 
         req.flush(null, { status: 500, statusText: 'Internal Server Error' });
