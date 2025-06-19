@@ -96,7 +96,7 @@ describe('ToursListPageComponent', () => {
             number: 0,
             numberOfElements: 4,
             empty: false,
-        }
+        };
 
         tourService.getTours.and.returnValue(of(expectedPage));
 

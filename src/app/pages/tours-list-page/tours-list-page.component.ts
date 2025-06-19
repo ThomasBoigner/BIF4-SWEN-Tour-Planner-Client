@@ -28,7 +28,7 @@ import { Page } from '../../model/page';
 })
 export class ToursListPageComponent {
     tours$: Observable<Page<Tour>>;
-    searchInput = "";
+    searchInput = '';
 
     selectedTour: string | undefined;
     map: Map | undefined;

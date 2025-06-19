@@ -88,7 +88,7 @@ describe('TourService', () => {
             number: 0,
             numberOfElements: 4,
             empty: false,
-        }
+        };
 
         // When
         const response = tourService.getTours();

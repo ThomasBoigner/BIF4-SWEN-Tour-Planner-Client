@@ -22,7 +22,10 @@ export class TourService {
         const httpParams = new HttpParams();
 
         return this.http.get<Page<Tour>>(this.toursUrl, {
-            params: httpParams.set('name', name ?? '').set('page', page ?? 0).set('size', size ?? 5),
+            params: httpParams
+                .set('name', name ?? '')
+                .set('page', page ?? 0)
+                .set('size', size ?? 5),
         });
     }
 

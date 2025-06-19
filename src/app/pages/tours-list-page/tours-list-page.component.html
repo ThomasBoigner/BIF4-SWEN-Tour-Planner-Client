@@ -38,7 +38,11 @@
                 }"
             ></tour-button>
         </div>
-        <search-bar placeholder="Search for tour" [(value)]="searchInput" (valueChange)="searchTour()"></search-bar>
+        <search-bar
+            placeholder="Search for tour"
+            [(value)]="searchInput"
+            (valueChange)="searchTour()"
+        ></search-bar>
         <div class="tour-list">
             @if (tours$ | async; as tours) {
                 @for (tour of tours.content; track tour.id) {
