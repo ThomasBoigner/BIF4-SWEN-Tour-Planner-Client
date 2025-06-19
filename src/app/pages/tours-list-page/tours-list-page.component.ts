@@ -28,6 +28,8 @@ import { Page } from '../../model/page';
 })
 export class ToursListPageComponent {
     tours$: Observable<Page<Tour>>;
+    searchInput = "";
+
     selectedTour: string | undefined;
     map: Map | undefined;
     control: Control | undefined;
@@ -49,6 +51,10 @@ export class ToursListPageComponent {
 
     onMapReady(map: Map) {
         this.map = map;
+    }
+
+    searchTour() {
+        this.tours$ = this.tourService.getTours(this.searchInput);
     }
 
     selectTour(tour: Tour) {
