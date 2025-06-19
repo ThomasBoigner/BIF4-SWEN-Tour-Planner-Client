@@ -41,7 +41,7 @@
         <search-bar placeholder="Search for tour"></search-bar>
         <div class="tour-list">
             @if (tours$ | async; as tours) {
-                @for (tour of tours; track tour.id) {
+                @for (tour of tours.content; track tour.id) {
                     <tour-list-item [tour]="tour" (click)="selectTour(tour)"></tour-list-item>
                 }
             } @else {

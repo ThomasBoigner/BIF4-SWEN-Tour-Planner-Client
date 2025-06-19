@@ -6,6 +6,7 @@ import { TourService } from './tour.service';
 import { LoggerTestingModule } from 'ngx-logger/testing';
 import { catchError, of } from 'rxjs';
 import { CreateTourCommand } from '../model/commands/create-tour-command';
+import { Page } from '../model/page';
 
 describe('TourService', () => {
     beforeEach(() => {
@@ -77,20 +78,32 @@ describe('TourService', () => {
             },
         ];
 
+        const expectedPage: Page<Tour> = {
+            content: expectedTours,
+            last: false,
+            totalPages: 2,
+            totalElements: 4,
+            first: true,
+            size: 2,
+            number: 0,
+            numberOfElements: 4,
+            empty: false,
+        }
+
         // When
         const response = tourService.getTours();
 
         // Then
         response.subscribe((tours) => {
-            expect(tours).toEqual(expectedTours);
+            expect(tours).toEqual(expectedPage);
         });
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour',
+            url: 'http://localhost:8080/api/tour?name=&page=0&size=20',
         });
 
-        req.flush(expectedTours);
+        req.flush(expectedPage);
         expect(req.request.responseType).toEqual('json');
     });
 
@@ -114,7 +127,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour',
+            url: 'http://localhost:8080/api/tour?name=&page=0&size=20',
         });
 
         req.error(new ProgressEvent('Network Error'));
@@ -141,7 +154,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour',
+            url: 'http://localhost:8080/api/tour?name=&page=0&size=20',
         });
 
         req.flush(null, { status: 500, statusText: 'Internal Server Error' });

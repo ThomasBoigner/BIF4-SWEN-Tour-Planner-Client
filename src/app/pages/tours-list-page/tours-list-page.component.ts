@@ -10,6 +10,7 @@ import { SearchBarComponent } from '../../components/search-bar/search-bar.compo
 import { LeafletDirective } from '@bluehalo/ngx-leaflet';
 import L, { latLng, tileLayer, Map, Control } from 'leaflet';
 import 'leaflet-routing-machine';
+import { Page } from '../../model/page';
 
 @Component({
     selector: 'tours-list-page',
@@ -26,7 +27,7 @@ import 'leaflet-routing-machine';
     ],
 })
 export class ToursListPageComponent {
-    tours$: Observable<Tour[]>;
+    tours$: Observable<Page<Tour>>;
     selectedTour: string | undefined;
     map: Map | undefined;
     control: Control | undefined;

@@ -5,6 +5,7 @@ import { Tour } from '../../model/tour';
 import { of } from 'rxjs';
 import { provideRouter } from '@angular/router';
 import { routes } from '../../app.routes';
+import { Page } from '../../model/page';
 
 describe('ToursListPageComponent', () => {
     let tourService: jasmine.SpyObj<TourService>;
@@ -85,7 +86,19 @@ describe('ToursListPageComponent', () => {
             estimatedTime: 240.0,
         };
 
-        tourService.getTours.and.returnValue(of([tour1, tour2]));
+        const expectedPage: Page<Tour> = {
+            content: [tour1, tour2],
+            last: false,
+            totalPages: 2,
+            totalElements: 4,
+            first: true,
+            size: 2,
+            number: 0,
+            numberOfElements: 4,
+            empty: false,
+        }
+
+        tourService.getTours.and.returnValue(of(expectedPage));
 
         // When
         const fixture: ComponentFixture<ToursListPageComponent> =
