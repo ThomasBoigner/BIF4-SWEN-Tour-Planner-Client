@@ -43,13 +43,19 @@
             [(value)]="searchInput"
             (valueChange)="searchTour()"
         ></search-bar>
-        <div class="tour-list">
-            @if (tours$ | async; as tours) {
-                @for (tour of tours.content; track tour.id) {
+        <div
+            class="tour-list"
+            infinite-scroll
+            [alwaysCallback]="true"
+            [infiniteScrollDistance]="2"
+            [infiniteScrollUpDistance]="6"
+            (scrolled)="onTourListScrollDown()"
+            (scrolledUp)="onTourListScrollUp()"
+        >
+            @for (page of tourPages; track page.number) {
+                @for (tour of page.content; track tour.id) {
                     <tour-list-item [tour]="tour" (click)="selectTour(tour)"></tour-list-item>
                 }
-            } @else {
-                <p>No tours available</p>
             }
         </div>
     </section>
