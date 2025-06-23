@@ -48,14 +48,18 @@
             infinite-scroll
             [alwaysCallback]="true"
             [infiniteScrollDistance]="2"
-            [infiniteScrollUpDistance]="6"
+            [infiniteScrollUpDistance]="4"
             (scrolled)="onTourListScrollDown()"
             (scrolledUp)="onTourListScrollUp()"
         >
-            @for (page of tourPages; track page.number) {
-                @for (tour of page.content; track tour.id) {
-                    <tour-list-item [tour]="tour" (click)="selectTour(tour)"></tour-list-item>
+            @if (!(tourPages.length == 0)) {
+                @for (page of tourPages; track page.number) {
+                    @for (tour of page.content; track tour.id) {
+                        <tour-list-item [tour]="tour" (click)="selectTour(tour)"></tour-list-item>
+                    }
                 }
+            } @else {
+                <p>No tours available</p>
             }
         </div>
     </section>

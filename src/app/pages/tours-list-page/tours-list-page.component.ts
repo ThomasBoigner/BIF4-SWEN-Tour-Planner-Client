@@ -53,42 +53,45 @@ export class ToursListPageComponent {
     }
 
     searchTour() {
-        console.log();
+        this.tourPages = [];
+        this.tourService.getTours(this.searchInput, 0, 5).subscribe((tour?) => {
+            if (tour) {
+                this.tourPages.push(tour);
+            }
+        });
     }
 
     onTourListScrollDown() {
-        console.log('scrolled down!!');
         const lastPage = this.tourPages.at(-1);
 
         if (!lastPage || lastPage.last) {
-            console.log('return')
             return;
         }
 
-        this.tourService.getTours(this.searchInput, lastPage.number + 1, 5).subscribe((tour) => {
-            this.tourPages.push(tour);
+        this.tourService.getTours(this.searchInput, lastPage.number + 1, 5).subscribe((tour?) => {
+            if (tour) {
+                this.tourPages.push(tour);
+            }
 
             if (this.tourPages.length > 3) {
-                console.log('shift')
                 this.tourPages.shift();
             }
         });
     }
 
     onTourListScrollUp() {
-        console.log('scrolled up!!');
         const firstPage = this.tourPages.at(0);
 
         if (!firstPage || firstPage.first) {
-            console.log('return')
             return;
         }
 
-        this.tourService.getTours(this.searchInput, firstPage.number - 1, 5).subscribe((tour) => {
-            this.tourPages.unshift(tour);
+        this.tourService.getTours(this.searchInput, firstPage.number - 1, 5).subscribe((tour?) => {
+            if (tour) {
+                this.tourPages.unshift(tour);
+            }
 
             if (this.tourPages.length > 3) {
-                console.log('pop')
                 this.tourPages.pop();
             }
         });
