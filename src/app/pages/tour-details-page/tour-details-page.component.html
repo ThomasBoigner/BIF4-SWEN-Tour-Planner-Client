@@ -137,13 +137,17 @@
     <section id="tour-logs">
         <search-bar placeholder="Search for tour log"></search-bar>
         <div class="tour-log-list">
-            @if (tourLog$ | async; as tourLogs) {
-                @for (tourLog of tourLogs; track tourLog.id) {
-                    <tour-log-list-item
-                        [tourLog]="tourLog"
-                        (deleteTourLog)="deleteTourLog(tourLog.id)"
-                    ></tour-log-list-item>
+            @if (!(tourLogPages.length == 0)) {
+                @for (page of tourLogPages; track page.number) {
+                    @for (tourLog of page.content; track tourLog.id) {
+                        <tour-log-list-item
+                                [tourLog]="tourLog"
+                                (deleteTourLog)="deleteTourLog(tourLog.id)"
+                        ></tour-log-list-item>
+                    }
                 }
+            } @else {
+                <p>No tour logs available</p>
             }
         </div>
     </section>
