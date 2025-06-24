@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Tour } from '../../model/tour';
 import { TourService } from '../../service/tour.service';
-import { AsyncPipe, NgOptimizedImage } from '@angular/common';
-import { Observable } from 'rxjs';
+import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TourListItemComponent } from '../../components/tour-list-item/tour-list-item.component';
 import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
@@ -11,6 +10,7 @@ import { LeafletDirective } from '@bluehalo/ngx-leaflet';
 import L, { latLng, tileLayer, Map, Control } from 'leaflet';
 import 'leaflet-routing-machine';
 import { Page } from '../../model/page';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 
 @Component({
     selector: 'tours-list-page',
@@ -18,16 +18,16 @@ import { Page } from '../../model/page';
     styleUrls: ['./tours-list-page.component.css'],
     imports: [
         NgOptimizedImage,
-        AsyncPipe,
         RouterLink,
         TourListItemComponent,
         TourButtonComponent,
         SearchBarComponent,
         LeafletDirective,
+        InfiniteScrollDirective,
     ],
 })
 export class ToursListPageComponent {
-    tours$: Observable<Page<Tour>>;
+    tourPages: Page<Tour>[];
     searchInput = '';
 
     selectedTour: string | undefined;
@@ -46,15 +46,61 @@ export class ToursListPageComponent {
     };
 
     constructor(private tourService: TourService) {
-        this.tours$ = this.tourService.getTours();
+        this.tourPages = [];
+        this.tourService.getTours(this.searchInput, 0, 5).subscribe((tour) => {
+            if (tour) {
+                this.tourPages.push(tour);
+            }
+        });
+    }
+
+    searchTour() {
+        this.tourPages = [];
+        this.tourService.getTours(this.searchInput, 0, 5).subscribe((tour) => {
+            if (tour) {
+                this.tourPages.push(tour);
+            }
+        });
+    }
+
+    onTourListScrollDown() {
+        const lastPage = this.tourPages.at(-1);
+
+        if (!lastPage || lastPage.last) {
+            return;
+        }
+
+        this.tourService.getTours(this.searchInput, lastPage.number + 1, 5).subscribe((tour) => {
+            if (tour) {
+                this.tourPages.push(tour);
+            }
+
+            if (this.tourPages.length > 3) {
+                this.tourPages.shift();
+            }
+        });
+    }
+
+    onTourListScrollUp() {
+        const firstPage = this.tourPages.at(0);
+
+        if (!firstPage || firstPage.first) {
+            return;
+        }
+
+        this.tourService.getTours(this.searchInput, firstPage.number - 1, 5).subscribe((tour) => {
+            if (tour) {
+                this.tourPages.unshift(tour);
+            }
+
+            if (this.tourPages.length > 3) {
+                this.tourPages.pop();
+            }
+        });
     }
 
     onMapReady(map: Map) {
         this.map = map;
-    }
-
-    searchTour() {
-        this.tours$ = this.tourService.getTours(this.searchInput);
     }
 
     selectTour(tour: Tour) {

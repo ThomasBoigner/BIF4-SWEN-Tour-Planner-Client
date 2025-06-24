@@ -1,52 +1,66 @@
 <div class="container">
     <section id="sidebar">
-        <a routerLink="/">
-            <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo" />
-        </a>
-        <div class="buttons-container">
-            <tour-button
-                text="Create tour"
-                color="primary"
-                [primaryImage]="{
-                    src: 'app/assets/svg/plus.svg',
-                    alt: 'plus',
-                    height: 32,
-                    width: 32,
-                }"
-                [secondaryImage]="{
-                    src: 'app/assets/svg/plus-primary.svg',
-                    alt: 'plus',
-                    height: 32,
-                    width: 32,
-                }"
-                routerLink="/tour/new"
-            ></tour-button>
-            <tour-button
-                text="Import tour"
-                color="secondary"
-                [primaryImage]="{
-                    src: 'app/assets/svg/import.svg',
-                    alt: 'import',
-                    width: 24,
-                    height: 32,
-                }"
-                [secondaryImage]="{
-                    src: 'app/assets/svg/import-secondary.svg',
-                    alt: 'import',
-                    width: 24,
-                    height: 32,
-                }"
-            ></tour-button>
+        <div class="sidebar-header">
+            <a routerLink="/">
+                <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo" />
+            </a>
+            <div class="buttons-container">
+                <tour-button
+                    text="Create tour"
+                    color="primary"
+                    [primaryImage]="{
+                        src: 'app/assets/svg/plus.svg',
+                        alt: 'plus',
+                        height: 32,
+                        width: 32,
+                    }"
+                    [secondaryImage]="{
+                        src: 'app/assets/svg/plus-primary.svg',
+                        alt: 'plus',
+                        height: 32,
+                        width: 32,
+                    }"
+                    routerLink="/tour/new"
+                ></tour-button>
+                <tour-button
+                    text="Import tour"
+                    color="secondary"
+                    [primaryImage]="{
+                        src: 'app/assets/svg/import.svg',
+                        alt: 'import',
+                        width: 24,
+                        height: 32,
+                    }"
+                    [secondaryImage]="{
+                        src: 'app/assets/svg/import-secondary.svg',
+                        alt: 'import',
+                        width: 24,
+                        height: 32,
+                    }"
+                ></tour-button>
+            </div>
+            <search-bar
+                placeholder="Search for tour"
+                [(value)]="searchInput"
+                (valueChange)="searchTour()"
+            ></search-bar>
         </div>
-        <search-bar
-            placeholder="Search for tour"
-            [(value)]="searchInput"
-            (valueChange)="searchTour()"
-        ></search-bar>
-        <div class="tour-list">
-            @if (tours$ | async; as tours) {
-                @for (tour of tours.content; track tour.id) {
-                    <tour-list-item [tour]="tour" (click)="selectTour(tour)"></tour-list-item>
+        <div
+            class="tour-list"
+            infinite-scroll
+            [scrollWindow]="false"
+            [alwaysCallback]="true"
+            [infiniteScrollThrottle]="50"
+            [infiniteScrollDistance]="2"
+            [infiniteScrollUpDistance]="2"
+            (scrolled)="onTourListScrollDown()"
+            (scrolledUp)="onTourListScrollUp()"
+        >
+            @if (!(tourPages.length == 0)) {
+                @for (page of tourPages; track page.number) {
+                    @for (tour of page.content; track tour.id) {
+                        <tour-list-item [tour]="tour" (click)="selectTour(tour)"></tour-list-item>
+                    }
                 }
             } @else {
                 <p>No tours available</p>

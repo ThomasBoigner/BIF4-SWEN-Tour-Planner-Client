@@ -7,13 +7,16 @@
 section#sidebar {
     width: 512px;
     padding: 32px 48px;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
 }
 
-section#sidebar > a {
+div.sidebar-header > a {
     display: inline-block;
 }
 
-section#sidebar > a,
+div.sidebar-header > a,
 div.buttons-container,
 search-bar {
     margin-bottom: 32px;
@@ -35,6 +38,8 @@ div.tour-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    overflow-y: scroll;
+    height: 100%;
 }
 
 div.tour-list > p {
