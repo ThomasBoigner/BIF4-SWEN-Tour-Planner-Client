@@ -136,13 +136,22 @@
     </section>
     <section id="tour-logs">
         <search-bar placeholder="Search for tour log"></search-bar>
-        <div class="tour-log-list">
+        <div
+            class="tour-log-list"
+            infinite-scroll
+            [alwaysCallback]="true"
+            [infiniteScrollThrottle]="50"
+            [infiniteScrollDistance]="3"
+            [infiniteScrollUpDistance]="3"
+            (scrolled)="onTourLogListScrollDown()"
+            (scrolledUp)="onTourLogListScrollUp()"
+        >
             @if (!(tourLogPages.length == 0)) {
                 @for (page of tourLogPages; track page.number) {
                     @for (tourLog of page.content; track tourLog.id) {
                         <tour-log-list-item
-                                [tourLog]="tourLog"
-                                (deleteTourLog)="deleteTourLog(tourLog.id)"
+                            [tourLog]="tourLog"
+                            (deleteTourLog)="deleteTourLog(tourLog.id)"
                         ></tour-log-list-item>
                     }
                 }

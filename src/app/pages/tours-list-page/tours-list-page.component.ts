@@ -71,9 +71,11 @@ export class ToursListPageComponent {
         }
 
         this.tourService.getTours(this.searchInput, lastPage.number + 1, 5).subscribe((tour) => {
-            if (tour) {
-                this.tourPages.push(tour);
+            if (!tour) {
+                return;
             }
+
+            this.tourPages.push(tour);
 
             if (this.tourPages.length > 3) {
                 this.tourPages.shift();
@@ -89,9 +91,11 @@ export class ToursListPageComponent {
         }
 
         this.tourService.getTours(this.searchInput, firstPage.number - 1, 5).subscribe((tour) => {
-            if (tour) {
-                this.tourPages.unshift(tour);
+            if (!tour) {
+                return;
             }
+
+            this.tourPages.unshift(tour);
 
             if (this.tourPages.length > 3) {
                 this.tourPages.pop();
