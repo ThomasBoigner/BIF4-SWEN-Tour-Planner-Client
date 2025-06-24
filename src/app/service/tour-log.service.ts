@@ -29,7 +29,7 @@ export class TourLogService {
 
         return this.http.get<Page<TourLog>>(url, {
             params: httpParams
-                .set('name', comment ?? '')
+                .set('comment', comment ?? '')
                 .set('page', page ?? 0)
                 .set('size', size ?? 5),
         });
