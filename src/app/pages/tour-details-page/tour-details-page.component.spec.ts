@@ -7,12 +7,20 @@ import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { TourDetailsPageComponent } from './tour-details-page.component';
 import { NGXLogger } from 'ngx-logger';
+import { TourLogService } from '../../service/tour-log.service';
+import { TourLog } from '../../model/tour-log';
+import { Page } from '../../model/page';
+import { DatePipe } from '@angular/common';
 
 describe('TourDetailsPageComponent', () => {
     let tourService: jasmine.SpyObj<TourService>;
+    let tourLogService: jasmine.SpyObj<TourLogService>;
 
     beforeEach(() => {
-        const spy = jasmine.createSpyObj<TourService>('TourService', ['getTour']);
+        const spyTourService = jasmine.createSpyObj<TourService>('TourService', ['getTour']);
+        const spyTourLogService = jasmine.createSpyObj<TourLogService>('TourLogService', [
+            'getTourLogsForTour',
+        ]);
         const httpClientSpy = jasmine.createSpyObj<HttpClient>('HttpClient', [
             'get',
             'post',
@@ -34,7 +42,8 @@ describe('TourDetailsPageComponent', () => {
         TestBed.configureTestingModule({
             imports: [TourDetailsPageComponent],
             providers: [
-                { provide: TourService, useValue: spy },
+                { provide: TourService, useValue: spyTourService },
+                { provide: TourLogService, useValue: spyTourLogService },
                 { provide: HttpClient, useValue: httpClientSpy },
                 { provide: NGXLogger, useValue: loggerSpy },
                 provideRouter(routes),
@@ -42,6 +51,7 @@ describe('TourDetailsPageComponent', () => {
         });
 
         tourService = TestBed.inject(TourService) as jasmine.SpyObj<TourService>;
+        tourLogService = TestBed.inject(TourLogService) as jasmine.SpyObj<TourLogService>;
     });
 
     it('Tour details should be displayed', () => {
@@ -74,9 +84,9 @@ describe('TourDetailsPageComponent', () => {
         };
 
         tourService.getTour.and.returnValue(of(tour));
+        tourLogService.getTourLogsForTour.and.returnValue(of(null));
 
         // When
-
         const fixture: ComponentFixture<TourDetailsPageComponent> =
             TestBed.createComponent(TourDetailsPageComponent);
 
@@ -100,5 +110,74 @@ describe('TourDetailsPageComponent', () => {
         expect(nativeElement.textContent).toContain(tour.distance);
         expect(nativeElement.textContent).toContain(tour.estimatedTime / 60);
         expect(nativeElement.textContent).toContain('Bike');
+    });
+
+    it('Message should be displayed if there are no tour logs ', () => {
+        // Given
+        tourLogService.getTourLogsForTour.and.returnValue(of(null));
+
+        // When
+        const fixture: ComponentFixture<TourDetailsPageComponent> =
+            TestBed.createComponent(TourDetailsPageComponent);
+
+        fixture.detectChanges();
+
+        // Then
+        const nativeElement = fixture.nativeElement as HTMLElement;
+        expect(fixture.componentInstance).toBeDefined();
+        expect(nativeElement.textContent).toContain('No tour logs available');
+    });
+
+    it('Tour logs should be displayed ', () => {
+        // Given
+        const datePipe = new DatePipe('en');
+        const expectedTourLog: TourLog = {
+            id: 'c1946dcc-1afb-4c12-bf95-bf95fc2bf80f',
+            tourId: '4b4701b8-18e7-49c9-85aa-97cf3a3e5890',
+            duration: {
+                startTime: '2025-01-01T12:00:00',
+                endTime: '2025-01-01T13:00:00',
+                duration: 60,
+            },
+            comment: 'What a nice tour!',
+            difficulty: 3,
+            distance: 2.0,
+            rating: 5,
+        };
+
+        const expectedPage: Page<TourLog> = {
+            content: [expectedTourLog],
+            last: false,
+            totalPages: 2,
+            totalElements: 4,
+            first: true,
+            size: 2,
+            number: 0,
+            numberOfElements: 4,
+            empty: false,
+        };
+
+        tourLogService.getTourLogsForTour.and.returnValue(of(expectedPage));
+
+        // When
+        const fixture: ComponentFixture<TourDetailsPageComponent> =
+            TestBed.createComponent(TourDetailsPageComponent);
+
+        fixture.detectChanges();
+
+        // Then
+        const nativeElement = fixture.nativeElement as HTMLElement;
+        expect(fixture.componentInstance).toBeDefined();
+        expect(nativeElement.textContent).toContain(
+            datePipe.transform(expectedTourLog.duration.startTime, 'dd.MM.yyyy HH:mm'),
+        );
+        expect(nativeElement.textContent).toContain(
+            datePipe.transform(expectedTourLog.duration.endTime, 'dd.MM.yyyy HH:mm'),
+        );
+        expect(nativeElement.textContent).toContain(expectedTourLog.duration.duration);
+        expect(nativeElement.textContent).toContain(expectedTourLog.comment);
+        expect(nativeElement.textContent).toContain(expectedTourLog.difficulty);
+        expect(nativeElement.textContent).toContain(expectedTourLog.distance);
+        expect(nativeElement.textContent).toContain(expectedTourLog.rating);
     });
 });

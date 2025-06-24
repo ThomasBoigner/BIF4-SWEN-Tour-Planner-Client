@@ -9,6 +9,8 @@ import { TourLog } from '../../model/tour-log';
 import { TourLogListItemComponent } from '../../components/tour-log-list-item/tour-log-list-item.component';
 import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
+import { Page } from '../../model/page';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 
 @Component({
     selector: 'tour-details-page',
@@ -22,12 +24,15 @@ import { SearchBarComponent } from '../../components/search-bar/search-bar.compo
         TourLogListItemComponent,
         TourButtonComponent,
         SearchBarComponent,
+        InfiniteScrollDirective,
     ],
 })
 export class TourDetailsPageComponent {
     tour$: Observable<Tour>;
-    tourLog$: Observable<TourLog[]>;
     tourId: string;
+
+    tourLogPages: Page<TourLog>[];
+    searchInput = '';
 
     constructor(
         private tourService: TourService,
@@ -37,12 +42,76 @@ export class TourDetailsPageComponent {
     ) {
         this.tourId = this.route.snapshot.paramMap.get('id') ?? '';
         this.tour$ = this.tourService.getTour(this.tourId);
-        this.tourLog$ = this.tourLogService.getTourLogsForTour(this.tourId);
+        this.tourLogPages = [];
+        this.tourLogService
+            .getTourLogsForTour(this.tourId, this.searchInput, 0, 5)
+            .subscribe((tourLog) => {
+                if (tourLog) {
+                    this.tourLogPages.push(tourLog);
+                }
+            });
+    }
+
+    onTourLogListScrollDown() {
+        console.log('scrolled down');
+        const lastPage = this.tourLogPages.at(-1);
+
+        if (!lastPage || lastPage.last) {
+            console.log('return');
+            return;
+        }
+
+        this.tourLogService
+            .getTourLogsForTour(this.tourId, this.searchInput, lastPage.number + 1, 5)
+            .subscribe((tourLog) => {
+                if (!tourLog) {
+                    return;
+                }
+
+                this.tourLogPages.push(tourLog);
+
+                if (this.tourLogPages.length > 3) {
+                    console.log('shift');
+                    this.tourLogPages.shift();
+                }
+            });
+    }
+
+    onTourLogListScrollUp() {
+        console.log('scrolled up');
+        const firstPage = this.tourLogPages.at(0);
+
+        if (!firstPage || firstPage.first) {
+            console.log('return');
+            return;
+        }
+
+        this.tourLogService
+            .getTourLogsForTour(this.tourId, this.searchInput, firstPage.number - 1, 5)
+            .subscribe((tourLog) => {
+                if (!tourLog) {
+                    return;
+                }
+
+                this.tourLogPages.unshift(tourLog);
+
+                if (this.tourLogPages.length > 3) {
+                    console.log('pop');
+                    this.tourLogPages.pop();
+                }
+            });
     }
 
     deleteTourLog(id: string) {
         this.tourLogService.deleteTourLog(id).subscribe(() => {
-            this.tourLog$ = this.tourLogService.getTourLogsForTour(this.tourId);
+            this.tourLogPages = [];
+            this.tourLogService
+                .getTourLogsForTour(this.tourId, this.searchInput, 0, 5)
+                .subscribe((tourLog) => {
+                    if (tourLog) {
+                        this.tourLogPages.push(tourLog);
+                    }
+                });
         });
     }
 
