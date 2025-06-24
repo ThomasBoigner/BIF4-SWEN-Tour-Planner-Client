@@ -17,7 +17,7 @@ export class TourService {
         this.toursUrl = 'http://localhost:8080/api/tour';
     }
 
-    public getTours(name?: string, page?: number, size?: number): Observable<Page<Tour>> {
+    public getTours(name?: string, page?: number, size?: number): Observable<Page<Tour> | null> {
         this.logger.debug(`Trying to get all tours from endpoint ${this.toursUrl}`);
         const httpParams = new HttpParams();
 

@@ -20,6 +20,9 @@ describe('ToursListPageComponent', () => {
     });
 
     it('Message should be displayed if there are no tours', () => {
+        // Given
+        tourService.getTours.and.returnValue(of(null));
+
         // When
         const fixture: ComponentFixture<ToursListPageComponent> =
             TestBed.createComponent(ToursListPageComponent);

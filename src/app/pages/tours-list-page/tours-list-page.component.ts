@@ -48,13 +48,15 @@ export class ToursListPageComponent {
     constructor(private tourService: TourService) {
         this.tourPages = [];
         this.tourService.getTours(this.searchInput, 0, 5).subscribe((tour) => {
-            this.tourPages.push(tour);
+            if (tour) {
+                this.tourPages.push(tour);
+            }
         });
     }
 
     searchTour() {
         this.tourPages = [];
-        this.tourService.getTours(this.searchInput, 0, 5).subscribe((tour?) => {
+        this.tourService.getTours(this.searchInput, 0, 5).subscribe((tour) => {
             if (tour) {
                 this.tourPages.push(tour);
             }
@@ -68,7 +70,7 @@ export class ToursListPageComponent {
             return;
         }
 
-        this.tourService.getTours(this.searchInput, lastPage.number + 1, 5).subscribe((tour?) => {
+        this.tourService.getTours(this.searchInput, lastPage.number + 1, 5).subscribe((tour) => {
             if (tour) {
                 this.tourPages.push(tour);
             }
@@ -86,7 +88,7 @@ export class ToursListPageComponent {
             return;
         }
 
-        this.tourService.getTours(this.searchInput, firstPage.number - 1, 5).subscribe((tour?) => {
+        this.tourService.getTours(this.searchInput, firstPage.number - 1, 5).subscribe((tour) => {
             if (tour) {
                 this.tourPages.unshift(tour);
             }
