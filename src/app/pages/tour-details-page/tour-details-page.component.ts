@@ -52,6 +52,17 @@ export class TourDetailsPageComponent {
             });
     }
 
+    searchTourLog() {
+        this.tourLogPages = [];
+        this.tourLogService
+            .getTourLogsForTour(this.tourId, this.searchInput, 0, 5)
+            .subscribe((tourLog) => {
+                if (tourLog) {
+                    this.tourLogPages.push(tourLog);
+                }
+            });
+    }
+
     onTourLogListScrollDown() {
         console.log('scrolled down');
         const lastPage = this.tourLogPages.at(-1);
