@@ -11,6 +11,7 @@ import { TourButtonComponent } from '../../components/tour-button/tour-button.co
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
 import { Page } from '../../model/page';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { BackupService } from '../../service/backup.service';
 
 @Component({
     selector: 'tour-details-page',
@@ -37,6 +38,7 @@ export class TourDetailsPageComponent {
     constructor(
         private tourService: TourService,
         private tourLogService: TourLogService,
+        private backupService: BackupService,
         private route: ActivatedRoute,
         private router: Router,
     ) {
@@ -64,11 +66,9 @@ export class TourDetailsPageComponent {
     }
 
     onTourLogListScrollDown() {
-        console.log('scrolled down');
         const lastPage = this.tourLogPages.at(-1);
 
         if (!lastPage || lastPage.last) {
-            console.log('return');
             return;
         }
 
@@ -82,18 +82,15 @@ export class TourDetailsPageComponent {
                 this.tourLogPages.push(tourLog);
 
                 if (this.tourLogPages.length > 3) {
-                    console.log('shift');
                     this.tourLogPages.shift();
                 }
             });
     }
 
     onTourLogListScrollUp() {
-        console.log('scrolled up');
         const firstPage = this.tourLogPages.at(0);
 
         if (!firstPage || firstPage.first) {
-            console.log('return');
             return;
         }
 
@@ -107,10 +104,13 @@ export class TourDetailsPageComponent {
                 this.tourLogPages.unshift(tourLog);
 
                 if (this.tourLogPages.length > 3) {
-                    console.log('pop');
                     this.tourLogPages.pop();
                 }
             });
+    }
+
+    exportTour() {
+        this.backupService.backupTour(this.tourId)
     }
 
     deleteTourLog(id: string) {
