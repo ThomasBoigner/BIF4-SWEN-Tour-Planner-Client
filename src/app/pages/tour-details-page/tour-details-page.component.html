@@ -82,6 +82,7 @@
                     width: 24,
                     height: 32,
                 }"
+                (click)="exportTour()"
             ></tour-button>
             <tour-button
                 text="Export tour-report"
@@ -135,7 +136,11 @@
         </div>
     </section>
     <section id="tour-logs">
-        <search-bar placeholder="Search for tour log"></search-bar>
+        <search-bar
+            placeholder="Search for tour log"
+            [(value)]="searchInput"
+            (valueChange)="searchTourLog()"
+        ></search-bar>
         <div
             class="tour-log-list"
             infinite-scroll
