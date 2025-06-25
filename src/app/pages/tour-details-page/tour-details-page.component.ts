@@ -110,7 +110,7 @@ export class TourDetailsPageComponent {
     }
 
     exportTour() {
-        this.backupService.backupTour(this.tourId)
+        this.backupService.backupTour(this.tourId);
     }
 
     deleteTourLog(id: string) {
