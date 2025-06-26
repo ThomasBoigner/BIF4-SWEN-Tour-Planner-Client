@@ -52,6 +52,31 @@ export class UpdateTourPageComponent {
         private router: Router,
     ) {
         this.tourId = this.route.snapshot.paramMap.get('id') ?? '';
+        this.tourService.getTour(this.tourId).subscribe((tour) => {
+            this.tourForm = new FormGroup({
+                name: new FormControl<string>(tour.name, { nonNullable: true }),
+                description: new FormControl<string>(tour.description, { nonNullable: true }),
+                fromStreetName: new FormControl<string>(tour.from.streetName, {
+                    nonNullable: true,
+                }),
+                fromStreetNumber: new FormControl<string>(tour.from.streetNumber, {
+                    nonNullable: true,
+                }),
+                fromCity: new FormControl<string>(tour.from.city, { nonNullable: true }),
+                fromZipCode: new FormControl<number>(tour.from.zipCode, { nonNullable: true }),
+                fromCountry: new FormControl<string>(tour.from.country, { nonNullable: true }),
+                toStreetName: new FormControl<string>(tour.to.streetName, { nonNullable: true }),
+                toStreetNumber: new FormControl<string>(tour.to.streetNumber, {
+                    nonNullable: true,
+                }),
+                toCity: new FormControl<string>(tour.to.city, { nonNullable: true }),
+                toZipCode: new FormControl<number>(tour.to.zipCode, { nonNullable: true }),
+                toCountry: new FormControl<string>(tour.to.country, { nonNullable: true }),
+                transportType: new FormControl<TransportType>(tour.transportType, {
+                    nonNullable: true,
+                }),
+            });
+        });
     }
 
     handleSubmit() {
@@ -79,6 +104,6 @@ export class UpdateTourPageComponent {
             error: (error: HttpErrorResponse) => {
                 this.errorMessage = (error.error as ErrorResponse).message;
             },
-        })
+        });
     }
 }

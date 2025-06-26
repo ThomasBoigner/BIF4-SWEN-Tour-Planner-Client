@@ -2,22 +2,53 @@ import { TourService } from '../../service/tour.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { routes } from '../../app.routes';
-import { CreateTourCommand } from '../../model/commands/create-tour-command';
-import { CreateTourPageComponent } from '../create-tour-page/create-tour-page.component';
 import { UpdateTourCommand } from '../../model/commands/update-tour-command';
 import { UpdateTourPageComponent } from './update-tour-page.component';
+import { Tour } from '../../model/tour';
+import { of } from 'rxjs';
 
 describe('UpdateTourPageComponent', () => {
+    let tourService: jasmine.SpyObj<TourService>;
+
     beforeEach(() => {
-        const spy = jasmine.createSpyObj<TourService>('TourService', ['createTour']);
+        const spy = jasmine.createSpyObj<TourService>('TourService', ['getTour']);
         TestBed.configureTestingModule({
             providers: [{ provide: TourService, useValue: spy }, provideRouter(routes)],
         });
-    })
-
+        tourService = TestBed.inject(TourService) as jasmine.SpyObj<TourService>;
+    });
 
     it('All fields should be bound correctly', () => {
         // Given
+        const tour: Tour = {
+            id: 'e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+            name: 'Tour 1',
+            description: 'This tour is awesome',
+            from: {
+                country: 'Austria',
+                city: 'Deutsch Wagram',
+                zipCode: 2232,
+                streetName: 'Radetzkystraße',
+                streetNumber: '2-6',
+                latitude: 10,
+                longitude: 20,
+            },
+            to: {
+                country: 'Austria',
+                city: 'Strasshof an der Nordbahn',
+                zipCode: 2231,
+                streetName: 'Billroth-Gasse',
+                streetNumber: '5',
+                latitude: 10,
+                longitude: 20,
+            },
+            transportType: 'BIKE',
+            distance: 20.0,
+            estimatedTime: 120.0,
+        };
+
+        tourService.getTour.and.returnValue(of(tour));
+
         const updateTourCommand: UpdateTourCommand = {
             name: 'Test name',
             description: 'Test description',
@@ -147,5 +178,5 @@ describe('UpdateTourPageComponent', () => {
         expect(fixture.componentInstance.tourForm.value.transportType).toEqual(
             updateTourCommand.transportType,
         );
-    })
-})
+    });
+});
