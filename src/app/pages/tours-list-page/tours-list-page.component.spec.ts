@@ -6,15 +6,25 @@ import { of } from 'rxjs';
 import { provideRouter } from '@angular/router';
 import { routes } from '../../app.routes';
 import { Page } from '../../model/page';
+import { BackupService } from '../../service/backup.service';
 
 describe('ToursListPageComponent', () => {
     let tourService: jasmine.SpyObj<TourService>;
 
     beforeEach(() => {
-        const spy = jasmine.createSpyObj<TourService>('TourService', ['getTours']);
+        const spyTourService = jasmine.createSpyObj<TourService>('TourService', ['getTours']);
+        const spyBackupService = jasmine.createSpyObj<BackupService>('BackupService', [
+            'exportTour',
+            'importTour',
+        ]);
+
         TestBed.configureTestingModule({
             imports: [ToursListPageComponent],
-            providers: [{ provide: TourService, useValue: spy }, provideRouter(routes)],
+            providers: [
+                { provide: TourService, useValue: spyTourService },
+                { provide: BackupService, useValue: spyBackupService },
+                provideRouter(routes),
+            ],
         });
         tourService = TestBed.inject(TourService) as jasmine.SpyObj<TourService>;
     });

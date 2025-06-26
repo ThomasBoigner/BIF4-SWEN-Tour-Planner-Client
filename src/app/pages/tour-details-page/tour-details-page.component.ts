@@ -110,7 +110,20 @@ export class TourDetailsPageComponent {
     }
 
     exportTour() {
-        this.backupService.backupTour(this.tourId);
+        this.backupService.exportTour(this.tourId).subscribe((response) => {
+            if (!response.body) {
+                return;
+            }
+
+            const contentDisposition = response.headers.get('content-disposition');
+            const match = contentDisposition?.match(/filename="?(.+?)"?$/);
+
+            const url = window.URL.createObjectURL(response.body);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = match ? match[1] : 'backup.json';
+            a.click();
+        });
     }
 
     deleteTourLog(id: string) {

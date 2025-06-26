@@ -11,6 +11,7 @@ import L, { latLng, tileLayer, Map, Control } from 'leaflet';
 import 'leaflet-routing-machine';
 import { Page } from '../../model/page';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { BackupService } from '../../service/backup.service';
 
 @Component({
     selector: 'tours-list-page',
@@ -45,13 +46,38 @@ export class ToursListPageComponent {
         center: latLng(0, 0),
     };
 
-    constructor(private tourService: TourService) {
+    constructor(
+        private tourService: TourService,
+        private backupService: BackupService,
+    ) {
         this.tourPages = [];
         this.tourService.getTours(this.searchInput, 0, 5).subscribe((tour) => {
             if (tour) {
                 this.tourPages.push(tour);
             }
         });
+    }
+
+    restoreTour() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.click();
+        input.onchange = () => {
+            const file = input.files?.item(0);
+
+            if (!file) {
+                return;
+            }
+
+            this.backupService.importTour(file).subscribe(() => {
+                this.tourPages = [];
+                this.tourService.getTours(this.searchInput, 0, 5).subscribe((tour) => {
+                    if (tour) {
+                        this.tourPages.push(tour);
+                    }
+                });
+            });
+        };
     }
 
     searchTour() {
