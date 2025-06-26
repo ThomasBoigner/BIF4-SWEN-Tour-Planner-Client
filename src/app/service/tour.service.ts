@@ -5,6 +5,7 @@ import { Tour } from '../model/tour';
 import { Observable } from 'rxjs';
 import { CreateTourCommand } from '../model/commands/create-tour-command';
 import { Page } from '../model/page';
+import { UpdateTourCommand } from '../model/commands/update-tour-command';
 
 @Injectable({ providedIn: 'root' })
 export class TourService {
@@ -39,6 +40,13 @@ export class TourService {
             `Trying to create new tour with command ${JSON.stringify(createTourCommand)} with endpoint ${this.toursUrl}`,
         );
         return this.http.post<Tour>(this.toursUrl, createTourCommand);
+    }
+
+    public updateTour(id: string, updateTourCommand: UpdateTourCommand): Observable<Tour> {
+        this.logger.debug(
+            `Trying to update tour with id ${id} with command ${JSON.stringify(updateTourCommand)} with endpoint ${this.toursUrl}`,
+        );
+        return this.http.put<Tour>(`${this.toursUrl}/${id}`, updateTourCommand);
     }
 
     public deleteTour(id: string) {
