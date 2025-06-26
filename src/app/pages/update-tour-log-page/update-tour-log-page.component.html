@@ -1,0 +1,99 @@
+<div class="container">
+    <section id="update-tour-log-hero">
+        <a routerLink="/">
+            <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo" />
+        </a>
+        <h1>Update a Tour Log!</h1>
+    </section>
+    <section id="update-tour-log-form">
+        @if (errorMessage) {
+            <error-message [text]="errorMessage"></error-message>
+        }
+        <form [formGroup]="tourLogForm">
+            <div class="start-time-end-time-input">
+                <date-input
+                        label="Start time"
+                        [formGroup]="tourLogForm"
+                        controlName="startTime"
+                        [image]="{
+                        src: 'app/assets/svg/clock.svg',
+                        alt: 'clock',
+                        width: 32,
+                        height: 32,
+                    }"
+                ></date-input>
+                <date-input
+                        label="End time"
+                        [formGroup]="tourLogForm"
+                        controlName="endTime"
+                        [image]="{
+                        src: 'app/assets/svg/clock.svg',
+                        alt: 'clock',
+                        width: 32,
+                        height: 32,
+                    }"
+                ></date-input>
+            </div>
+
+            <text-input
+                    label="Comment"
+                    [formGroup]="tourLogForm"
+                    controlName="comment"
+                    [image]="{
+                    src: 'app/assets/svg/comment.svg',
+                    alt: 'comment',
+                    width: 32,
+                    height: 28,
+                }"
+            ></text-input>
+            <text-input
+                    label="Distance"
+                    [formGroup]="tourLogForm"
+                    controlName="distance"
+                    [image]="{
+                    src: 'app/assets/svg/trail-sign.svg',
+                    alt: 'trail-sign',
+                    width: 32,
+                    height: 29,
+                }"
+            ></text-input>
+
+            <div class="difficulty-rating-input">
+                <text-input
+                        label="Difficulty"
+                        [formGroup]="tourLogForm"
+                        controlName="difficulty"
+                        [image]="{
+                        src: 'app/assets/svg/speedometer.svg',
+                        alt: 'speedometer',
+                        width: 32,
+                        height: 28,
+                    }"
+                ></text-input>
+                <text-input
+                        label="Rating"
+                        [formGroup]="tourLogForm"
+                        controlName="rating"
+                        [image]="{
+                        src: 'app/assets/svg/thumbs-up.svg',
+                        alt: 'thumbs-up',
+                        width: 32,
+                        height: 28,
+                    }"
+                ></text-input>
+            </div>
+        </form>
+
+        <tour-button
+                text="Update"
+                color="primary"
+                [primaryImage]="{ src: 'app/assets/svg/update.svg', alt: 'plus', height: 32, width: 32 }"
+                [secondaryImage]="{
+                src: 'app/assets/svg/update-primary.svg',
+                alt: 'plus',
+                height: 32,
+                width: 32,
+            }"
+        ></tour-button>
+    </section>
+</div>
