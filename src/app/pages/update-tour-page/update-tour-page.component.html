@@ -33,10 +33,10 @@
                 <p>From:</p>
                 <div class="street-name-street-number-input">
                     <text-input
-                            label="Street name"
-                            [formGroup]="tourForm"
-                            controlName="fromStreetName"
-                            [image]="{
+                        label="Street name"
+                        [formGroup]="tourForm"
+                        controlName="fromStreetName"
+                        [image]="{
                             src: 'app/assets/svg/street.svg',
                             alt: 'street',
                             width: 41,
@@ -44,18 +44,18 @@
                         }"
                     ></text-input>
                     <text-input
-                            class="small"
-                            label="Street number"
-                            [formGroup]="tourForm"
-                            controlName="fromStreetNumber"
+                        class="small"
+                        label="Street number"
+                        [formGroup]="tourForm"
+                        controlName="fromStreetNumber"
                     ></text-input>
                 </div>
                 <div class="city-zip-code-input">
                     <text-input
-                            label="City"
-                            [formGroup]="tourForm"
-                            controlName="fromCity"
-                            [image]="{
+                        label="City"
+                        [formGroup]="tourForm"
+                        controlName="fromCity"
+                        [image]="{
                             src: 'app/assets/svg/houses.svg',
                             alt: 'houses',
                             width: 36,
@@ -63,27 +63,27 @@
                         }"
                     ></text-input>
                     <text-input
-                            class="small"
-                            label="Zip code"
-                            [formGroup]="tourForm"
-                            controlName="fromZipCode"
+                        class="small"
+                        label="Zip code"
+                        [formGroup]="tourForm"
+                        controlName="fromZipCode"
                     ></text-input>
                 </div>
                 <text-input
-                        label="Country"
-                        [formGroup]="tourForm"
-                        controlName="fromCountry"
-                        [image]="{ src: 'app/assets/svg/flag.svg', alt: 'flag', width: 28, height: 32 }"
+                    label="Country"
+                    [formGroup]="tourForm"
+                    controlName="fromCountry"
+                    [image]="{ src: 'app/assets/svg/flag.svg', alt: 'flag', width: 28, height: 32 }"
                 ></text-input>
             </div>
             <div class="address-input">
                 <p>To:</p>
                 <div class="street-name-street-number-input">
                     <text-input
-                            label="Street name"
-                            [formGroup]="tourForm"
-                            controlName="toStreetName"
-                            [image]="{
+                        label="Street name"
+                        [formGroup]="tourForm"
+                        controlName="toStreetName"
+                        [image]="{
                             src: 'app/assets/svg/street.svg',
                             alt: 'street',
                             width: 41,
@@ -91,18 +91,18 @@
                         }"
                     ></text-input>
                     <text-input
-                            class="small"
-                            label="Street number"
-                            [formGroup]="tourForm"
-                            controlName="toStreetNumber"
+                        class="small"
+                        label="Street number"
+                        [formGroup]="tourForm"
+                        controlName="toStreetNumber"
                     ></text-input>
                 </div>
                 <div class="city-zip-code-input">
                     <text-input
-                            label="City"
-                            [formGroup]="tourForm"
-                            controlName="toCity"
-                            [image]="{
+                        label="City"
+                        [formGroup]="tourForm"
+                        controlName="toCity"
+                        [image]="{
                             src: 'app/assets/svg/houses.svg',
                             alt: 'houses',
                             width: 36,
@@ -110,42 +110,48 @@
                         }"
                     ></text-input>
                     <text-input
-                            class="small"
-                            label="Zip code"
-                            [formGroup]="tourForm"
-                            controlName="toZipCode"
+                        class="small"
+                        label="Zip code"
+                        [formGroup]="tourForm"
+                        controlName="toZipCode"
                     ></text-input>
                 </div>
                 <text-input
-                        label="Country"
-                        [formGroup]="tourForm"
-                        controlName="toCountry"
-                        [image]="{ src: 'app/assets/svg/flag.svg', alt: 'flag', width: 28, height: 32 }"
+                    label="Country"
+                    [formGroup]="tourForm"
+                    controlName="toCountry"
+                    [image]="{ src: 'app/assets/svg/flag.svg', alt: 'flag', width: 28, height: 32 }"
                 ></text-input>
             </div>
             <multi-select-input
-                    label="Transport type"
-                    [formGroup]="tourForm"
-                    controlName="transportType"
-                    [options]="[
+                label="Transport type"
+                [formGroup]="tourForm"
+                controlName="transportType"
+                [options]="[
                     { id: 0, label: 'Bike', value: 'BIKE' },
                     { id: 1, label: 'Hike', value: 'HIKE' },
                     { id: 2, label: 'Running', value: 'RUNNING' },
                     { id: 3, label: 'Vacation', value: 'VACATION' },
                 ]"
-                    [image]="{ src: 'app/assets/svg/car.svg', alt: 'car', width: 43, height: 32 }"
+                [image]="{ src: 'app/assets/svg/car.svg', alt: 'car', width: 43, height: 32 }"
             ></multi-select-input>
         </form>
         <tour-button
-                text="Update"
-                color="primary"
-                [primaryImage]="{ src: 'app/assets/svg/update.svg', alt: 'plus', height: 32, width: 32 }"
-                [secondaryImage]="{
+            text="Update"
+            color="primary"
+            [primaryImage]="{
+                src: 'app/assets/svg/update.svg',
+                alt: 'plus',
+                height: 32,
+                width: 32,
+            }"
+            [secondaryImage]="{
                 src: 'app/assets/svg/update-primary.svg',
                 alt: 'plus',
                 height: 32,
                 width: 32,
             }"
+            (click)="handleSubmit()"
         ></tour-button>
     </section>
 </div>
