@@ -8,7 +8,6 @@ import { TransportType } from '../../model/transport-type';
 import { TourService } from '../../service/tour.service';
 import { MultiSelectInput } from '../../components/multi-select-input/multi-select-input.component';
 import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
-import { CreateTourCommand } from '../../model/commands/create-tour-command';
 import { UpdateTourCommand } from '../../model/commands/update-tour-command';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ErrorResponse } from '../../model/exception/error-response';
