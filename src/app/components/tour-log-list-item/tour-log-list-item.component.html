@@ -1,21 +1,21 @@
 <div class="tour-log-list-item">
-    <p>Started at: {{ tourLog().duration.startTime | date: 'dd.MM.yyyy HH:mm' }}</p>
-    <p>Finished at: {{ tourLog().duration.endTime | date: 'dd.MM.yyyy HH:mm' }}</p>
-    <p>Duration: {{ tourLog().duration.duration }} minutes</p>
-    <p>Comment: {{ tourLog().comment }}</p>
-    <p>Distance: {{ tourLog().distance }} km</p>
-    <p>Difficulty: {{ tourLog().difficulty }}</p>
-    <p>Rating: {{ tourLog().rating }}</p>
+    <p i18n>Started at: {{ tourLog().duration.startTime | date: 'dd.MM.yyyy HH:mm' }}</p>
+    <p i18n>Finished at: {{ tourLog().duration.endTime | date: 'dd.MM.yyyy HH:mm' }}</p>
+    <p i18n>Duration: {{ tourLog().duration.duration }} minutes</p>
+    <p i18n>Comment: {{ tourLog().comment }}</p>
+    <p i18n>Distance: {{ tourLog().distance }} km</p>
+    <p i18n>Difficulty: {{ tourLog().difficulty }}</p>
+    <p i18n>Rating: {{ tourLog().rating }}</p>
 
     <div class="update-link">
-        <a routerLink="/tour-log/update/{{ tourLog().id }}">
+        <a routerLink="/tour-log/update/{{ tourLog().id }}" i18n>
             Update tour log
             <img ngSrc="app/assets/svg/arrow-right.svg" alt="arrow-right" width="24" height="24" />
         </a>
     </div>
 
     <div class="delete-link">
-        <a (click)="this.deleteTourLog.emit()">
+        <a (click)="this.deleteTourLog.emit()" i18n>
             Delete tour log
             <img ngSrc="app/assets/svg/delete-error.svg" alt="delete" width="28" height="32" />
         </a>

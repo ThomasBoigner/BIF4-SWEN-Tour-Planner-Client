@@ -3,7 +3,7 @@
         <a routerLink="/">
             <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo" />
         </a>
-        <h1>Update a Tour!</h1>
+        <h1 i18n>Update a Tour!</h1>
     </section>
     <section id="update-tour-form">
         @if (errorMessage) {
@@ -12,12 +12,14 @@
         <form [formGroup]="tourForm">
             <div class="name-description-input">
                 <text-input
+                    i18n-label
                     label="Name"
                     [formGroup]="tourForm"
                     controlName="name"
                     [image]="{ src: 'app/assets/svg/map.svg', alt: 'map', width: 32, height: 32 }"
                 ></text-input>
                 <text-input
+                    i18n-label
                     label="Description"
                     [formGroup]="tourForm"
                     controlName="description"
@@ -30,9 +32,10 @@
                 ></text-input>
             </div>
             <div class="address-input">
-                <p>From:</p>
+                <p i18n>From:</p>
                 <div class="street-name-street-number-input">
                     <text-input
+                        i18n-label
                         label="Street name"
                         [formGroup]="tourForm"
                         controlName="fromStreetName"
@@ -45,6 +48,7 @@
                     ></text-input>
                     <text-input
                         class="small"
+                        i18n-label
                         label="Street number"
                         [formGroup]="tourForm"
                         controlName="fromStreetNumber"
@@ -52,6 +56,7 @@
                 </div>
                 <div class="city-zip-code-input">
                     <text-input
+                        i18n-label
                         label="City"
                         [formGroup]="tourForm"
                         controlName="fromCity"
@@ -64,12 +69,14 @@
                     ></text-input>
                     <text-input
                         class="small"
+                        i18n-label
                         label="Zip code"
                         [formGroup]="tourForm"
                         controlName="fromZipCode"
                     ></text-input>
                 </div>
                 <text-input
+                    i18n-label
                     label="Country"
                     [formGroup]="tourForm"
                     controlName="fromCountry"
@@ -77,9 +84,10 @@
                 ></text-input>
             </div>
             <div class="address-input">
-                <p>To:</p>
+                <p i18n>To:</p>
                 <div class="street-name-street-number-input">
                     <text-input
+                        i18n-label
                         label="Street name"
                         [formGroup]="tourForm"
                         controlName="toStreetName"
@@ -92,6 +100,7 @@
                     ></text-input>
                     <text-input
                         class="small"
+                        i18n-label
                         label="Street number"
                         [formGroup]="tourForm"
                         controlName="toStreetNumber"
@@ -99,6 +108,7 @@
                 </div>
                 <div class="city-zip-code-input">
                     <text-input
+                        i18n-label
                         label="City"
                         [formGroup]="tourForm"
                         controlName="toCity"
@@ -111,12 +121,14 @@
                     ></text-input>
                     <text-input
                         class="small"
+                        i18n-label
                         label="Zip code"
                         [formGroup]="tourForm"
                         controlName="toZipCode"
                     ></text-input>
                 </div>
                 <text-input
+                    i18n-label
                     label="Country"
                     [formGroup]="tourForm"
                     controlName="toCountry"
@@ -124,6 +136,7 @@
                 ></text-input>
             </div>
             <multi-select-input
+                i18n-label
                 label="Transport type"
                 [formGroup]="tourForm"
                 controlName="transportType"
@@ -137,6 +150,7 @@
             ></multi-select-input>
         </form>
         <tour-button
+            i18n-text
             text="Update"
             color="primary"
             [primaryImage]="{

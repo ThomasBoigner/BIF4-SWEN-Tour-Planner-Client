@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="1519954996184640001" datatype="html">
+        <source>Error</source>
+        <target>Fehler</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/error-message/error-message.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="183306443023197217" datatype="html">
+        <source>Time: <x id="INTERPOLATION" equiv-text="{{ tour().estimatedTime }}"/>h</source>
+        <target>Zeit: <x id="INTERPOLATION" equiv-text="{{ tour().estimatedTime }}"/>h</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-list-item/tour-list-item.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5726637263631802811" datatype="html">
+        <source>Distance: <x id="INTERPOLATION" equiv-text="{{ tour().distance }}"/>km</source>
+        <target>Entfernung: <x id="INTERPOLATION" equiv-text="{{ tour().distance }}"/>km</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-list-item/tour-list-item.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6418848362885715274" datatype="html">
+        <source>Details <x id="TAG_IMG" ctype="image" equiv-text="&lt;img ngSrc=&quot;app/assets/svg/arrow-right.svg&quot; alt=&quot;arrow-right&quot; width=&quot;24&quot; height=&quot;24&quot; /&gt;"/></source>
+        <target>Details <x id="TAG_IMG" ctype="image" equiv-text="&lt;img ngSrc=&quot;app/assets/svg/arrow-right.svg&quot; alt=&quot;arrow-right&quot; width=&quot;24&quot; height=&quot;24&quot; /&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-list-item/tour-list-item.component.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5734124466671808935" datatype="html">
+        <source>Started at: <x id="INTERPOLATION" equiv-text="{{ tourLog().duration.startTime | date: &apos;dd.MM.yyyy HH:mm&apos; }}"/></source>
+        <target>Startzeitpunkt: <x id="INTERPOLATION" equiv-text="{{ tourLog().duration.startTime | date: &apos;dd.MM.yyyy HH:mm&apos; }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-log-list-item/tour-log-list-item.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1706685956973088636" datatype="html">
+        <source>Finished at: <x id="INTERPOLATION" equiv-text="{{ tourLog().duration.endTime | date: &apos;dd.MM.yyyy HH:mm&apos; }}"/></source>
+        <target>Endzeitpunkt: <x id="INTERPOLATION" equiv-text="{{ tourLog().duration.endTime | date: &apos;dd.MM.yyyy HH:mm&apos; }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-log-list-item/tour-log-list-item.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4686768744056630258" datatype="html">
+        <source>Duration: <x id="INTERPOLATION" equiv-text="{{ tourLog().duration.duration }}"/> minutes</source>
+        <target>Dauer: <x id="INTERPOLATION" equiv-text="{{ tourLog().duration.duration }}"/> minutes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-log-list-item/tour-log-list-item.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1879338756457909960" datatype="html">
+        <source>Comment: <x id="INTERPOLATION" equiv-text="{{ tourLog().comment }}"/></source>
+        <target>Kommentar: <x id="INTERPOLATION" equiv-text="{{ tourLog().comment }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-log-list-item/tour-log-list-item.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1799645489681063459" datatype="html">
+        <source>Distance: <x id="INTERPOLATION" equiv-text="{{ tourLog().distance }}"/> km</source>
+        <target>Distanz: <x id="INTERPOLATION" equiv-text="{{ tourLog().distance }}"/> km</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-log-list-item/tour-log-list-item.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4687152632202912306" datatype="html">
+        <source>Difficulty: <x id="INTERPOLATION" equiv-text="{{ tourLog().difficulty }}"/></source>
+        <target>Schwierigkeit: <x id="INTERPOLATION" equiv-text="{{ tourLog().difficulty }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-log-list-item/tour-log-list-item.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8644713083427379067" datatype="html">
+        <source>Rating: <x id="INTERPOLATION" equiv-text="{{ tourLog().rating }}"/></source>
+        <target>Bewertung: <x id="INTERPOLATION" equiv-text="{{ tourLog().rating }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-log-list-item/tour-log-list-item.component.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5679212993594186536" datatype="html">
+        <source> Update tour log <x id="TAG_IMG" ctype="image" equiv-text="&lt;img ngSrc=&quot;app/assets/svg/arrow-right.svg&quot; alt=&quot;arrow-right&quot; width=&quot;24&quot; height=&quot;24&quot; /&gt;"/></source>
+        <target> Tour Log updaten <x id="TAG_IMG" ctype="image" equiv-text="&lt;img ngSrc=&quot;app/assets/svg/arrow-right.svg&quot; alt=&quot;arrow-right&quot; width=&quot;24&quot; height=&quot;24&quot; /&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-log-list-item/tour-log-list-item.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1179684110729826403" datatype="html">
+        <source> Delete tour log <x id="TAG_IMG" ctype="image" equiv-text="&lt;img ngSrc=&quot;app/assets/svg/delete-error.svg&quot; alt=&quot;delete&quot; width=&quot;28&quot; height=&quot;32&quot; /&gt;"/></source>
+        <target> Tour Log löschen <x id="TAG_IMG" ctype="image" equiv-text="&lt;img ngSrc=&quot;app/assets/svg/delete-error.svg&quot; alt=&quot;delete&quot; width=&quot;28&quot; height=&quot;32&quot; /&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tour-log-list-item/tour-log-list-item.component.html</context>
+          <context context-type="linenumber">19,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8612853773140929035" datatype="html">
+        <source>Create a new tour log!</source>
+        <target>Erstelle einen neuen Tour Log!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-log-page/create-tour-log-page.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3770761673682962465" datatype="html">
+        <source>Start time</source>
+        <target>Start Zeit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-log-page/create-tour-log-page.component.html</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-log-page/update-tour-log-page.component.html</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3029887440722063094" datatype="html">
+        <source>End time</source>
+        <target>End Zeit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-log-page/create-tour-log-page.component.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-log-page/update-tour-log-page.component.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2662644497259948010" datatype="html">
+        <source>Comment</source>
+        <target>Kommentar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-log-page/create-tour-log-page.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-log-page/update-tour-log-page.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1779552786277618671" datatype="html">
+        <source>Distance</source>
+        <target>Distanz</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-log-page/create-tour-log-page.component.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-log-page/update-tour-log-page.component.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1063462873103909661" datatype="html">
+        <source>Difficulty</source>
+        <target>Schwierigkeit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-log-page/create-tour-log-page.component.html</context>
+          <context context-type="linenumber">68,69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-log-page/update-tour-log-page.component.html</context>
+          <context context-type="linenumber">68,69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3706222784708785028" datatype="html">
+        <source>Rating</source>
+        <target>Bewertung</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-log-page/create-tour-log-page.component.html</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-log-page/update-tour-log-page.component.html</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5674286808255988565" datatype="html">
+        <source>Create</source>
+        <target>Erstellen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-log-page/create-tour-log-page.component.html</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">154</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1629905313481218191" datatype="html">
+        <source>Plan a new Tour!</source>
+        <target>Plane eine neue Tour!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8953033926734869941" datatype="html">
+        <source>Name</source>
+        <target>Name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4902817035128594900" datatype="html">
+        <source>Description</source>
+        <target>Beschreibung</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5487630018331375668" datatype="html">
+        <source>From:</source>
+        <target>Von:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8535717725952298934" datatype="html">
+        <source>Street name</source>
+        <target>Straßenname</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">90,91</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">91,92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2245511576433776852" datatype="html">
+        <source>Street number</source>
+        <target>Straßennummer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">52,53</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">103,104</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">52,53</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">104,105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2314075913167237221" datatype="html">
+        <source>City</source>
+        <target>Stadt</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1200737650075932684" datatype="html">
+        <source>Zip code</source>
+        <target>Postleitzahl</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">73,74</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">124,125</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">73,74</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">125,126</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5752829569732845992" datatype="html">
+        <source>To:</source>
+        <target>Nach:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="516176798986294299" datatype="html">
+        <source>Country</source>
+        <target>Land</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">132</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">133</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3797559160158970331" datatype="html">
+        <source>Transport type</source>
+        <target>Transport typ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/create-tour-page/create-tour-page.component.html</context>
+          <context context-type="linenumber">139,140</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">140,141</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7528356510006088716" datatype="html">
+        <source>to:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5322841372425594947" datatype="html">
+        <source>Tour distance</source>
+        <target>Tour Distanz</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1220049370791120361" datatype="html">
+        <source>Estimated time</source>
+        <target>Geschätzte Zeit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7845137876770664683" datatype="html">
+        <source>Add log</source>
+        <target>Log hinzufügen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4100902972435543278" datatype="html">
+        <source>Update tour</source>
+        <target>Tour updaten</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">57,58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1873170709763283622" datatype="html">
+        <source>Export tour</source>
+        <target>Tour exportieren</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">75,76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8430798916168878025" datatype="html">
+        <source>Export tour-report</source>
+        <target>Tour Report exportieren</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">93,94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5073861764736908750" datatype="html">
+        <source>Export summarize-report</source>
+        <target>Übersichts Report exportieren</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">110,111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8683795787649629661" datatype="html">
+        <source>Delete tour</source>
+        <target>Tour löschen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">127,128</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4261696109367550563" datatype="html">
+        <source>Search for tour log</source>
+        <target>Tour Log suchen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tour-details-page/tour-details-page.component.html</context>
+          <context context-type="linenumber">148,149</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8269169520711116032" datatype="html">
+        <source>Create tour</source>
+        <target>Tour erstellen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tours-list-page/tours-list-page.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2977184388638986008" datatype="html">
+        <source>Import tour</source>
+        <target>Tour importieren</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tours-list-page/tours-list-page.component.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4743994745232681553" datatype="html">
+        <source>Search for tour</source>
+        <target>Nach Tour suchen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tours-list-page/tours-list-page.component.html</context>
+          <context context-type="linenumber">47,48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="316511495291146760" datatype="html">
+        <source>No tours available</source>
+        <target>Keine Touren gefunden</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/tours-list-page/tours-list-page.component.html</context>
+          <context context-type="linenumber">70,71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3998695524492924419" datatype="html">
+        <source>Update a tour log!</source>
+        <target>Update einen Tour Log!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-log-page/update-tour-log-page.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4021752662928002901" datatype="html">
+        <source>Update</source>
+        <target>Updaten</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-log-page/update-tour-log-page.component.html</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">155</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5416016624958253276" datatype="html">
+        <source>Update a Tour!</source>
+        <target>Update eine Tour!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/update-tour-page/update-tour-page.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

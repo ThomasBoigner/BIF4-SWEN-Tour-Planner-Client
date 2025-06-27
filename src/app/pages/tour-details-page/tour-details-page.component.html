@@ -10,31 +10,32 @@
                     <h5>{{ tour.description }}</h5>
                 </div>
                 <div class="from-container">
-                    <h6>From:</h6>
+                    <h6 i18n>From:</h6>
                     <p>{{ tour.from.streetName }} {{ tour.from.streetNumber }}</p>
                     <p>{{ tour.from.zipCode }} {{ tour.from.city }}, {{ tour.from.country }}</p>
                 </div>
                 <div class="to-container">
-                    <h6>to:</h6>
+                    <h6 i18n>to:</h6>
                     <p>{{ tour.to.streetName }} {{ tour.to.streetNumber }}</p>
                     <p>{{ tour.to.zipCode }} {{ tour.to.city }}, {{ tour.to.country }}</p>
                 </div>
                 <div class="tour-distance-container">
-                    <h6>Tour distance</h6>
+                    <h6 i18n>Tour distance</h6>
                     <p>{{ tour.distance }}km</p>
                 </div>
                 <div class="time-container">
-                    <h6>Estimated time</h6>
+                    <h6 i18n>Estimated time</h6>
                     <p>{{ tour.estimatedTime / 60 }} hours</p>
                 </div>
                 <div class="transport-type-container">
-                    <h6>Transport type</h6>
+                    <h6 i18n>Transport type</h6>
                     <p>{{ tour.transportType | titlecase }}</p>
                 </div>
             </div>
         }
         <div class="buttons-container">
             <tour-button
+                i18n-text
                 text="Add log"
                 color="primary"
                 [primaryImage]="{
@@ -52,6 +53,7 @@
                 [routerLink]="['/tour-log/new', tourId]"
             ></tour-button>
             <tour-button
+                i18n-text
                 text="Update tour"
                 color="primary"
                 [primaryImage]="{
@@ -69,6 +71,7 @@
                 [routerLink]="['/tour/update', tourId]"
             ></tour-button>
             <tour-button
+                i18n-text
                 text="Export tour"
                 color="secondary"
                 [primaryImage]="{
@@ -86,6 +89,7 @@
                 (click)="exportTour()"
             ></tour-button>
             <tour-button
+                i18n-text
                 text="Export tour-report"
                 color="secondary"
                 [primaryImage]="{
@@ -102,6 +106,7 @@
                 }"
             ></tour-button>
             <tour-button
+                i18n-text
                 text="Export summarize-report"
                 color="secondary"
                 [primaryImage]="{
@@ -118,6 +123,7 @@
                 }"
             ></tour-button>
             <tour-button
+                i18n-text
                 text="Delete tour"
                 color="error"
                 [primaryImage]="{
@@ -138,6 +144,7 @@
     </section>
     <section id="tour-logs">
         <search-bar
+            i18n-placeholder
             placeholder="Search for tour log"
             [(value)]="searchInput"
             (valueChange)="searchTourLog()"
