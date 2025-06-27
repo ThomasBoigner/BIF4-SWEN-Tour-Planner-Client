@@ -93,8 +93,8 @@
           <context context-type="linenumber">19,21</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5089291454242268689" datatype="html">
-        <source>Create a new Tour Log!</source>
+      <trans-unit id="8612853773140929035" datatype="html">
+        <source>Create a new tour log!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/create-tour-log-page/create-tour-log-page.component.html</context>
           <context context-type="linenumber">6,7</context>
@@ -436,8 +436,8 @@
           <context context-type="linenumber">70,71</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7115707664711267288" datatype="html">
-        <source>Update a Tour Log!</source>
+      <trans-unit id="3998695524492924419" datatype="html">
+        <source>Update a tour log!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/update-tour-log-page/update-tour-log-page.component.html</context>
           <context context-type="linenumber">6,7</context>
