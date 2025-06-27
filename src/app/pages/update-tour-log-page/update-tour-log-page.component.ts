@@ -7,6 +7,10 @@ import { TourLogService } from '../../service/tour-log.service';
 import { DateInputComponent } from '../../components/date-input/date-input.component';
 import { TextInputComponent } from '../../components/text-input/text-input.component';
 import { TourButtonComponent } from '../../components/tour-button/tour-button.component';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ErrorResponse } from '../../model/exception/error-response';
+import { UpdateTourLogCommand } from '../../model/commands/update-tour-log-command';
+import { TourLog } from '../../model/tour-log';
 
 @Component({
     selector: 'update-tour-log-page',
@@ -26,6 +30,7 @@ export class UpdateTourLogPageComponent {
     errorMessage = '';
 
     tourLogId: string;
+    tourLog: TourLog | undefined;
     tourLogForm = new FormGroup({
         startTime: new FormControl<string>('', { nonNullable: true }), // ISO string or datetime-local input
         endTime: new FormControl<string>('', { nonNullable: true }),
@@ -41,5 +46,34 @@ export class UpdateTourLogPageComponent {
         private router: Router,
     ) {
         this.tourLogId = this.route.snapshot.paramMap.get('id') ?? '';
+        this.tourLogService.getTourLog(this.tourLogId).subscribe((tourLog) => {
+            this.tourLog = tourLog;
+            this.tourLogForm = new FormGroup({
+                startTime: new FormControl<string>(tourLog.duration.startTime, { nonNullable: true }), // ISO string or datetime-local input
+                endTime: new FormControl<string>(tourLog.duration.endTime, { nonNullable: true }),
+                comment: new FormControl<string>(tourLog.comment, { nonNullable: true }),
+                difficulty: new FormControl<number>(tourLog.difficulty, { nonNullable: true }),
+                distance: new FormControl<number>(tourLog.distance, { nonNullable: true }),
+                rating: new FormControl<number>(tourLog.rating, { nonNullable: true }),
+            });
+        })
+    }
+
+    handleSubmit() {
+        const command: UpdateTourLogCommand = {
+            startTime: new Date(this.tourLogForm.controls.startTime.value),
+            endTime: new Date(this.tourLogForm.controls.endTime.value),
+            comment: this.tourLogForm.controls.comment.value,
+            difficulty: this.tourLogForm.controls.difficulty.value,
+            distance: this.tourLogForm.controls.distance.value,
+            rating: this.tourLogForm.controls.rating.value,
+        };
+
+        this.tourLogService.updateTourLog(this.tourLogId, command).subscribe({
+            complete: () => void this.router.navigate([this.tourLog ? `tour/detail/${this.tourLog.tourId}` : '/']),
+            error: (error: HttpErrorResponse) => {
+                this.errorMessage = (error.error as ErrorResponse).message;
+            },
+        });
     }
 }

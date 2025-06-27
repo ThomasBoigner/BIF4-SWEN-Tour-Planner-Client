@@ -36,7 +36,7 @@ export class TourLogService {
         });
     }
 
-    public getTourLogById(id: string): Observable<TourLog> {
+    public getTourLog(id: string): Observable<TourLog> {
         this.logger.debug(`Trying to get tour log with id ${id} from endpoint ${this.toursLogUrl}`);
         return this.http.get<TourLog>(`${this.toursLogUrl}/${id}`);
     }

@@ -58,7 +58,7 @@ export class CreateTourLogPageComponent {
         };
 
         this.tourLogService.createTourLog(command).subscribe({
-            complete: () => void this.router.navigate([`tour/detail/${this.tourId}`]),
+            complete: () => void this.router.navigate([`/tour/detail/${this.tourId}`]),
             error: (error: HttpErrorResponse) => {
                 this.errorMessage = (error.error as ErrorResponse).message;
             },

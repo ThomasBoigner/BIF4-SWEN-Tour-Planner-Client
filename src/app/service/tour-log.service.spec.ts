@@ -99,7 +99,7 @@ describe('TourLogService', () => {
         };
 
         // When
-        const response = tourLogService.getTourLogById('e4f61472-1ead-4b0a-a895-c7ae75139fc2');
+        const response = tourLogService.getTourLog('e4f61472-1ead-4b0a-a895-c7ae75139fc2');
 
         // Then
         response.subscribe((tourLog) => {
