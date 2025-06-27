@@ -6,6 +6,7 @@
             </a>
             <div class="buttons-container">
                 <tour-button
+                    i18n-text
                     text="Create tour"
                     color="primary"
                     [primaryImage]="{
@@ -23,6 +24,7 @@
                     routerLink="/tour/new"
                 ></tour-button>
                 <tour-button
+                    i18n-text
                     text="Import tour"
                     color="secondary"
                     [primaryImage]="{
@@ -41,6 +43,7 @@
                 ></tour-button>
             </div>
             <search-bar
+                i18n-placeholder
                 placeholder="Search for tour"
                 [(value)]="searchInput"
                 (valueChange)="searchTour()"
@@ -64,7 +67,7 @@
                     }
                 }
             } @else {
-                <p>No tours available</p>
+                <p i18n>No tours available</p>
             }
         </div>
     </section>
