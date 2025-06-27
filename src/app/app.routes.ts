@@ -4,6 +4,7 @@ import { TourDetailsPageComponent } from './pages/tour-details-page/tour-details
 import { CreateTourPageComponent } from './pages/create-tour-page/create-tour-page.component';
 import { CreateTourLogPageComponent } from './pages/create-tour-log-page/create-tour-log-page-component';
 import { UpdateTourPageComponent } from './pages/update-tour-page/update-tour-page.component';
+import { UpdateTourLogPageComponent } from './pages/update-tour-log-page/update-tour-log-page.component';
 
 export const routes: Routes = [
     {
@@ -28,7 +29,12 @@ export const routes: Routes = [
     },
     {
         path: 'tour-log/new/:id',
-        title: 'Create a new Tour Log',
+        title: 'Create a new tour log',
         component: CreateTourLogPageComponent,
+    },
+    {
+        path: 'tour-log/update/:id',
+        title: 'Update a tour log',
+        component: UpdateTourLogPageComponent,
     },
 ];

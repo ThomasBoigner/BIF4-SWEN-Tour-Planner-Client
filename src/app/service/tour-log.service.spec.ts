@@ -6,6 +6,7 @@ import { TourLogService } from './tour-log.service';
 import { TourLog } from '../model/tour-log';
 import { Page } from '../model/page';
 import { CreateTourLogCommand } from '../model/commands/create-tour-log-command';
+import { UpdateTourLogCommand } from '../model/commands/update-tour-log-command';
 
 describe('TourLogService', () => {
     beforeEach(() => {
@@ -80,6 +81,40 @@ describe('TourLogService', () => {
         expect(req.request.responseType).toEqual('json');
     });
 
+    it('#getTourLog should return a tour log from the server', () => {
+        // Given
+        const tourLogService = TestBed.inject(TourLogService);
+        const expectedTourLog: TourLog = {
+            id: 'c1946dcc-1afb-4c12-bf95-bf95fc2bf80f',
+            tourId: '4b4701b8-18e7-49c9-85aa-97cf3a3e5890',
+            duration: {
+                startTime: '2025-01-01T12:00:00',
+                endTime: '2025-01-01T13:00:00',
+                duration: 60,
+            },
+            comment: 'What a nice tour!',
+            difficulty: 3,
+            distance: 2.0,
+            rating: 5,
+        };
+
+        // When
+        const response = tourLogService.getTourLog('e4f61472-1ead-4b0a-a895-c7ae75139fc2');
+
+        // Then
+        response.subscribe((tourLog) => {
+            expect(tourLog).toEqual(expectedTourLog);
+        });
+
+        const req = TestBed.inject(HttpTestingController).expectOne({
+            method: 'GET',
+            url: 'http://localhost:8080/api/tourLog/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+        });
+
+        req.flush(expectedTourLog);
+        expect(req.request.responseType).toEqual('json');
+    });
+
     it('#createTourLog should create a tour log on the server and return that log', () => {
         // Given
         const tourLogService = TestBed.inject(TourLogService);
@@ -118,6 +153,48 @@ describe('TourLogService', () => {
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'POST',
             url: 'http://localhost:8080/api/tourLog',
+        });
+
+        req.flush(expectedTourLog);
+        expect(req.request.responseType).toEqual('json');
+    });
+
+    it('#updateTourLog should update a tour log on the server', () => {
+        // Given
+        const tourLogService = TestBed.inject(TourLogService);
+        const expectedTourLog: TourLog = {
+            id: 'c1946dcc-1afb-4c12-bf95-bf95fc2bf80f',
+            tourId: '4b4701b8-18e7-49c9-85aa-97cf3a3e5890',
+            duration: {
+                startTime: '2025-01-01T12:00:00',
+                endTime: '2025-01-01T13:00:00',
+                duration: 60,
+            },
+            comment: 'What a nice tour!',
+            difficulty: 3,
+            distance: 2.0,
+            rating: 5,
+        };
+        const updateTourLogCommand: UpdateTourLogCommand = {
+            startTime: new Date('2024-12-31T22:00'),
+            endTime: new Date('2024-12-31T23:00'),
+            comment: 'abc',
+            distance: 10,
+            difficulty: 1,
+            rating: 5,
+        };
+
+        // When
+        const response = tourLogService.updateTourLog(expectedTourLog.id, updateTourLogCommand);
+
+        // Then
+        response.subscribe((tourLog) => {
+            expect(tourLog).toEqual(expectedTourLog);
+        });
+
+        const req = TestBed.inject(HttpTestingController).expectOne({
+            method: 'PUT',
+            url: `http://localhost:8080/api/tourLog/${expectedTourLog.id}`,
         });
 
         req.flush(expectedTourLog);

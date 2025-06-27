@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CreateTourLogCommand } from '../model/commands/create-tour-log-command';
 import { TourLog } from '../model/tour-log';
 import { Page } from '../model/page';
+import { UpdateTourLogCommand } from '../model/commands/update-tour-log-command';
 
 @Injectable({ providedIn: 'root' })
 export class TourLogService {
@@ -35,11 +36,26 @@ export class TourLogService {
         });
     }
 
+    public getTourLog(id: string): Observable<TourLog> {
+        this.logger.debug(`Trying to get tour log with id ${id} from endpoint ${this.toursLogUrl}`);
+        return this.http.get<TourLog>(`${this.toursLogUrl}/${id}`);
+    }
+
     public createTourLog(createTourLogCommand: CreateTourLogCommand): Observable<TourLog> {
         this.logger.debug(
             `Trying to create new tour with command ${JSON.stringify(createTourLogCommand)} with endpoint ${this.toursLogUrl}`,
         );
         return this.http.post<TourLog>(this.toursLogUrl, createTourLogCommand);
+    }
+
+    public updateTourLog(
+        id: string,
+        updateTourLogCommand: UpdateTourLogCommand,
+    ): Observable<TourLog> {
+        this.logger.debug(
+            `Trying to update tour log with id ${id} with command ${JSON.stringify(updateTourLogCommand)} with endpoint ${this.toursLogUrl}`,
+        );
+        return this.http.put<TourLog>(`${this.toursLogUrl}/${id}`, updateTourLogCommand);
     }
 
     public deleteTourLog(id: string) {

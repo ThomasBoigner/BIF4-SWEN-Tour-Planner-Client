@@ -8,7 +8,7 @@
     <p>Rating: {{ tourLog().rating }}</p>
 
     <div class="update-link">
-        <a>
+        <a routerLink="/tour-log/update/{{ tourLog().id }}">
             Update tour log
             <img ngSrc="app/assets/svg/arrow-right.svg" alt="arrow-right" width="24" height="24" />
         </a>

@@ -2,15 +2,20 @@ import { TourLogService } from '../../service/tour-log.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { routes } from '../../app.routes';
-import { CreateTourLogPageComponent } from './create-tour-log-page-component';
+import { UpdateTourLogPageComponent } from './update-tour-log-page.component';
+import { TourLog } from '../../model/tour-log';
+import { of } from 'rxjs';
 
-describe('CreateTourLogPageComponent', () => {
+describe('UpdateTourLogPageComponent', () => {
+    let tourLogService: jasmine.SpyObj<TourLogService>;
+
     beforeEach(() => {
-        const spy = jasmine.createSpyObj<TourLogService>('TourLogService', ['createTourLog']);
+        const spy = jasmine.createSpyObj<TourLogService>('TourLogService', ['getTourLog']);
 
         TestBed.configureTestingModule({
             providers: [{ provide: TourLogService, useValue: spy }, provideRouter(routes)],
         });
+        tourLogService = TestBed.inject(TourLogService) as jasmine.SpyObj<TourLogService>;
     });
 
     it('All fields should be bound correctly', () => {
@@ -22,9 +27,25 @@ describe('CreateTourLogPageComponent', () => {
         const difficulty = 1;
         const rating = 2;
 
+        const tourLog: TourLog = {
+            id: 'c1946dcc-1afb-4c12-bf95-bf95fc2bf80f',
+            tourId: '4b4701b8-18e7-49c9-85aa-97cf3a3e5890',
+            duration: {
+                startTime: '2025-01-01T12:00:00',
+                endTime: '2025-01-01T13:00:00',
+                duration: 60,
+            },
+            comment: 'What a nice tour!',
+            difficulty: 3,
+            distance: 2.0,
+            rating: 5,
+        };
+
+        tourLogService.getTourLog.and.returnValue(of(tourLog));
+
         // When
-        const fixture: ComponentFixture<CreateTourLogPageComponent> = TestBed.createComponent(
-            CreateTourLogPageComponent,
+        const fixture: ComponentFixture<UpdateTourLogPageComponent> = TestBed.createComponent(
+            UpdateTourLogPageComponent,
         );
 
         fixture.detectChanges();

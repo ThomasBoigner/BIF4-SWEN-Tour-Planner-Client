@@ -2,10 +2,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TourLog } from '../../model/tour-log';
 import { TourLogListItemComponent } from './tour-log-list-item.component';
 import { DatePipe } from '@angular/common';
+import { provideRouter } from '@angular/router';
+import { routes } from '../../app.routes';
 
 describe('TourLogListItemComponent', () => {
     beforeEach(() => {
-        TestBed.configureTestingModule({});
+        TestBed.configureTestingModule({
+            providers: [provideRouter(routes)],
+        });
     });
 
     it('Tour log data should be displayed', () => {
