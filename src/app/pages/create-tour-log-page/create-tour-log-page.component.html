@@ -3,7 +3,7 @@
         <a routerLink="/">
             <img ngSrc="app/assets/svg/logo.svg" width="64" height="56" alt="logo" />
         </a>
-        <h1>Create a new Tour Log!</h1>
+        <h1 i18n>Create a new Tour Log!</h1>
     </section>
     <section id="create-tour-log-form">
         @if (errorMessage) {
@@ -12,6 +12,7 @@
         <form [formGroup]="tourLogForm">
             <div class="start-time-end-time-input">
                 <date-input
+                    i18n-label
                     label="Start time"
                     [formGroup]="tourLogForm"
                     controlName="startTime"
@@ -23,6 +24,7 @@
                     }"
                 ></date-input>
                 <date-input
+                    i18n-label
                     label="End time"
                     [formGroup]="tourLogForm"
                     controlName="endTime"
@@ -36,6 +38,7 @@
             </div>
 
             <text-input
+                i18n-label
                 label="Comment"
                 [formGroup]="tourLogForm"
                 controlName="comment"
@@ -47,6 +50,7 @@
                 }"
             ></text-input>
             <text-input
+                i18n-label
                 label="Distance"
                 [formGroup]="tourLogForm"
                 controlName="distance"
@@ -60,6 +64,7 @@
 
             <div class="difficulty-rating-input">
                 <text-input
+                    i18n-label
                     label="Difficulty"
                     [formGroup]="tourLogForm"
                     controlName="difficulty"
@@ -71,6 +76,7 @@
                     }"
                 ></text-input>
                 <text-input
+                    i18n-label
                     label="Rating"
                     [formGroup]="tourLogForm"
                     controlName="rating"
@@ -85,6 +91,7 @@
         </form>
 
         <tour-button
+            i18n-text
             text="Create"
             color="primary"
             (click)="handleSubmit()"
