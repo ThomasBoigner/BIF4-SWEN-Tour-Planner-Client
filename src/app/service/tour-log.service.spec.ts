@@ -199,7 +199,7 @@ describe('TourLogService', () => {
 
         req.flush(expectedTourLog);
         expect(req.request.responseType).toEqual('json');
-    })
+    });
 
     it('#deleteTourLog should delete a tour log on the server', () => {
         // Given

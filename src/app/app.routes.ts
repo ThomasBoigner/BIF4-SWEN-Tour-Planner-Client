@@ -36,5 +36,5 @@ export const routes: Routes = [
         path: 'tour-log/update/:id',
         title: 'Update a tour log',
         component: UpdateTourLogPageComponent,
-    }
+    },
 ];

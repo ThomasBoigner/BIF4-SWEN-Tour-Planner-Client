@@ -49,14 +49,16 @@ export class UpdateTourLogPageComponent {
         this.tourLogService.getTourLog(this.tourLogId).subscribe((tourLog) => {
             this.tourLog = tourLog;
             this.tourLogForm = new FormGroup({
-                startTime: new FormControl<string>(tourLog.duration.startTime, { nonNullable: true }), // ISO string or datetime-local input
+                startTime: new FormControl<string>(tourLog.duration.startTime, {
+                    nonNullable: true,
+                }), // ISO string or datetime-local input
                 endTime: new FormControl<string>(tourLog.duration.endTime, { nonNullable: true }),
                 comment: new FormControl<string>(tourLog.comment, { nonNullable: true }),
                 difficulty: new FormControl<number>(tourLog.difficulty, { nonNullable: true }),
                 distance: new FormControl<number>(tourLog.distance, { nonNullable: true }),
                 rating: new FormControl<number>(tourLog.rating, { nonNullable: true }),
             });
-        })
+        });
     }
 
     handleSubmit() {
@@ -70,7 +72,10 @@ export class UpdateTourLogPageComponent {
         };
 
         this.tourLogService.updateTourLog(this.tourLogId, command).subscribe({
-            complete: () => void this.router.navigate([this.tourLog ? `tour/detail/${this.tourLog.tourId}` : '/']),
+            complete: () =>
+                void this.router.navigate([
+                    this.tourLog ? `tour/detail/${this.tourLog.tourId}` : '/',
+                ]),
             error: (error: HttpErrorResponse) => {
                 this.errorMessage = (error.error as ErrorResponse).message;
             },
