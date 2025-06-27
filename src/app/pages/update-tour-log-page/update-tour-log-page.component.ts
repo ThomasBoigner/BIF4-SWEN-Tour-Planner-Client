@@ -25,6 +25,7 @@ import { TourButtonComponent } from '../../components/tour-button/tour-button.co
 export class UpdateTourLogPageComponent {
     errorMessage = '';
 
+    tourLogId: string;
     tourLogForm = new FormGroup({
         startTime: new FormControl<string>('', { nonNullable: true }), // ISO string or datetime-local input
         endTime: new FormControl<string>('', { nonNullable: true }),
@@ -38,5 +39,7 @@ export class UpdateTourLogPageComponent {
         private tourLogService: TourLogService,
         private route: ActivatedRoute,
         private router: Router,
-    ) {}
+    ) {
+        this.tourLogId = this.route.snapshot.paramMap.get('id') ?? '';
+    }
 }
