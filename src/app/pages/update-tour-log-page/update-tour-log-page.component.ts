@@ -32,8 +32,8 @@ export class UpdateTourLogPageComponent {
     tourLogId: string;
     tourLog: TourLog | undefined;
     tourLogForm = new FormGroup({
-        startTime: new FormControl<string>('', { nonNullable: true }), // ISO string or datetime-local input
-        endTime: new FormControl<string>('', { nonNullable: true }),
+        startTime: new FormControl<Date>(new Date(), { nonNullable: true }), // ISO string or datetime-local input
+        endTime: new FormControl<Date>(new Date(), { nonNullable: true }),
         comment: new FormControl<string>('', { nonNullable: true }),
         difficulty: new FormControl<number>(1, { nonNullable: true }),
         distance: new FormControl<number>(0, { nonNullable: true }),
@@ -49,10 +49,10 @@ export class UpdateTourLogPageComponent {
         this.tourLogService.getTourLog(this.tourLogId).subscribe((tourLog) => {
             this.tourLog = tourLog;
             this.tourLogForm = new FormGroup({
-                startTime: new FormControl<string>(tourLog.duration.startTime, {
+                startTime: new FormControl<Date>(tourLog.duration.startTime, {
                     nonNullable: true,
-                }), // ISO string or datetime-local input
-                endTime: new FormControl<string>(tourLog.duration.endTime, { nonNullable: true }),
+                }),
+                endTime: new FormControl<Date>(tourLog.duration.endTime, { nonNullable: true }),
                 comment: new FormControl<string>(tourLog.comment, { nonNullable: true }),
                 difficulty: new FormControl<number>(tourLog.difficulty, { nonNullable: true }),
                 distance: new FormControl<number>(tourLog.distance, { nonNullable: true }),
@@ -63,8 +63,8 @@ export class UpdateTourLogPageComponent {
 
     handleSubmit() {
         const command: UpdateTourLogCommand = {
-            startTime: new Date(this.tourLogForm.controls.startTime.value),
-            endTime: new Date(this.tourLogForm.controls.endTime.value),
+            startTime: this.tourLogForm.controls.startTime.value,
+            endTime: this.tourLogForm.controls.endTime.value,
             comment: this.tourLogForm.controls.comment.value,
             difficulty: this.tourLogForm.controls.difficulty.value,
             distance: this.tourLogForm.controls.distance.value,
