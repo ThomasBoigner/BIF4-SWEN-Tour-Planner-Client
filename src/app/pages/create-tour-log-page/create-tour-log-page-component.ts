@@ -30,8 +30,8 @@ export class CreateTourLogPageComponent {
     tourId: string;
 
     tourLogForm = new FormGroup({
-        startTime: new FormControl<string>('', { nonNullable: true }), // ISO string or datetime-local input
-        endTime: new FormControl<string>('', { nonNullable: true }),
+        startTime: new FormControl<Date>(new Date(), { nonNullable: true }), // ISO string or datetime-local input
+        endTime: new FormControl<Date>(new Date(), { nonNullable: true }),
         comment: new FormControl<string>('', { nonNullable: true }),
         difficulty: new FormControl<number>(1, { nonNullable: true }),
         distance: new FormControl<number>(0, { nonNullable: true }),
@@ -49,8 +49,8 @@ export class CreateTourLogPageComponent {
     handleSubmit() {
         const command: CreateTourLogCommand = {
             tourId: this.tourId,
-            startTime: new Date(this.tourLogForm.controls.startTime.value),
-            endTime: new Date(this.tourLogForm.controls.endTime.value),
+            startTime: this.tourLogForm.controls.startTime.value,
+            endTime: this.tourLogForm.controls.endTime.value,
             comment: this.tourLogForm.controls.comment.value,
             difficulty: this.tourLogForm.controls.difficulty.value,
             distance: this.tourLogForm.controls.distance.value,

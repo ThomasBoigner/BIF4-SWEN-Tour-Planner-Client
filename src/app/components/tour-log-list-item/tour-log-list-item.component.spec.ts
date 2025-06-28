@@ -18,8 +18,8 @@ describe('TourLogListItemComponent', () => {
             id: 'df976291-f8e0-4f82-892c-953aee665ec1',
             tourId: '51585267-aba9-4904-9ba1-2d4d04a864da',
             duration: {
-                startTime: '2025-01-01T12:00:00',
-                endTime: '2025-01-01T13:00:00',
+                startTime: new Date('2025-01-01T12:00:00'),
+                endTime: new Date('2025-01-01T13:00:00'),
                 duration: 60,
             },
             comment: 'What a nice tour!',

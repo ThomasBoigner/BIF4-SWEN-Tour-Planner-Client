@@ -13,6 +13,8 @@ import { Page } from '../../model/page';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { BackupService } from '../../service/backup.service';
 import { HttpResponse } from '@angular/common/http';
+import { KilometerPipe } from '../../pipes/kilometer-pipe';
+import { HourPipe } from '../../pipes/hour-pipe';
 
 @Component({
     selector: 'tour-details-page',
@@ -27,6 +29,8 @@ import { HttpResponse } from '@angular/common/http';
         TourButtonComponent,
         SearchBarComponent,
         InfiniteScrollDirective,
+        KilometerPipe,
+        HourPipe,
     ],
 })
 export class TourDetailsPageComponent {

@@ -15,17 +15,17 @@
                     <p>{{ tour.from.zipCode }} {{ tour.from.city }}, {{ tour.from.country }}</p>
                 </div>
                 <div class="to-container">
-                    <h6 i18n>to:</h6>
+                    <h6 i18n>To:</h6>
                     <p>{{ tour.to.streetName }} {{ tour.to.streetNumber }}</p>
                     <p>{{ tour.to.zipCode }} {{ tour.to.city }}, {{ tour.to.country }}</p>
                 </div>
                 <div class="tour-distance-container">
                     <h6 i18n>Tour distance</h6>
-                    <p>{{ tour.distance }}km</p>
+                    <p>{{ tour.distance | kilometer }} km</p>
                 </div>
                 <div class="time-container">
                     <h6 i18n>Estimated time</h6>
-                    <p>{{ tour.estimatedTime / 60 }} hours</p>
+                    <p>{{ tour.estimatedTime | hour }} hours</p>
                 </div>
                 <div class="transport-type-container">
                     <h6 i18n>Transport type</h6>
@@ -171,7 +171,7 @@
                     }
                 }
             } @else {
-                <p>No tour logs available</p>
+                <p i18n>No tour logs available</p>
             }
         </div>
     </section>
