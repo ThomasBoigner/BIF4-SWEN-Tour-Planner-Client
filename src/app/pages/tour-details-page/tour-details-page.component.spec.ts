@@ -140,8 +140,8 @@ describe('TourDetailsPageComponent', () => {
             id: 'c1946dcc-1afb-4c12-bf95-bf95fc2bf80f',
             tourId: '4b4701b8-18e7-49c9-85aa-97cf3a3e5890',
             duration: {
-                startTime: '2025-01-01T12:00:00',
-                endTime: '2025-01-01T13:00:00',
+                startTime: new Date('2025-01-01T12:00:00'),
+                endTime: new Date('2025-01-01T13:00:00'),
                 duration: 60,
             },
             comment: 'What a nice tour!',

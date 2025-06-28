@@ -65,8 +65,8 @@ describe('CreateTourLogPageComponent', () => {
 
         // Then
         expect(fixture.componentInstance).toBeDefined();
-        expect(fixture.componentInstance.tourLogForm.value.startTime).toEqual(startTime);
-        expect(fixture.componentInstance.tourLogForm.value.endTime).toEqual(endTime);
+        expect(fixture.componentInstance.tourLogForm.value.startTime?.toLocaleString()).toEqual(startTime);
+        expect(fixture.componentInstance.tourLogForm.value.endTime?.toLocaleString()).toEqual(endTime);
         expect(fixture.componentInstance.tourLogForm.value.comment).toEqual(comment);
         expect(String(fixture.componentInstance.tourLogForm.value.distance)).toEqual(
             String(distance),

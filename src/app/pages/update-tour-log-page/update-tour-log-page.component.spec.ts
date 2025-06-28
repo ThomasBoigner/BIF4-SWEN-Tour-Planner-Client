@@ -31,8 +31,8 @@ describe('UpdateTourLogPageComponent', () => {
             id: 'c1946dcc-1afb-4c12-bf95-bf95fc2bf80f',
             tourId: '4b4701b8-18e7-49c9-85aa-97cf3a3e5890',
             duration: {
-                startTime: '2025-01-01T12:00:00',
-                endTime: '2025-01-01T13:00:00',
+                startTime: new Date('2025-01-01T12:00:00'),
+                endTime: new Date('2025-01-01T13:00:00'),
                 duration: 60,
             },
             comment: 'What a nice tour!',
@@ -86,8 +86,8 @@ describe('UpdateTourLogPageComponent', () => {
 
         // Then
         expect(fixture.componentInstance).toBeDefined();
-        expect(fixture.componentInstance.tourLogForm.value.startTime).toEqual(startTime);
-        expect(fixture.componentInstance.tourLogForm.value.endTime).toEqual(endTime);
+        expect(fixture.componentInstance.tourLogForm.value.startTime?.toLocaleString()).toEqual(startTime);
+        expect(fixture.componentInstance.tourLogForm.value.endTime?.toLocaleString()).toEqual(endTime);
         expect(fixture.componentInstance.tourLogForm.value.comment).toEqual(comment);
         expect(String(fixture.componentInstance.tourLogForm.value.distance)).toEqual(
             String(distance),
