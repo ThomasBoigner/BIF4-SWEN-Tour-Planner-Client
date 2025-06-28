@@ -3,8 +3,13 @@ import { Tour } from '../../model/tour';
 import { TourListItemComponent } from './tour-list-item.component';
 import { provideRouter } from '@angular/router';
 import { routes } from '../../app.routes';
+import { KilometerPipe } from '../../pipes/kilometer-pipe';
+import { HourPipe } from '../../pipes/hour-pipe';
 
 describe('TourListItemComponent', () => {
+    const kilometerPipe = new KilometerPipe();
+    const hourPipe = new HourPipe();
+
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [provideRouter(routes)],
@@ -51,7 +56,7 @@ describe('TourListItemComponent', () => {
         const nativeElement = fixture.nativeElement as HTMLElement;
         expect(fixture.componentInstance).toBeDefined();
         expect(nativeElement.textContent).toContain(tour.name);
-        expect(nativeElement.textContent).toContain(tour.estimatedTime / 60);
-        expect(nativeElement.textContent).toContain(tour.distance);
+        expect(nativeElement.textContent).toContain(hourPipe.transform(tour.estimatedTime));
+        expect(nativeElement.textContent).toContain(kilometerPipe.transform(tour.distance));
     });
 });

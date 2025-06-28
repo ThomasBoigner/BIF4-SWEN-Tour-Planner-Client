@@ -11,10 +11,15 @@ import { TourLogService } from '../../service/tour-log.service';
 import { TourLog } from '../../model/tour-log';
 import { Page } from '../../model/page';
 import { DatePipe } from '@angular/common';
+import { KilometerPipe } from '../../pipes/kilometer-pipe';
+import { HourPipe } from '../../pipes/hour-pipe';
 
 describe('TourDetailsPageComponent', () => {
     let tourService: jasmine.SpyObj<TourService>;
     let tourLogService: jasmine.SpyObj<TourLogService>;
+
+    const kilometerPipe = new KilometerPipe();
+    const hourPipe = new HourPipe();
 
     beforeEach(() => {
         const spyTourService = jasmine.createSpyObj<TourService>('TourService', ['getTour']);
@@ -107,8 +112,8 @@ describe('TourDetailsPageComponent', () => {
         expect(nativeElement.textContent).toContain(tour.to.zipCode);
         expect(nativeElement.textContent).toContain(tour.to.city);
         expect(nativeElement.textContent).toContain(tour.to.country);
-        expect(nativeElement.textContent).toContain(tour.distance);
-        expect(nativeElement.textContent).toContain(tour.estimatedTime / 60);
+        expect(nativeElement.textContent).toContain(kilometerPipe.transform(tour.distance));
+        expect(nativeElement.textContent).toContain(hourPipe.transform(tour.estimatedTime));
         expect(nativeElement.textContent).toContain('Bike');
     });
 
@@ -135,8 +140,8 @@ describe('TourDetailsPageComponent', () => {
             id: 'c1946dcc-1afb-4c12-bf95-bf95fc2bf80f',
             tourId: '4b4701b8-18e7-49c9-85aa-97cf3a3e5890',
             duration: {
-                startTime: '2025-01-01T12:00:00',
-                endTime: '2025-01-01T13:00:00',
+                startTime: new Date('2025-01-01T12:00:00'),
+                endTime: new Date('2025-01-01T13:00:00'),
                 duration: 60,
             },
             comment: 'What a nice tour!',

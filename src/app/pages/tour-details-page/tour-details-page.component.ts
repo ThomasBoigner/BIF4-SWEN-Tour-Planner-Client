@@ -12,6 +12,8 @@ import { SearchBarComponent } from '../../components/search-bar/search-bar.compo
 import { Page } from '../../model/page';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { BackupService } from '../../service/backup.service';
+import { KilometerPipe } from '../../pipes/kilometer-pipe';
+import { HourPipe } from '../../pipes/hour-pipe';
 
 @Component({
     selector: 'tour-details-page',
@@ -26,6 +28,8 @@ import { BackupService } from '../../service/backup.service';
         TourButtonComponent,
         SearchBarComponent,
         InfiniteScrollDirective,
+        KilometerPipe,
+        HourPipe,
     ],
 })
 export class TourDetailsPageComponent {

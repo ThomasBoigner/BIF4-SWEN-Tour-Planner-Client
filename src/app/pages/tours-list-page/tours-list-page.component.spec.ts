@@ -7,9 +7,13 @@ import { provideRouter } from '@angular/router';
 import { routes } from '../../app.routes';
 import { Page } from '../../model/page';
 import { BackupService } from '../../service/backup.service';
+import { KilometerPipe } from '../../pipes/kilometer-pipe';
+import { HourPipe } from '../../pipes/hour-pipe';
 
 describe('ToursListPageComponent', () => {
     let tourService: jasmine.SpyObj<TourService>;
+    const kilometerPipe = new KilometerPipe();
+    const hourPipe = new HourPipe();
 
     beforeEach(() => {
         const spyTourService = jasmine.createSpyObj<TourService>('TourService', ['getTours']);
@@ -69,8 +73,8 @@ describe('ToursListPageComponent', () => {
                 longitude: 20,
             },
             transportType: 'BIKE',
-            distance: 20.0,
-            estimatedTime: 120.0,
+            distance: 20000,
+            estimatedTime: 1200,
         };
         const tour2: Tour = {
             id: '05de8280-f825-471c-bd42-6aa6944183c0',
@@ -95,8 +99,8 @@ describe('ToursListPageComponent', () => {
                 longitude: 20,
             },
             transportType: 'RUNNING',
-            distance: 40.0,
-            estimatedTime: 240.0,
+            distance: 40000,
+            estimatedTime: 2000,
         };
 
         const expectedPage: Page<Tour> = {
@@ -123,10 +127,10 @@ describe('ToursListPageComponent', () => {
         const nativeElement = fixture.nativeElement as HTMLElement;
         expect(fixture.componentInstance).toBeDefined();
         expect(nativeElement.textContent).toContain(tour1.name);
-        expect(nativeElement.textContent).toContain(tour1.estimatedTime / 60);
-        expect(nativeElement.textContent).toContain(tour1.distance);
+        expect(nativeElement.textContent).toContain(hourPipe.transform(tour1.estimatedTime));
+        expect(nativeElement.textContent).toContain(kilometerPipe.transform(tour1.distance));
         expect(nativeElement.textContent).toContain(tour2.name);
-        expect(nativeElement.textContent).toContain(tour2.estimatedTime / 60);
-        expect(nativeElement.textContent).toContain(tour2.distance);
+        expect(nativeElement.textContent).toContain(hourPipe.transform(tour2.estimatedTime));
+        expect(nativeElement.textContent).toContain(kilometerPipe.transform(tour2.distance));
     });
 });

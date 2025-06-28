@@ -22,6 +22,7 @@
         "@angular/router": "^20.0.3",
         "@bluehalo/ngx-leaflet": "^20.0.0",
         "@types/leaflet-routing-machine": "^3.2.8",
+        "css-select": "5.2.0",
         "leaflet": "^1.9.4",
         "leaflet-routing-machine": "^3.2.12",
         "ngx-infinite-scroll": "^20.0.0",
