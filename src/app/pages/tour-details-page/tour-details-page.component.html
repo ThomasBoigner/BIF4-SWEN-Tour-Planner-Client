@@ -21,11 +21,11 @@
                 </div>
                 <div class="tour-distance-container">
                     <h6 i18n>Tour distance</h6>
-                    <p>{{ tour.distance }}km</p>
+                    <p>{{ tour.distance | kilometer }} km</p>
                 </div>
                 <div class="time-container">
                     <h6 i18n>Estimated time</h6>
-                    <p>{{ tour.estimatedTime }} hours</p>
+                    <p>{{ tour.estimatedTime | hour }} hours</p>
                 </div>
                 <div class="transport-type-container">
                     <h6 i18n>Transport type</h6>

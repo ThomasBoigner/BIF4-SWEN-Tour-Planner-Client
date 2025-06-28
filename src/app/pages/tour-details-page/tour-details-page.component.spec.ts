@@ -11,10 +11,15 @@ import { TourLogService } from '../../service/tour-log.service';
 import { TourLog } from '../../model/tour-log';
 import { Page } from '../../model/page';
 import { DatePipe } from '@angular/common';
+import { KilometerPipe } from '../../pipes/kilometer-pipe';
+import { HourPipe } from '../../pipes/hour-pipe';
 
 describe('TourDetailsPageComponent', () => {
     let tourService: jasmine.SpyObj<TourService>;
     let tourLogService: jasmine.SpyObj<TourLogService>;
+
+    const kilometerPipe = new KilometerPipe();
+    const hourPipe = new HourPipe();
 
     beforeEach(() => {
         const spyTourService = jasmine.createSpyObj<TourService>('TourService', ['getTour']);
@@ -107,8 +112,8 @@ describe('TourDetailsPageComponent', () => {
         expect(nativeElement.textContent).toContain(tour.to.zipCode);
         expect(nativeElement.textContent).toContain(tour.to.city);
         expect(nativeElement.textContent).toContain(tour.to.country);
-        expect(nativeElement.textContent).toContain(tour.distance);
-        expect(nativeElement.textContent).toContain(tour.estimatedTime / 60);
+        expect(nativeElement.textContent).toContain(kilometerPipe.transform(tour.distance));
+        expect(nativeElement.textContent).toContain(hourPipe.transform(tour.estimatedTime));
         expect(nativeElement.textContent).toContain('Bike');
     });
 
