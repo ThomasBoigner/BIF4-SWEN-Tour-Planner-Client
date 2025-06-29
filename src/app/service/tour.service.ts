@@ -59,7 +59,7 @@ export class TourService {
         this.logger.debug(`Trying to download tour report from endpoint ${url}`);
         return this.http.get(url, {
             observe: 'response',
-            responseType: 'blob'
+            responseType: 'blob',
         });
     }
 
@@ -68,7 +68,7 @@ export class TourService {
         this.logger.debug(`Trying to download summary report from endpoint ${url}`);
         return this.http.get(url, {
             observe: 'response',
-            responseType: 'blob'
+            responseType: 'blob',
         });
     }
 }
