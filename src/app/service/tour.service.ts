@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 import { Tour } from '../model/tour';
 import { Observable } from 'rxjs';
@@ -52,5 +52,23 @@ export class TourService {
     public deleteTour(id: string) {
         this.logger.debug(`Trying to delete tour with id ${id} from endpoint ${this.toursUrl}`);
         return this.http.delete(`${this.toursUrl}/${id}`);
+    }
+
+    public getTourReport(id: string): Observable<HttpResponse<Blob>> {
+        const url = `${this.toursUrl}/${id}/report`;
+        this.logger.debug(`Trying to download tour report from endpoint ${url}`);
+        return this.http.get(url, {
+            observe: 'response',
+            responseType: 'blob'
+        });
+    }
+
+    public getSummaryReport(): Observable<HttpResponse<Blob>> {
+        const url = `${this.toursUrl}/report/summary`;
+        this.logger.debug(`Trying to download summary report from endpoint ${url}`);
+        return this.http.get(url, {
+            observe: 'response',
+            responseType: 'blob'
+        });
     }
 }

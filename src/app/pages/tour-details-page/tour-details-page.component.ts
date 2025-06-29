@@ -12,6 +12,7 @@ import { SearchBarComponent } from '../../components/search-bar/search-bar.compo
 import { Page } from '../../model/page';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { BackupService } from '../../service/backup.service';
+import { HttpResponse } from '@angular/common/http';
 import { KilometerPipe } from '../../pipes/kilometer-pipe';
 import { HourPipe } from '../../pipes/hour-pipe';
 
@@ -145,5 +146,34 @@ export class TourDetailsPageComponent {
 
     deleteTour() {
         this.tourService.deleteTour(this.tourId).subscribe(() => void this.router.navigate(['/']));
+    }
+
+    downloadTourReport() {
+        this.tourService.getTourReport(this.tourId).subscribe((response) => {
+            this.downloadFile(response, 'tour-report.pdf');
+        });
+    }
+
+    downloadSummaryReport() {
+        this.tourService.getSummaryReport().subscribe((response) => {
+            this.downloadFile(response, 'summary-report.pdf');
+        });
+    }
+
+    private downloadFile(response: HttpResponse<Blob>, defaultFileName: string) {
+        if (!response.body) {
+            return;
+        }
+
+        const contentDisposition = response.headers.get('content-disposition');
+        const match = contentDisposition?.match(/filename="?(.+?)"?$/);
+        const filename = match ? match[1] : defaultFileName;
+
+        const url = window.URL.createObjectURL(response.body);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+        window.URL.revokeObjectURL(url);
     }
 }

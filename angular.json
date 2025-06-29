@@ -14,6 +14,9 @@
                 "locales": {
                     "de": {
                         "translation": "src/locale/messages.de.xlf"
+                    },
+                    "pl": {
+                        "translation": "src/locale/messages.pl.xlf"
                     }
                 }
             },
