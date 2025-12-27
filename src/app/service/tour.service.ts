@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { CreateTourCommand } from '../model/commands/create-tour-command';
 import { Page } from '../model/page';
 import { UpdateTourCommand } from '../model/commands/update-tour-command';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class TourService {
@@ -15,7 +16,7 @@ export class TourService {
         private http: HttpClient,
         private logger: NGXLogger,
     ) {
-        this.toursUrl = 'http://localhost:8080/api/tour';
+        this.toursUrl = `${environment.tourPlannerServerUrl}/api/tour`;
     }
 
     public getTours(name?: string, page?: number, size?: number): Observable<Page<Tour> | null> {

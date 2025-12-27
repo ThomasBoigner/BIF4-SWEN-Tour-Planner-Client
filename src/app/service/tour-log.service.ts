@@ -6,6 +6,7 @@ import { CreateTourLogCommand } from '../model/commands/create-tour-log-command'
 import { TourLog } from '../model/tour-log';
 import { Page } from '../model/page';
 import { UpdateTourLogCommand } from '../model/commands/update-tour-log-command';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class TourLogService {
@@ -15,7 +16,7 @@ export class TourLogService {
         private http: HttpClient,
         private logger: NGXLogger,
     ) {
-        this.toursLogUrl = 'http://localhost:8080/api/tourLog';
+        this.toursLogUrl = `${environment.tourPlannerServerUrl}/api/tourLog`;
     }
 
     public getTourLogsForTour(
