@@ -48,8 +48,6 @@ stages:
   jobs:
   - job: Build
     displayName: Build & Push
-    pool:
-      vmImage: ubuntu-latest
     steps:
     - task: AzureCLI@2
       inputs:
@@ -64,3 +62,19 @@ stages:
           
           docker push $(containerRegistry).azurecr.io/$(imageRepository):$(tag)
           docker push $(containerRegistry).azurecr.io/$(imageRepository):latest
+
+- stage: Deploy
+  displayName: 'Deploy'
+  jobs:
+    - job: RestartContainer
+      steps:
+        - task: AzureCLI@2
+          displayName: 'Restart Container to pull new image'
+          inputs:
+            azureSubscription: 'acr-tourplanner1'
+            scriptType: 'bash'
+            scriptLocation: 'inlineScript'
+            inlineScript: |
+              az container restart \
+                --resource-group tourplanner-rg \
+                --name tour-planner-client
