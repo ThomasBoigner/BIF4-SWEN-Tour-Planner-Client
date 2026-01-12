@@ -57,10 +57,10 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az acr login --name $($(containerRegistry))
+          az acr login --name $(containerRegistry)
                           
-          docker build -t $($(containerRegistry)).azurecr.io/$(imageRepository):$(tag) .
-          docker tag $($(containerRegistry)).azurecr.io/$(imageRepository):$(tag) $($(containerRegistry)).azurecr.io/$(imageRepository):latest
+          docker build -t $(containerRegistry).azurecr.io/$(imageRepository):$(tag) .
+          docker tag $(containerRegistry).azurecr.io/$(imageRepository):$(tag) $(containerRegistry).azurecr.io/$(imageRepository):latest
           
-          docker push $($(containerRegistry)).azurecr.io/$(imageRepository):$(tag)
-          docker push $($(containerRegistry)).azurecr.io/$(imageRepository):latest
+          docker push $(containerRegistry).azurecr.io/$(imageRepository):$(tag)
+          docker push $(containerRegistry).azurecr.io/$(imageRepository):latest
