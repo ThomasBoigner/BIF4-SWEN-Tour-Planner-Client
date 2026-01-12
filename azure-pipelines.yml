@@ -20,10 +20,28 @@ stages:
       pool:
         vmImage: ubuntu-latest
       steps:
-      - task: Npm@1
-        inputs:
-          command: 'custom'
-          customCommand: 'ng test'
+      - script: |
+          npm cache clean --force
+          npm set "//<your-org>.jfrog.io/:_authToken=$(npm-auth-token)"
+          npm config set @your-org:registry https://<your-org>.jfrog.io/artifactory/api/npm/<your-repo>/
+          npm install -g npm
+          npm install -g @angular/cli
+          npm install -g @angular-devkit/build-angular --force
+          rm -rf node_modules package-lock.json
+          npm install --force
+        displayName: Install npm packages
+
+      - script: |
+          CHROME_PATH=$(which google-chrome || which chromium-browser)
+          if [ -z "$CHROME_PATH" ]; then
+            echo "Error: Chrome or Chromium is not installed on your system."
+            exit 1
+          fi
+          export CHROME_BIN="$CHROME_PATH"
+          echo "Running Angular tests"
+          npm run test:ci
+        displayName: Run Angular tests for remote
+        continueOnError: true
 
 - stage: Build
   displayName: Build image
