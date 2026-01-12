@@ -71,7 +71,7 @@ stages:
         - task: AzureCLI@2
           displayName: 'Restart Container to pull new image'
           inputs:
-            azureSubscription: 'acr-tourplanner1'
+            azureSubscription: 'tour-planner-main'
             scriptType: 'bash'
             scriptLocation: 'inlineScript'
             inlineScript: |
