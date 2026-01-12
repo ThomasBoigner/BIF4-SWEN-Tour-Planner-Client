@@ -20,7 +20,7 @@ RUN npm run build --omit=dev
 FROM nginx:alpine
 COPY --from=0 /app/dist /usr/share/nginx/html
 RUN rm -rf /usr/share/nginx/html/*.html
-RUN mv /usr/share/nginx/html/tour-planner-fe/browser/* /usr/share/nginx/html
+RUN mv /usr/share/nginx/html/bif4-swen-tour-planner-client/browser/* /usr/share/nginx/html
 
 
 # Expose port for Angular app
