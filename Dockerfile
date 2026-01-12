@@ -18,6 +18,7 @@ RUN npm run build --omit=dev
 
 # Use Nginx to serve the built Angular app
 FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=0 /app/dist /usr/share/nginx/html
 RUN rm -rf /usr/share/nginx/html/*.html
 RUN mv /usr/share/nginx/html/bif4-swen-tour-planner-client/browser/* /usr/share/nginx/html
