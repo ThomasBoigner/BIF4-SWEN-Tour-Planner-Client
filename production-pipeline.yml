@@ -51,7 +51,7 @@ stages:
     steps:
     - task: AzureCLI@2
       inputs:
-        azureSubscription: 'tour-planner-main'
+        azureSubscription: 'tour-planner-registry'
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
