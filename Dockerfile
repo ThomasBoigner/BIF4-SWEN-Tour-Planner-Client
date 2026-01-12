@@ -18,7 +18,7 @@ RUN npm run build --omit=dev
 
 # Use Nginx to serve the built Angular app
 FROM nginx:1.29
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=0 /app/dist/*/browser /usr/share/nginx/html
 
 
