@@ -1,0 +1,62 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+  branches:
+    include:
+      - main
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: Test
+  displayName: Test Application
+  jobs:
+    - job: Test
+      displayName: testing
+      pool:
+        vmImage: ubuntu-latest
+      steps:
+      - script: |
+          npm cache clean --force
+          npm install -g npm
+          npm install -g @angular/cli
+          npm install -g @angular-devkit/build-angular --force
+          rm -rf node_modules package-lock.json
+          npm install --force
+        displayName: Install npm packages
+
+      - script: |
+          CHROME_PATH=$(which google-chrome || which chromium-browser)
+          if [ -z "$CHROME_PATH" ]; then
+            echo "Error: Chrome or Chromium is not installed on your system."
+            exit 1
+          fi
+          export CHROME_BIN="$CHROME_PATH"
+          echo "Running Angular tests"
+          npm run test:ci
+        displayName: Run Angular tests for remote
+        continueOnError: true
+
+- stage: Build & Push
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        repository: $(imageRepository)
+        command: build
+        containerRegistry: $(containerRegistry)
+        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        tags: |
+          $(tag)
