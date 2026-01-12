@@ -19,13 +19,11 @@ RUN npm run build --omit=dev
 # Use Nginx to serve the built Angular app
 FROM nginx:1.29
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=0 /app/dist /usr/share/nginx/html
-RUN rm -rf /usr/share/nginx/html/*.html
-RUN mv /usr/share/nginx/html/bif4-swen-tour-planner-client/browser/* /usr/share/nginx/html
+COPY --from=0 dist/*/browser /usr/share/nginx/html
 
 
 # Expose port for Angular app
 EXPOSE 80
 
-# Start the Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+## Start the Nginx server
+#CMD ["nginx", "-g", "daemon off;"]
