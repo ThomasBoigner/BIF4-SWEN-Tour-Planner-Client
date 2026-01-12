@@ -12,6 +12,19 @@ variables:
   tag: '$(Build.BuildId)'
 
 stages:
+- stage: Test
+  displayName: Test Application
+  jobs:
+    - job: Test
+      displayName: testing
+      pool:
+        vmImage: ubuntu-latest
+      steps:
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'ng test'
+
 - stage: Build
   displayName: Build image
   jobs:
