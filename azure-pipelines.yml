@@ -22,8 +22,6 @@ stages:
       steps:
       - script: |
           npm cache clean --force
-          npm set "//<your-org>.jfrog.io/:_authToken=$(npm-auth-token)"
-          npm config set @your-org:registry https://<your-org>.jfrog.io/artifactory/api/npm/<your-repo>/
           npm install -g npm
           npm install -g @angular/cli
           npm install -g @angular-devkit/build-angular --force
