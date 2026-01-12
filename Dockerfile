@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build --omit=dev
 
 # Use Nginx to serve the built Angular app
-FROM nginx:alpine
+FROM nginx:1.29
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=0 /app/dist /usr/share/nginx/html
 RUN rm -rf /usr/share/nginx/html/*.html
