@@ -74,7 +74,7 @@ describe('TourLogService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tourLog/tour/abc?comment=&page=0&size=5',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tourLog/tour/abc?comment=&page=0&size=5',
         });
 
         req.flush(expectedPage);
@@ -108,7 +108,7 @@ describe('TourLogService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tourLog/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tourLog/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
         });
 
         req.flush(expectedTourLog);
@@ -152,7 +152,7 @@ describe('TourLogService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'POST',
-            url: 'http://localhost:8080/api/tourLog',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tourLog',
         });
 
         req.flush(expectedTourLog);
@@ -194,7 +194,7 @@ describe('TourLogService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'PUT',
-            url: `http://localhost:8080/api/tourLog/${expectedTourLog.id}`,
+            url: `http://tour-planner.italynorth.cloudapp.azure.com/api/tourLog/${expectedTourLog.id}`,
         });
 
         req.flush(expectedTourLog);
@@ -211,7 +211,7 @@ describe('TourLogService', () => {
         // Then
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'DELETE',
-            url: 'http://localhost:8080/api/tourLog/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tourLog/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
         });
 
         req.flush(null, { status: 200, statusText: 'ok' });

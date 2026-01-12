@@ -101,7 +101,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour?name=&page=0&size=5',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour?name=&page=0&size=5',
         });
 
         req.flush(expectedPage);
@@ -128,7 +128,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour?name=&page=0&size=5',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour?name=&page=0&size=5',
         });
 
         req.error(new ProgressEvent('Network Error'));
@@ -155,7 +155,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour?name=&page=0&size=5',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour?name=&page=0&size=5',
         });
 
         req.flush(null, { status: 500, statusText: 'Internal Server Error' });
@@ -201,7 +201,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
         });
 
         req.flush(expectedTour);
@@ -228,7 +228,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
         });
 
         req.error(new ProgressEvent('Network Error'));
@@ -255,7 +255,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'GET',
-            url: 'http://localhost:8080/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
         });
 
         req.flush(null, { status: 500, statusText: 'Internal Server Error' });
@@ -320,7 +320,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'POST',
-            url: 'http://localhost:8080/api/tour',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour',
         });
 
         req.flush(expectedTour);
@@ -366,7 +366,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'POST',
-            url: 'http://localhost:8080/api/tour',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour',
         });
 
         req.error(new ProgressEvent('Network Error'));
@@ -411,7 +411,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'POST',
-            url: 'http://localhost:8080/api/tour',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour',
         });
 
         req.flush(null, { status: 500, statusText: 'Internal Server Error' });
@@ -476,7 +476,7 @@ describe('TourService', () => {
 
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'PUT',
-            url: `http://localhost:8080/api/tour/${expectedTour.id}`,
+            url: `http://tour-planner.italynorth.cloudapp.azure.com/api/tour/${expectedTour.id}`,
         });
 
         req.flush(expectedTour);
@@ -493,7 +493,7 @@ describe('TourService', () => {
         // Then
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'DELETE',
-            url: 'http://localhost:8080/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
         });
 
         req.flush(null, { status: 200, statusText: 'ok' });
@@ -518,7 +518,7 @@ describe('TourService', () => {
         // Then
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'DELETE',
-            url: 'http://localhost:8080/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
         });
 
         req.error(new ProgressEvent('Network Error'));
@@ -543,7 +543,7 @@ describe('TourService', () => {
         // Then
         const req = TestBed.inject(HttpTestingController).expectOne({
             method: 'DELETE',
-            url: 'http://localhost:8080/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
+            url: 'http://tour-planner.italynorth.cloudapp.azure.com/api/tour/e4f61472-1ead-4b0a-a895-c7ae75139fc2',
         });
 
         req.flush(null, { status: 500, statusText: 'Internal Server Error' });
