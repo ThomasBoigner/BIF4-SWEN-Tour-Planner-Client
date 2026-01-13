@@ -9,7 +9,7 @@ import { UpdateTourLogPageComponent } from './pages/update-tour-log-page/update-
 export const routes: Routes = [
     {
         path: '',
-        title: 'Updated Tours list page',
+        title: 'DevOps Tours list page',
         component: ToursListPageComponent,
     },
     {
